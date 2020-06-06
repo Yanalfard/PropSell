@@ -471,7 +471,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblImage
         public TblImage SelectImageByName(string name)
         {
@@ -492,7 +491,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblClick
         public List<TblClick> SelectClickByPropertyId(int propertyId)
         {
@@ -515,7 +513,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblPropertyImageRel
         public List<TblPropertyImageRel> SelectPropertyImageRel(int entry, PropertyImageRel entryType)
         {
@@ -541,7 +538,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblConstructor
         public TblConstructor SelectConstructorByTellNo(string tellNo)
         {
@@ -582,7 +578,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblDealer
         public TblDealer SelectDealerByTellNo(string tellNo)
         {
@@ -641,7 +636,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblClient
         public TblClient SelectClientByTellNo(string tellNo)
         {
@@ -682,7 +676,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblPropertyClientRel
         public List<TblPropertyClientRel> SelectPropertyClientRel(int entry, PropertyClientRel entryType)
         {
@@ -710,7 +703,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblProvince
         public TblProvince SelectProvinceByName(string name)
         {
@@ -731,7 +723,6 @@ namespace PropSell.Utilities
             }
         }
         #endregion
-
         #region TblCity
         public TblCity SelectCityByName(string name)
         {
@@ -773,19 +764,21 @@ namespace PropSell.Utilities
         }
         #endregion
 
-        #region TblProperty
-        public TblProperty SelectPropertyByTitle(string title)
+        #region TblProperty
+        public List<TblProperty> SelectPropertyByTitle(string title)
         {
             try
             {
-                _command = new SqlCommand($"select* from TblProperty where Title = N'{title}'", _connection);
+                List<TblProperty> res = new List<TblProperty>();
+                _command = new SqlCommand($"select* from TblProperty where Title like N'%{title}%'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 reader.Read();
-                return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0,reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0,reader["Neighborhood"].ToString());
+                res.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0,reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0,reader["Neighborhood"].ToString()));
+                return res;
             }
             catch
             {
-                return new TblProperty(-1);
+                return new List<TblProperty>();
             }
             finally
             {
@@ -874,6 +867,5 @@ namespace PropSell.Utilities
         }
         #endregion
 
-
     }
 }

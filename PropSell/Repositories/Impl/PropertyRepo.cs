@@ -28,7 +28,7 @@ namespace PropSell.Repositories.Impl
         {
             return (TblProperty)new MainProvider().SelectById(MainProvider.Tables.TblProperty, id);
         }
-        public TblProperty SelectPropertyByTitle(string title)
+        public List<TblProperty> SelectPropertyByTitle(string title)
         {
             return new MainProvider().SelectPropertyByTitle(title);
         }

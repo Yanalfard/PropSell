@@ -30,7 +30,7 @@ namespace PropSell.Services.Impl
         {
             return (TblProperty)new PropertyRepo().SelectPropertyById(id);
         }
-        public TblProperty SelectPropertyByTitle(string title)
+        public List<TblProperty> SelectPropertyByTitle(string title)
         {
             return new PropertyRepo().SelectPropertyByTitle(title);
         }

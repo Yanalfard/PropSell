@@ -10,7 +10,7 @@ namespace PropSell.Repositories.Api
         bool UpdateProperty(TblProperty property, int logId);
         List<TblProperty> SelectAllPropertys();
         TblProperty SelectPropertyById(int id);
-        TblProperty SelectPropertyByTitle(string title);
+        List<TblProperty> SelectPropertyByTitle(string title);
         List<TblProperty> SelectPropertyByValid(bool valid);
         List<TblProperty> SelectPropertyByShowToFriends(bool showToFriends);
         List<TblProperty> SelectPropertyByUserId(int userId);
