@@ -35,8 +35,10 @@ namespace PropSell.Utilities
             TblConstructor,
             TblDealer,
             TblClient,
-            TblProperty,
-            TblPropertyClientRel
+            TblPropertyClientRel,
+            TblProvince,
+            TblCity,
+            TblProperty
         }
 
         public enum PropertyImageRel
@@ -147,20 +149,6 @@ namespace PropSell.Utilities
                         return new TblClient(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString());
                     } else return new TblClient(-1);
                 }
-                else if (table.GetType() == typeof(TblProperty))
-                {
-                    TblProperty property = (TblProperty)tableObj;
-                    if (!MethodRepo.ExistInDb("TblProperty", "Title", property.Title))
-                    {
-                        _commandText = $"insert into TblProperty (Title , Description , Valid , ShowToFriends , UserId , Status) values (N'{property.Title}' , N'{property.Description}' , N'{property.Valid}' , N'{property.ShowToFriends}' , N'{property.UserId}' , N'{property.Status}' )";
-                        command = new SqlCommand($"select TOP (1) * from TblProperty where Title = '{property.Title}' ORDER BY id DESC", _connection);
-                        _command = new SqlCommand(_commandText, _connection);
-                        _command.ExecuteNonQuery();
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Read();
-                        return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
-                    } else return new TblProperty(-1);
-                }
                 else if (table.GetType() == typeof(TblPropertyClientRel))
                 {
                     TblPropertyClientRel propertyClientRel = (TblPropertyClientRel)tableObj;
@@ -172,7 +160,49 @@ namespace PropSell.Utilities
                         SqlDataReader reader = command.ExecuteReader();
                         reader.Read();
                         return new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
-                    }                 _command = new SqlCommand(_commandText, _connection);
+                    }                 else if (table.GetType() == typeof(TblProvince))
+                {
+                    TblProvince province = (TblProvince)tableObj;
+                    if (!MethodRepo.ExistInDb("TblProvince", "Name", province.Name))
+                    {
+                        _commandText = $"insert into TblProvince (Name) values (N'{province.Name}' )";
+                        command = new SqlCommand($"select TOP (1) * from TblProvince where Name = '{province.Name}' ORDER BY id DESC", _connection);
+                        _command = new SqlCommand(_commandText, _connection);
+                        _command.ExecuteNonQuery();
+                        SqlDataReader reader = command.ExecuteReader();
+                        reader.Read();
+                        return new TblProvince(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
+                    } else return new TblProvince(-1);
+                }
+                else if (table.GetType() == typeof(TblCity))
+                {
+                    TblCity city = (TblCity)tableObj;
+                    if (!MethodRepo.ExistInDb("TblCity", "Name", city.Name))
+                    {
+                        _commandText = $"insert into TblCity (Name , ProvinceId) values (N'{city.Name}' , N'{city.ProvinceId}' )";
+                        command = new SqlCommand($"select TOP (1) * from TblCity where Name = '{city.Name}' ORDER BY id DESC", _connection);
+                        _command = new SqlCommand(_commandText, _connection);
+                        _command.ExecuteNonQuery();
+                        SqlDataReader reader = command.ExecuteReader();
+                        reader.Read();
+                        return new TblCity(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString(), reader["ProvinceId"].ToString() != "" ? Convert.ToInt32(reader["ProvinceId"]) : 0);
+                    } else return new TblCity(-1);
+                }
+                else if (table.GetType() == typeof(TblProperty))
+                {
+                    TblProperty property = (TblProperty)tableObj;
+                    if (!MethodRepo.ExistInDb("TblProperty", "Title", property.Title))
+                    {
+                        _commandText = $"insert into TblProperty (Title , Description , Valid , ShowToFriends , UserId , Status , CityId , Neighborhood) values (N'{property.Title}' , N'{property.Description}' , N'{property.Valid}' , N'{property.ShowToFriends}' , N'{property.UserId}' , N'{property.Status}' , N'{property.CityId}' , N'{property.Neighborhood}' )";
+                        command = new SqlCommand($"select TOP (1) * from TblProperty where Title = '{property.Title}' ORDER BY id DESC", _connection);
+                        _command = new SqlCommand(_commandText, _connection);
+                        _command.ExecuteNonQuery();
+                        SqlDataReader reader = command.ExecuteReader();
+                        reader.Read();
+                        return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString());
+                    } else return new TblProperty(-1);
+                }
+                _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
                 return true;
             }
@@ -226,15 +256,25 @@ namespace PropSell.Utilities
                     TblClient client = (TblClient)tableObj;
                    _commandText = $"update TblClient set TellNo = N'{client.TellNo}' , Identification = N'{client.Identification}' where id = N'{logId}'";
                 }
-                else if (table.GetType() == typeof(TblProperty))
-                {
-                    TblProperty property = (TblProperty)tableObj;
-                   _commandText = $"update TblProperty set Title = N'{property.Title}' , Description = N'{property.Description}' , Valid = N'{property.Valid}' , ShowToFriends = N'{property.ShowToFriends}' , UserId = N'{property.UserId}' , Status = N'{property.Status}' where id = N'{logId}'";
-                }
                 else if (table.GetType() == typeof(TblPropertyClientRel))
                 {
                     TblPropertyClientRel propertyClientRel = (TblPropertyClientRel)tableObj;
                    _commandText = $"update TblPropertyClientRel set PropertyId = N'{propertyClientRel.PropertyId}' , UserId = N'{propertyClientRel.UserId}' , Status = N'{propertyClientRel.Status}' where id = N'{logId}'";
+                }
+                else if (table.GetType() == typeof(TblProvince))
+                {
+                    TblProvince province = (TblProvince)tableObj;
+                   _commandText = $"update TblProvince set Name = N'{province.Name}' where id = N'{logId}'";
+                }
+                else if (table.GetType() == typeof(TblCity))
+                {
+                    TblCity city = (TblCity)tableObj;
+                   _commandText = $"update TblCity set Name = N'{city.Name}' , ProvinceId = N'{city.ProvinceId}' where id = N'{logId}'";
+                }
+                else if (table.GetType() == typeof(TblProperty))
+                {
+                    TblProperty property = (TblProperty)tableObj;
+                   _commandText = $"update TblProperty set Title = N'{property.Title}' , Description = N'{property.Description}' , Valid = N'{property.Valid}' , ShowToFriends = N'{property.ShowToFriends}' , UserId = N'{property.UserId}' , Status = N'{property.Status}' , CityId = N'{property.CityId}' , Neighborhood = N'{property.Neighborhood}' where id = N'{logId}'";
                 }
                 _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
@@ -313,16 +353,26 @@ namespace PropSell.Utilities
                         while (reader.Read())
                             clients.Add(new TblClient(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString()));
                         return clients;
-                    case Tables.TblProperty:
-                        List<TblProperty> properties = new List<TblProperty>();
-                        while (reader.Read())
-                            properties.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
-                        return properties;
                     case Tables.TblPropertyClientRel:
                         List<TblPropertyClientRel> propertyClientRels = new List<TblPropertyClientRel>();
                         while (reader.Read())
                             propertyClientRels.Add(new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
                         return propertyClientRels;
+                    case Tables.TblProvince:
+                        List<TblProvince> provinces = new List<TblProvince>();
+                        while (reader.Read())
+                            provinces.Add(new TblProvince(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString()));
+                        return provinces;
+                    case Tables.TblCity:
+                        List<TblCity> cities = new List<TblCity>();
+                        while (reader.Read())
+                            cities.Add(new TblCity(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString(), reader["ProvinceId"].ToString() != "" ? Convert.ToInt32(reader["ProvinceId"]) : 0));
+                        return cities;
+                    case Tables.TblProperty:
+                        List<TblProperty> properties = new List<TblProperty>();
+                        while (reader.Read())
+                            properties.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString()));
+                        return properties;
                     default:
                         return new List<bool>();
                 }
@@ -358,10 +408,14 @@ namespace PropSell.Utilities
                     return new TblDealer(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString(), reader["Address"].ToString(), reader["Name"].ToString());
                 else if (table == Tables.TblClient)
                     return new TblClient(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString());
-                else if (table == Tables.TblProperty)
-                    return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
                 else if (table == Tables.TblPropertyClientRel)
                     return new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
+                else if (table == Tables.TblProvince)
+                    return new TblProvince(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
+                else if (table == Tables.TblCity)
+                    return new TblCity(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString(), reader["ProvinceId"].ToString() != "" ? Convert.ToInt32(reader["ProvinceId"]) : 0);
+                else if (table == Tables.TblProperty)
+                    return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString());
 
                 return null;
             }
@@ -629,87 +683,6 @@ namespace PropSell.Utilities
         }
         #endregion
 
-        #region TblProperty
-        public TblProperty SelectPropertyByTitle(string title)
-        {
-            try
-            {
-                _command = new SqlCommand($"select* from TblProperty where Title = N'{title}'", _connection);
-                SqlDataReader reader = _command.ExecuteReader();
-                reader.Read();
-                return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
-            }
-            catch
-            {
-                return new TblProperty(-1);
-            }
-            finally
-            {
-                _disconnect();
-            }
-        }
-        public List<TblProperty> SelectPropertyByValid(bool valid)
-        {
-            try
-            {
-                List<TblProperty> ret = new List<TblProperty>();
-                _command = new SqlCommand($"select* from TblProperty where Valid = N'id'", _connection);
-                SqlDataReader reader = _command.ExecuteReader();
-                while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
-                return ret;
-            }
-            catch
-            {
-                return new List<TblProperty>();
-            }
-            finally
-            {
-                _disconnect();
-            }
-        }
-        public List<TblProperty> SelectPropertyByShowToFriends(bool showToFriends)
-        {
-            try
-            {
-                List<TblProperty> ret = new List<TblProperty>();
-                _command = new SqlCommand($"select* from TblProperty where ShowToFriends = N'wToFriends'", _connection);
-                SqlDataReader reader = _command.ExecuteReader();
-                while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
-                return ret;
-            }
-            catch
-            {
-                return new List<TblProperty>();
-            }
-            finally
-            {
-                _disconnect();
-            }
-        }
-        public List<TblProperty> SelectPropertyByUserId(int userId)
-        {
-            try
-            {
-                List<TblProperty> ret = new List<TblProperty>();
-                _command = new SqlCommand($"select* from TblProperty where UserId = N'{userId}'", _connection);
-                SqlDataReader reader = _command.ExecuteReader();
-                while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
-                return ret;
-            }
-            catch
-            {
-                return new List<TblProperty>();
-            }
-            finally
-            {
-                _disconnect();
-            }
-        }
-        #endregion
-
         #region TblPropertyClientRel
         public List<TblPropertyClientRel> SelectPropertyClientRel(int entry, PropertyClientRel entryType)
         {
@@ -730,6 +703,169 @@ namespace PropSell.Utilities
             catch
             {
                 return new List<TblPropertyClientRel>();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        #endregion
+
+        #region TblProvince
+        public TblProvince SelectProvinceByName(string name)
+        {
+            try
+            {
+                _command = new SqlCommand($"select* from TblProvince where Name = N'{name}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                reader.Read();
+                return new TblProvince(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Name"].ToString());
+            }
+            catch
+            {
+                return new TblProvince(-1);
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        #endregion
+
+        #region TblCity
+        public TblCity SelectCityByName(string name)
+        {
+            try
+            {
+                _command = new SqlCommand($"select* from TblCity where Name = N'{name}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                reader.Read();
+                return new TblCity(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Name"].ToString(),reader["ProvinceId"].ToString() != "" ? Convert.ToInt32(reader["ProvinceId"]) : 0);
+            }
+            catch
+            {
+                return new TblCity(-1);
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        public List<TblCity> SelectCityByProvinceId(int provinceId)
+        {
+            try
+            {
+                List<TblCity> ret = new List<TblCity>();
+                _command = new SqlCommand($"select* from TblCity where ProvinceId = N'{provinceId}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblCity(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Name"].ToString(),reader["ProvinceId"].ToString() != "" ? Convert.ToInt32(reader["ProvinceId"]) : 0));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblCity>();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        #endregion
+
+        #region TblProperty
+        public TblProperty SelectPropertyByTitle(string title)
+        {
+            try
+            {
+                _command = new SqlCommand($"select* from TblProperty where Title = N'{title}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                reader.Read();
+                return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0,reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0,reader["Neighborhood"].ToString());
+            }
+            catch
+            {
+                return new TblProperty(-1);
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        public List<TblProperty> SelectPropertyByValid(bool valid)
+        {
+            try
+            {
+                List<TblProperty> ret = new List<TblProperty>();
+                _command = new SqlCommand($"select* from TblProperty where Valid = N'id'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0,reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0,reader["Neighborhood"].ToString()));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblProperty>();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        public List<TblProperty> SelectPropertyByShowToFriends(bool showToFriends)
+        {
+            try
+            {
+                List<TblProperty> ret = new List<TblProperty>();
+                _command = new SqlCommand($"select* from TblProperty where ShowToFriends = N'wToFriends'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0,reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0,reader["Neighborhood"].ToString()));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblProperty>();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        public List<TblProperty> SelectPropertyByUserId(int userId)
+        {
+            try
+            {
+                List<TblProperty> ret = new List<TblProperty>();
+                _command = new SqlCommand($"select* from TblProperty where UserId = N'{userId}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0,reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0,reader["Neighborhood"].ToString()));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblProperty>();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        public List<TblProperty> SelectPropertyByCityId(int cityId)
+        {
+            try
+            {
+                List<TblProperty> ret = new List<TblProperty>();
+                _command = new SqlCommand($"select* from TblProperty where CityId = N'{cityId}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0,reader["Title"].ToString(),reader["Description"].ToString(),reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false,reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false,reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0,reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0,reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0,reader["Neighborhood"].ToString()));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblProperty>();
             }
             finally
             {

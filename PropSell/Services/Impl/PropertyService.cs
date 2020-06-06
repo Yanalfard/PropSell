@@ -46,6 +46,10 @@ namespace PropSell.Services.Impl
         {
             return new PropertyRepo().SelectPropertyByUserId(userId);
         }
+        public List<TblProperty> SelectPropertyByCityId(int cityId)
+        {
+            return new PropertyRepo().SelectPropertyByCityId(cityId);
+        }
         public List<TblImage>SelectImagesByPropertyId(int propertyId)
         {
             List<TblPropertyImageRel> stp1 = new PropertyImageRelRepo().SelectPropertyImageRelByPropertyId(propertyId);

@@ -44,6 +44,10 @@ namespace PropSell.Repositories.Impl
         {
             return new MainProvider().SelectPropertyByUserId(userId);
         }
+        public List<TblProperty> SelectPropertyByCityId(int cityId)
+        {
+            return new MainProvider().SelectPropertyByCityId(cityId);
+        }
 
     }
 }

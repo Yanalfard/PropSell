@@ -14,6 +14,7 @@ namespace PropSell.Repositories.Api
         List<TblProperty> SelectPropertyByValid(bool valid);
         List<TblProperty> SelectPropertyByShowToFriends(bool showToFriends);
         List<TblProperty> SelectPropertyByUserId(int userId);
+        List<TblProperty> SelectPropertyByCityId(int cityId);
 
     }
 }
