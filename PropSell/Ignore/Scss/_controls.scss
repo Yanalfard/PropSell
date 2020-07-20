@@ -1,0 +1,460 @@
+﻿@import '_colors.scss';
+
+a:visited {
+    color: $Text;
+}
+
+nav {
+    z-index: 100;
+    position: fixed;
+    width: 100vw;
+    padding: 0.8vw;
+    overflow-y: hidden;
+    background: $NavBackground;
+    @include shadow-mega();
+
+
+
+
+    > * {
+        z-index: 80;
+        margin-left: 10px;
+        vertical-align: central;
+        overflow-y: hidden;
+    }
+
+    .logo {
+        flex: 0.2;
+        margin: 0 !important;
+        display: flex;
+        align-content: center;
+
+        img {
+            height: 2vw;
+            width: auto;
+            margin: 0;
+        }
+    }
+
+    .search {
+        flex: 3;
+        align-self: center;
+    }
+
+    section.row {
+        flex: 3;
+        float: right;
+        margin-right: 2vw;
+        flex-direction: row-reverse !important;
+
+        .login {
+            align-self: center;
+            padding: .5vw 1.2vw .8vw 1.2vw;
+            vertical-align: central;
+            color: white;
+            float: right;
+            margin-right: 1vw;
+            overflow-y: hidden;
+            @include border-radius(100px,100px,100px,100px);
+            @include trans(.3s);
+            @include sign(0%);
+        }
+
+        .login:hover {
+            @include trans(.3s);
+            @include sign(12%);
+        }
+
+        a {
+            align-self: center;
+            padding: .5vw 1.2vw .8vw 1.2vw;
+            vertical-align: central;
+            color: white;
+            float: right;
+            margin-right: 1vw;
+            overflow-y: hidden;
+            @include border-radius(100px,100px,100px,100px);
+            @include trans(.3s);
+        }
+
+        a:hover {
+            background: lighten($NavBackground, 12%);
+            @include trans(.1s);
+        }
+
+        a:active {
+            background: lighten($NavBackground, 48%);
+            @include trans(.1s);
+        }
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    nav {
+        height: 5vw;
+        padding: 1vw;
+
+        .logo {
+            flex: .5;
+        }
+
+        .search {
+            flex: 2;
+            height:80%;
+
+            input{
+                font-size:1.5em;
+            }
+        }
+
+        section.row {
+            flex: 3;
+            margin-right: 4vw;
+            flex-direction: row-reverse !important;
+
+            a {
+                padding: .4vw 2vw;
+                font-size: 2.4vw;
+            }
+        }
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    nav {
+        height: 10vw;
+        padding: 2vw;
+
+        .logo {
+            flex: .5;
+        }
+
+        .search {
+            flex: 0.5;
+            height: 100%;
+            background: transparent;
+            box-shadow: none;
+
+            button {
+                align-content: center;
+                padding: 0 2vw;
+                flex: 1;
+
+                @include border-radius(25px,25px,25px,25px);
+
+                .icon {
+                    width: 80% !important;
+                }
+            }
+
+            input {
+                flex: 0;
+                visibility: collapse;
+            }
+        }
+
+        section.row {
+            flex: 3;
+            margin-right: 4vw;
+            flex-direction: row-reverse !important;
+
+            a {
+                padding: .8vw 2vw;
+                font-size: 4vw;
+            }
+        }
+    }
+}
+
+.search {
+    display: flex;
+    @include mat();
+
+    input {
+        background: transparent;
+        border: none;
+        flex: 1;
+        padding: .5vw .4vw .6vw .4vw;
+        color: darken($ControlBackground, 64%);
+        font-size: 1em;
+    }
+
+    button {
+        overflow-y: hidden;
+        padding: 0 1vw;
+        border: none;
+        height: 100%;
+        @include border-radius(0,.5vw,.5vw,0);
+        @include trans(.2s);
+
+
+        .icon {
+            margin: 52% 0;
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
+
+    button:hover {
+        background: darken($ControlBackground, 16%);
+        @include trans(.2s);
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .search {
+        @include border-radius(.3vw,.3vw,.3vw,.3vw);
+
+        input {
+            flex: 1;
+            padding: .5vw .4vw .6vw .4vw;
+            font-size: 2.6em;
+        }
+
+        button {
+            padding: 0 2vw 0 1vw;
+            height: 100%;
+            @include border-radius(0,.5vw,.5vw,0);
+
+            .icon {
+                width: 150%;
+                display: inline-block;
+            }
+        }
+
+        button:hover {
+            background: darken($ControlBackground, 16%);
+            @include trans(.2s);
+        }
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .search {
+        @include border-radius(.3vw,.3vw,.3vw,.3vw);
+
+        input {
+            flex: 1;
+            padding: .5vw .4vw .6vw .4vw;
+            font-size: 2.6em;
+        }
+
+        button {
+            padding: 0 2vw 0 1vw;
+            height: 100%;
+            @include border-radius(0,.5vw,.5vw,0);
+
+            .icon {
+                width: 150%;
+                display: inline-block;
+            }
+        }
+
+        button:hover {
+            background: darken($ControlBackground, 16%);
+            @include trans(.2s);
+        }
+    }
+}
+
+select {
+    padding: .8vw;
+    @include mat();
+
+    option {
+        padding: .4vw;
+        background: blue;
+        @include mat();
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    select {
+        padding: 1.6vw;
+        font-size: 2.6em;
+
+        option {
+            padding: .8vw;
+            font-size: .5em;
+        }
+    }
+}
+
+.slider-control {
+    width: 300px;
+    @include mat();
+    padding: 5px 10px 5px 5px;
+
+
+    .slider {
+        -webkit-appearance: none;
+        appearance: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        padding-right:10px;
+    }
+
+    .slider::-webkit-slider-thumb {
+        margin: 3px;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        @include mat();
+        @include border-radius(100%,100%,100%,100%);
+        @include trans(.5s);
+        background:#cccccc;
+    }
+
+    .slider::-webkit-slider-thumb:hover {
+        background: #62B1F6;
+        @include trans(.2s);
+    }
+}
+
+.card {
+    background: $Cardbackground;
+    padding: .6vw;
+    @include border-radius(1vw, 1vw,1vw,1vw);
+}
+
+.entry {
+    padding: 0 .5vw 1.5vw .5vw;
+
+    label {
+        font-size: .8em;
+        text-align: right;
+        display: block;
+        margin-right: 12px;
+        margin-bottom: 8px;
+    }
+
+    .row {
+        @include border-radius(100px,100px,100px,100px);
+        background: $ControlBackground;
+        @include shadow-more();
+        padding: .4vw.6vw;
+
+        .alert {
+            position: absolute;
+            width: 1em;
+            height: 1em;
+            align-self: center;
+            margin-left: 6px;
+        }
+
+        input {
+            flex: 1;
+            display: block;
+            direction: rtl;
+            border: none;
+            outline: none;
+            margin: 0 6px;
+            background: transparent;
+        }
+    }
+
+    transition: all ease .2s;
+}
+
+.CallToAction {
+    padding: .15vw .4vw 12px .4vw;
+
+    @include sign(0%);
+    @include border-radius(200px,200px,200px,200px);
+    @include subtle-glow(rgba(50, 153, 243, 0.48));
+
+    > * {
+        text-align: center !important;
+        vertical-align: central;
+        align-self: center;
+        color: $White-text;
+        font-size: 1.4em;
+    }
+}
+
+.CallToAction:hover {
+    @include sign(12%);
+}
+
+.searchbar {
+    background: #fff;
+    padding: 0.3vw 0.4vw 0.6vw 0.4vw;
+
+    @include border-radius(10px,10px,10px,10px);
+    @include shadow-mild();
+
+    input {
+        flex: 6;
+        display: block;
+        direction: rtl;
+        border: none;
+        outline: none;
+        margin: 0 6px;
+        background: transparent;
+    }
+
+    button {
+        height: 70%;
+        margin: 0 10px;
+        background: transparent;
+        outline: none;
+        border: none;
+    }
+}
+
+.model {
+    width: 400px;
+    height: 260px;
+    margin: 1vh auto;
+    @include shadow-more();
+    @include border-radius(3px,3px,3px,3px);
+    @include trans(0.4s);
+
+    img {
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    .column {
+        flex: 1;
+        padding: 12px;
+
+        header {
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        p {
+        }
+    }
+
+    img {
+        flex: 1;
+    }
+}
+
+.price {
+    background: #61ed57;
+    position: absolute;
+    margin-top:200px;
+    padding: 8px;
+    @include border-radius(2px,2px,2px,2px);
+    @include subtle-glow(rgba(54, 255, 121, 0.40));
+
+    img {
+    }
+
+    label {
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+    }
+}
+
+.model:hover {
+    background: darken($Cardbackground, 2%);
+    @include shadow-more-hov();
+    @include trans(0.2s);
+}

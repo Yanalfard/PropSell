@@ -1,0 +1,223 @@
+﻿@import '_colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    float: none;
+    overflow-x: hidden;
+    font-family: 'Segoe UI';
+    text-decoration: none;
+    text-align: right;
+    font-size: 1em;
+    outline: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* width */
+    ::-webkit-scrollbar {
+        width: 1vw;
+        min-width: 6px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: $ScrollbarTrack;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: $ScrollbarHandle;
+    }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: lighten($ScrollbarHandle, 10%);
+        transition: all ease 0.2s;
+    }
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+p {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    color: $Text;
+}
+
+body {
+    background: $Background;
+}
+
+.center {
+    text-align: center;
+    align-content: center;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.right {
+    text-align: right;
+    margin: auto 0 auto auto;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.collapsed {
+    visibility: collapse;
+    height: 0;
+    width: 0;
+    flex: 0;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.unselectable {
+    user-select: none !important;
+    -moz-user-select: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+}
+
+hr {
+}
+
+img {
+    user-select: none !important;
+    -moz-user-select: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-user-select: none !important;
+    -ms-user-select: none !important;
+    pointer-events: none !important;
+}
+
+.link {
+    color: $link;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: lighten($link, 30%);
+}
+
+.link:active {
+    color: lighten($Secondary, 30%);
+}
+
+.dummy {
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+
+.space {
+    width: 100vw;
+    height: 4vw;
+}
+
+.space-double {
+    width: 100vw;
+    height: 8vw;
+}
+
+.space-half {
+    width: 100vw;
+    height: 2vw;
+}
+
+.space-nav {
+    width: 100vw;
+    height: 4.4vw;
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .space-nav {
+        width: 100vw;
+        height: 7vw;
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .space-nav {
+        width: 100vw;
+        height: 14vw;
+    }
+}
+
+/*#region Alignment */
+
+.column {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+}
+
+@mixin column() {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+}
+
+.row {
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+}
+
+@mixin row() {
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+}
+
+.fillwidth {
+    min-width: 100%;
+    height: auto;
+}
+
+.fillheight {
+    min-height: 100%;
+    width: auto;
+}
+
+/*#endregion */
+
+::-webkit-input-placeholder {
+    color: $PlaceholderColor;
+}
+
+:-ms-input-placeholder {
+    color: $PlaceholderColor;
+}
+
+::placeholder {
+    color: $PlaceholderColor;
+}

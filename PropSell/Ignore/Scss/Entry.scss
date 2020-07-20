@@ -1,0 +1,449 @@
+﻿@import '_colors.scss';
+@import '_general.scss';
+@import '_controls.scss';
+
+* {
+    overflow-y: hidden;
+    font-size: 16px;
+}
+
+body {
+    background: url('/Resources/Raster/BrickTexture.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    image-rendering: optimizeSpeed;
+}
+
+.container {
+    width: 40%;
+    height: 76vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: 3vw;
+
+    @include row();
+
+    @media only screen and (min-device-width:1001px) and (max-device-width: 1600px) {
+        width: 450px;
+        margin-top: 4vh;
+        margin-bottom: 20vh
+    }
+
+    @media only screen and (min-device-width:513px) and (max-device-width: 1000px) {
+        height: 80vh;
+        margin-top: 4vh;
+        margin-bottom: 20vh;
+        width: 500px;
+    }
+
+    @media only screen and (min-device-width : 0) and (max-device-width : 512px) {
+        width: 740px;
+        margin-top: 8vh;
+        margin-bottom: 16vh;
+        @include column();
+    }
+
+    .signUp {
+        padding: 1.5vw;
+        z-index: 10;
+        flex: 5;
+
+        @include shadow-mega();
+        @include border-radius(1.1vw, 0, 0, 1.1vw );
+    }
+
+    .sideImg {
+        flex: 3;
+        @include border-radius(0, 1.1vw, 1.1vw, 0);
+        @include shadow-mega();
+        background-image: url('/Resources/Raster/HardVertical.jpeg');
+        image-rendering: optimizeSpeed;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: auto 80vh;
+    }
+}
+
+.user-selected {
+    background: $Primary;
+    transition: all ease .25s;
+    @include subtle-glow(rgba(50, 153, 243, 0.0));
+    margin: 0 5px;
+    flex: 1;
+    padding-top: 6px;
+    @include border-radius(100px,100px,100px,100px);
+
+    p {
+        color: $White-text;
+        transition: all ease .25s;
+        font-size: .8em;
+        text-align: center;
+        align-self: center;
+    }
+}
+
+.userSelector {
+    align-content: space-around;
+    padding: .8vw;
+
+    p {
+        margin-bottom: .6vw;
+    }
+
+    .user:hover {
+        background: $Primary;
+        transition: all ease .25s;
+
+        p {
+            color: $White-text;
+            transition: all ease .25s;
+        }
+    }
+
+    .user {
+        margin: 0 5px;
+        flex: 1;
+        padding-top: 6px;
+        @include border-radius(100px,100px,100px,100px);
+        background: darken($ControlBackground,6%);
+        transition: all ease .6s;
+
+        p {
+            font-size: .8em;
+            text-align: center;
+            align-self: center;
+            transition: all ease .6s;
+        }
+    }
+}
+
+.user-info {
+    font-size: .75em;
+    padding: .5vw;
+}
+
+hr {
+    margin: 10px 25px 15px 25px;
+}
+
+.CallToAction {
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+a {
+    padding: 8px;
+}
+
+.snackBar {
+    z-index: 100;
+    height: 7vh;
+    position: absolute;
+    @include border-radius(0, 0,1vw,1vw);
+    @include shadow-more();
+}
+
+/*Med*/
+
+@media only screen and (min-device-width : 0px) and (max-device-width :324px) {
+
+
+    .userSelector {
+        align-content: space-around;
+        padding: 2vw;
+
+        p {
+            margin-bottom: 1vw;
+            font-size: 2.5em !important;
+        }
+
+        .user {
+            margin: 0 20px;
+            flex: 1;
+            padding: 8px 12px;
+            @include border-radius(100px,100px,100px,100px);
+            background: $ControlBackground;
+            transition: all ease .6s;
+
+            p {
+                font-size: .8em;
+                text-align: center;
+                align-self: center;
+                transition: all ease .6s;
+            }
+        }
+    }
+
+    .user-info {
+        font-size: 2em;
+        padding: 2vw;
+    }
+
+    hr {
+        margin: 10px 25px 15px 25px;
+    }
+
+    .CallToAction {
+        width: 60%;
+        margin-bottom: 10px;
+    }
+
+    a {
+        padding: 8px;
+    }
+
+    .container {
+        height: 74vh;
+
+        .sideImg {
+            flex: 1.2 !important;
+            @include border-radius(0,0,5vw,5vw);
+            margin-top: -5vw;
+            z-index: -20;
+            -o-object-fit: cover;
+            object-fit: cover;
+            background-size: 100% auto;
+        }
+
+        .signUp {
+            flex: 5;
+            padding: 2vw;
+            @include border-radius(5vw,5vw,5vw,5vw);
+        }
+    }
+
+    .entry {
+        padding: 5vw !important;
+
+        label {
+            font-size: 2.2em;
+            margin-right: 12px;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            padding: .4vw.6vw;
+
+            .alert {
+                width: 2em;
+                height: 2em;
+                margin-left: 20px;
+            }
+
+            input {
+                flex: 1;
+                margin: 5px 20px;
+                font-size: 3em;
+            }
+        }
+    }
+
+    .CallToAction {
+        margin-top: 2vh;
+        align-self: flex-end !important;
+        font-size: 3em;
+        width: 64%;
+        margin-bottom: 12px;
+    }
+
+    a {
+        font-size: 2.4em;
+        padding: 8px;
+    }
+}
+
+@media only screen and (min-device-width : 324px) and (max-device-width :512px) {
+
+
+    .userSelector {
+        padding: 2vw;
+
+        p {
+            margin-bottom: 1vw;
+            font-size: 1.5em !important;
+        }
+
+        .user {
+            margin: 0 20px;
+            flex: 1;
+            padding: 8px 12px;
+            @include border-radius(100px,100px,100px,100px);
+            background: $ControlBackground;
+            transition: all ease .6s;
+
+            p {
+                font-size: .8em;
+                text-align: center;
+                align-self: center;
+                transition: all ease .6s;
+            }
+        }
+    }
+
+    .user-info {
+        font-size: 1.6em;
+        padding: 3vw;
+    }
+
+    hr {
+        margin: 10px 25px 10px 25px;
+    }
+
+    a {
+        padding: 8px;
+    }
+
+    .container {
+        height: 85vh;
+
+        .sideImg {
+            flex: 1 !important;
+            @include border-radius(0,0,2.5vw,2.5vw);
+            margin-top: -5vw;
+            z-index: -20;
+            -o-object-fit: cover;
+            object-fit: cover;
+            background-size: 100% auto;
+        }
+
+        .signUp {
+            flex: 5;
+            padding: 2vw;
+            @include border-radius(2.5vw,2.5vw,2.5vw,2.5vw);
+        }
+    }
+
+    .entry {
+        padding: 4vw !important;
+
+        label {
+            font-size: 1.6em;
+            margin-right: 12px;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            padding: .4vw.6vw;
+
+            .alert {
+                width: 1.2em;
+                height: 1.2em;
+                margin-left: 16px;
+            }
+
+            input {
+                flex: 1;
+                margin: 5px 20px;
+                font-size: 2em;
+            }
+        }
+    }
+
+    .CallToAction {
+        margin-top: 2vh;
+        align-self: flex-end !important;
+        font-size: 2em;
+        width: 50%;
+        margin-bottom: 12px;
+    }
+
+    a {
+        font-size: 1.6em;
+        padding: 8px;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .userSelector {
+        padding: 2vw;
+
+        p {
+            margin-bottom: 1vw;
+            font-size: 1.5em !important;
+        }
+
+        .user {
+            margin: 0 20px;
+            flex: 1;
+            padding: 8px 12px;
+            @include border-radius(100px,100px,100px,100px);
+            background: $ControlBackground;
+            transition: all ease .6s;
+
+            p {
+                font-size: .8em;
+                text-align: center;
+                align-self: center;
+                transition: all ease .6s;
+            }
+        }
+    }
+
+    .user-info {
+        font-size: 1.6em;
+        padding: 3vw;
+    }
+
+    hr {
+        margin: 10px 25px 10px 25px;
+    }
+
+    a {
+        padding: 8px;
+    }
+
+    .container {
+        height: 85vh;
+        width: 80vw;
+
+        .sideImg {
+            flex: 0;
+            visibility: collapse;
+        }
+
+        .signUp {
+            flex: 5;
+            padding: 2vw;
+            @include border-radius(2.5vw,2.5vw,2.5vw,2.5vw);
+        }
+    }
+
+    .entry {
+        padding: 4vw !important;
+
+        label {
+            font-size: 1.6em;
+            margin-right: 12px;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            padding: .4vw.6vw;
+
+            .alert {
+                width: 1.2em;
+                height: 1.2em;
+                margin-left: 16px;
+            }
+
+            input {
+                flex: 1;
+                margin: 5px 20px;
+                font-size: 2em;
+            }
+        }
+    }
+
+    .CallToAction {
+        margin-top: 2vh;
+        align-self: flex-end !important;
+        font-size: 2em;
+        width: 50%;
+        margin-bottom: 12px;
+    }
+
+    a {
+        font-size: 1.6em;
+        padding: 8px;
+    }
+}

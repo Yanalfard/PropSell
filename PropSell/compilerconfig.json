@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "Styles/Landing.css",
+    "inputFile": "Ignore/Scss/Landing.scss"
+  },
+  {
+    "outputFile": "Styles/Entry.css",
+    "inputFile": "Ignore/Scss/Entry.scss"
+  },
+  {
+    "outputFile": "Styles/Search.css",
+    "inputFile": "Ignore/Scss/Search.scss"
+  },
+  {
+    "outputFile": "Styles/Property.css",
+    "inputFile": "Ignore/Scss/Property.scss"
+  },
+  {
+    "outputFile": "Styles/About.css",
+    "inputFile": "Ignore/Scss/About.scss"
+  }
+]

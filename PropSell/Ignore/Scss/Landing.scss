@@ -1,0 +1,133 @@
+﻿@import '_colors.scss';
+@import '_general.scss';
+@import '_controls.scss';
+
+.hero {
+    min-height: 20vw;
+    max-height: 32vw;
+
+    &-image {
+        flex: 5;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    &-overlay {
+        flex: 2.5;
+        padding: 2vw;
+        background: #333;
+        color: #fff;
+
+        strong {
+            font-weight: bold;
+        }
+
+        p {
+            color: #fff !important;
+            font-size: 1.2vw;
+        }
+
+        .row {
+            padding: 0 2vw;
+            background: coral;
+            width: 100%;
+            align-content: flex-start;
+            align-items: flex-start;
+            align-self: flex-start;
+
+            a {
+                padding: .1vw 2vw .4vw 2vw;
+                position: absolute;
+                margin-right: 2vw;
+                right: 0;
+                text-align: center !important;
+
+
+                p {
+                    font-size: 2vw;
+                }
+            }
+        }
+    }
+}
+
+
+/*nav {
+
+    .block {
+        flex: 1;
+        padding: 20px;
+        text-align: right;
+
+        .column {
+            flex: 6;
+            margin-left: 12px;
+
+            * {
+                color: #fff;
+            }
+
+            strong {
+                font-size: 1.8vw;
+            }
+
+            p {
+                padding: 4px;
+                font-size: 1.3vw;
+            }
+        }
+
+        .icon {
+            flex: 1;
+            color: #fff;
+        }
+    }
+
+    .dashboard {
+        background: rgb(51,160,255);
+        background: -moz-linear-gradient(135deg, rgba(51,160,255,1) 0%, rgba(22,65,141,1) 100%);
+        background: -webkit-linear-gradient(135deg, rgba(51,160,255,1) 0%, rgba(22,65,141,1) 100%);
+        background: linear-gradient(135deg, rgba(51,160,255,1) 0%, rgba(22,65,141,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#33a0ff",endColorstr="#16418d",GradientType=1);
+    }
+
+    .about {
+        background: rgb(57,211,228);
+        background: -moz-linear-gradient(135deg, rgba(57,211,228,1) 0%, rgba(1,255,129,1) 100%);
+        background: -webkit-linear-gradient(135deg, rgba(57,211,228,1) 0%, rgba(1,255,129,1) 100%);
+        background: linear-gradient(135deg, rgba(57,211,228,1) 0%, rgba(1,255,129,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#39d3e4",endColorstr="#01ff81",GradientType=1);
+    }
+
+    .search {
+        background: rgb(230,252,77);
+        background: -moz-linear-gradient(135deg, rgba(230,252,77,1) 0%, rgba(255,173,30,1) 100%);
+        background: -webkit-linear-gradient(135deg, rgba(230,252,77,1) 0%, rgba(255,173,30,1) 100%);
+        background: linear-gradient(135deg, rgba(230,252,77,1) 0%, rgba(255,173,30,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e6fc4d",endColorstr="#ffad1e",GradientType=1);
+    }
+}*/
+
+.iso {
+    @include row();
+
+    &-item {
+        padding: 2vw;
+
+        img {
+        }
+
+        p {
+            padding: .2vw;
+            font-size: 1.4vw;
+        }
+    }
+}
+
+
+.browse {
+    padding: 3vw;
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="252.352" height="303.911" viewBox="0 0 252.352 303.911">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5cffb3"/>
+      <stop offset="1" stop-color="#fff352"/>
+    </linearGradient>
+    <filter id="Path_67" x="2" y="2.133" width="250.352" height="301.778" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feFlood flood-opacity="0.322"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_18" x="0" y="0" width="252.29" height="291.911" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="6" result="blur-2"/>
+      <feFlood flood-opacity="0.322"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_14" data-name="Group 14" transform="translate(-167.937 -156.021)">
+    <g transform="matrix(1, 0, 0, 1, 167.94, 156.02)" filter="url(#Path_67)">
+      <path id="Path_67-2" data-name="Path 67" d="M802.937,432.316s16.537.508,43.394-13.441c13.462-6.991,22.686-24.285,42.844-39.2,59.462-44.006,133.781-61.917,127.772-57.546s-48.594,38.2-91.58,96.75c-54.987,71.092-58.212,168.388-58.212,168.388l-39.478-66.142Z" transform="translate(-782.94 -301.35)" fill="url(#linear-gradient)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 167.94, 156.02)" filter="url(#Path_18)">
+      <path id="Path_18-2" data-name="Path 18" d="M802.937,432.316s16.537.508,43.394-13.441c13.462-6.991,22.686-24.285,42.844-39.2,59.462-44.006,135.727-51.611,129.718-47.241s-50.4,28.235-93.386,86.784c-54.987,71.092-58.352,168.048-58.352,168.048l-39.478-66.142Z" transform="translate(-784.94 -313.35)" fill="#3c9acb"/>
+    </g>
+  </g>
+</svg>

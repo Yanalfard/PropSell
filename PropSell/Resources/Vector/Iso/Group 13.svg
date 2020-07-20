@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="279.026" height="303.24" viewBox="0 0 279.026 303.24">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.844" y1="0.033" x2="0.29" y2="0.545" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#55f6ae"/>
+      <stop offset="1" stop-color="#ebff20"/>
+    </linearGradient>
+    <filter id="Path_68" x="5.466" y="3.249" width="272.297" height="299.99" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_36" x="0" y="0" width="279.026" height="298.24" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_13" data-name="Group 13" transform="matrix(0.999, 0.035, -0.035, 0.999, -126.032, -129.755)">
+    <g transform="matrix(1, -0.03, 0.03, 1, 130.48, 125.28)" filter="url(#Path_68)">
+      <path id="Path_68-2" data-name="Path 68" d="M808.778,471.161s37.867-36.8,85.049-64.017,126.517-38.286,129.348-35.264c-4.345,3.195-43.159,3.191-91.569,69.128C869.68,521.07,874.52,619.932,874.52,619.932l-44.459-74.487Z" transform="translate(-846.52 -178.83) rotate(-10)" fill="url(#linear-gradient)"/>
+    </g>
+    <g transform="matrix(1, -0.03, 0.03, 1, 130.48, 125.28)" filter="url(#Path_36)">
+      <path id="Path_36-2" data-name="Path 36" d="M808.778,471.161s37.867-36.8,85.049-64.017,133.893-35.084,136.723-32.062c-4.345,3.195-50.534-.012-98.944,65.925C869.68,521.07,874.52,619.932,874.52,619.932l-44.459-74.487Z" transform="translate(-852.52 -183.83) rotate(-10)" fill="#349bd1"/>
+    </g>
+    <path id="Path_39" data-name="Path 39" d="M808.778,476.218s38.6-36.073,81.906-64.661,98.277-43.983,100.875-40.809c-3.634,1.736-30.765,16.141-49.043,32.735-9.809,8.905-7.909,18.318-17,25.316-14.992,9.639-33.417-.774-47.3,16.682-20.078,30.013-9.1,186.976-9.1,186.976l-40.807-78.226Z" transform="matrix(0.978, -0.208, 0.208, 0.978, -727.361, -36.048)" fill="#4cafe9"/>
+  </g>
+</svg>

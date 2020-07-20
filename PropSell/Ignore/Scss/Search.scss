@@ -1,0 +1,38 @@
+﻿@import '_colors.scss';
+@import '_general.scss';
+@import '_controls.scss';
+
+.filter {
+    width: 100%;
+    padding: 24px 0;
+    background: #d2f7f9;
+    z-index: 100;
+
+    > * {
+        margin-left: 3vw !important;
+    }
+
+    .search{
+        min-width:45vw;
+    }
+
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+    .filter {
+        padding: 32px;
+    }
+}
+    
+ 
+.browse {
+    padding: 2vw;
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
+}
+
+.searchbar {
+    background: red;
+    margin-top: 500px;
+}
