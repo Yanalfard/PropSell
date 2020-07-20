@@ -115,23 +115,5 @@ namespace PropSell.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("SelectPropertyClientRelByStatus")]
-        [HttpPost]
-        public IHttpActionResult SelectPropertyClientRelByStatus(int tus)
-        {
-            var task = Task.Run(() => new PropertyClientRelService().SelectPropertyClientRelByStatus(tus));
-            if (task.Wait(TimeSpan.FromSeconds(10)))
-                if (task.Result.Count != 0)
-                {
-                    List<DtoTblPropertyClientRel> dto = new List<DtoTblPropertyClientRel>();
-                    foreach (TblPropertyClientRel obj in task.Result)
-                        dto.Add(new DtoTblPropertyClientRel(obj, HttpStatusCode.OK));
-                    return Ok(dto);
-                }
-                else
-                    return Conflict();
-            return StatusCode(HttpStatusCode.RequestTimeout);
-        }
-
     }
 }

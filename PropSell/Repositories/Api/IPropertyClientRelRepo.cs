@@ -12,7 +12,6 @@ namespace PropSell.Repositories.Api
         TblPropertyClientRel SelectPropertyClientRelById(int id);
         List<TblPropertyClientRel> SelectPropertyClientRelByPropertyId(int propertyId);
         List<TblPropertyClientRel> SelectPropertyClientRelByUserId(int userId);
-        List<TblPropertyClientRel> SelectPropertyClientRelByStatus(int status);
 
     }
 }

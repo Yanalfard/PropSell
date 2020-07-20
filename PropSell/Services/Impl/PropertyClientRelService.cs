@@ -38,10 +38,6 @@ namespace PropSell.Services.Impl
         {
             return new PropertyClientRelRepo().SelectPropertyClientRelByUserId(userId);
         }
-        public List<TblPropertyClientRel> SelectPropertyClientRelByStatus(int status)
-        {
-            return new PropertyClientRelRepo().SelectPropertyClientRelByStatus(status);
-        }
 
     }
 }

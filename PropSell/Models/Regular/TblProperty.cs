@@ -8,7 +8,6 @@ namespace PropSell.Models.Regular
         public bool Valid { get; set; }
         public bool ShowToFriends { get; set; }
         public int UserId { get; set; }
-        public int Status { get; set; }
         public int CityId { get; set; }
         public string Neighborhood { get; set; }
 
@@ -17,7 +16,7 @@ namespace PropSell.Models.Regular
             this.id = id;
         }
 
-		public TblProperty(int id, string title, string description, bool valid, bool showToFriends, int userId, int status, int cityId, string neighborhood)
+		public TblProperty(int id, string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood)
         {
             this.id = id;
             Title = title;
@@ -25,18 +24,16 @@ namespace PropSell.Models.Regular
             Valid = valid;
             ShowToFriends = showToFriends;
             UserId = userId;
-            Status = status;
             CityId = cityId;
             Neighborhood = neighborhood;
         }
-        public TblProperty(string title, string description, bool valid, bool showToFriends, int userId, int status, int cityId, string neighborhood)
+        public TblProperty(string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood)
         {
             Title = title;
             Description = description;
             Valid = valid;
             ShowToFriends = showToFriends;
             UserId = userId;
-            Status = status;
             CityId = cityId;
             Neighborhood = neighborhood;
         }

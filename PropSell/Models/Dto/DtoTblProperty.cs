@@ -11,7 +11,6 @@ namespace PropSell.Models.Dto
         public bool Valid { get; set; }
         public bool ShowToFriends { get; set; }
         public int UserId { get; set; }
-        public int Status { get; set; }
         public int CityId { get; set; }
         public string Neighborhood { get; set; }
 
@@ -19,7 +18,7 @@ namespace PropSell.Models.Dto
 
         public TblProperty ToRegular()
         {
-            return new TblProperty(id, Title, Description, Valid, ShowToFriends, UserId, Status, CityId, Neighborhood);
+            return new TblProperty(id, Title, Description, Valid, ShowToFriends, UserId, CityId, Neighborhood);
         }
 
         public DtoTblProperty(TblProperty property, HttpStatusCode statusEffect)
@@ -30,7 +29,6 @@ namespace PropSell.Models.Dto
             Valid = property.Valid;
             ShowToFriends = property.ShowToFriends;
             UserId = property.UserId;
-            Status = property.Status;
             CityId = property.CityId;
             Neighborhood = property.Neighborhood;
 
