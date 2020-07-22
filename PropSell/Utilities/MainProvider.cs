@@ -74,19 +74,14 @@ namespace PropSell.Utilities
             else if (table.GetType() == typeof(TblImage))
             {
                 TblImage image = (TblImage)tableObj;
-                if (!MethodRepo.ExistInDb("TblImage", "Name", image.Name))
-                {
-                    _commandText = $"insert into TblImage (Name) values (N'{image.Name}' )";
-                    command = new SqlCommand($"select TOP (1) * from TblImage where Name = N'{image.Name}' ORDER BY id DESC", _connection);
-                    _command = new SqlCommand(_commandText, _connection);
-                    _command.ExecuteNonQuery();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    return new TblImage(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
-                }
-                else return new TblImage(-1);
+                _commandText = $"insert into TblImage (Name) values (N'{image.Name}' )";
+                command = new SqlCommand($"select TOP (1) * from TblImage where Name = N'{image.Name}' ORDER BY id DESC", _connection);
+                _command = new SqlCommand(_commandText, _connection);
+                _command.ExecuteNonQuery();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return new TblImage(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
             }
-
             else if (table.GetType() == typeof(TblClick))
             {
                 TblClick click = (TblClick)tableObj;

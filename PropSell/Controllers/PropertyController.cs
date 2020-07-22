@@ -166,7 +166,7 @@ namespace PropSell.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("SelectImageByPropertyId")]
+        [Route("SelectImagesByPropertyId")]
         [HttpPost]
         public IHttpActionResult SelectImageByPropertyId(int propertyId)
         {
@@ -183,7 +183,7 @@ namespace PropSell.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("SelectClientByPropertyId")]
+        [Route("SelectClientsByPropertyId")]
         [HttpPost]
         public IHttpActionResult SelectClientByPropertyId(int propertyId)
         {
