@@ -54,11 +54,11 @@ function AddProperty(property)
 }
 function SelectImageByPropertyId(propertyId)
 {
-    return Bjax('/api/ImageCore/SelectImageByPropertyId?propertyId=', propertyId, 'SP');
+    return Bjax('/api/PropertyCore/SelectImagesByPropertyId?propertyId=', propertyId, 'SP');
 }
 function SelectClientByPropertyId(propertyId)
 {
-    return Bjax('/api/ClientCore/SelectClientByPropertyId?propertyId=', propertyId, 'SP');
+    return Bjax('/api/PropertyCore/SelectClientsByPropertyId?propertyId=', propertyId, 'SP');
 }
 
 function SelectLatestProperties(count)

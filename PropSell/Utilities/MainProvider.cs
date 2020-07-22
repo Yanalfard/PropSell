@@ -74,19 +74,14 @@ namespace PropSell.Utilities
             else if (table.GetType() == typeof(TblImage))
             {
                 TblImage image = (TblImage)tableObj;
-                if (!MethodRepo.ExistInDb("TblImage", "Name", image.Name))
-                {
-                    _commandText = $"insert into TblImage (Name) values (N'{image.Name}' )";
-                    command = new SqlCommand($"select TOP (1) * from TblImage where Name = N'{image.Name}' ORDER BY id DESC", _connection);
-                    _command = new SqlCommand(_commandText, _connection);
-                    _command.ExecuteNonQuery();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    return new TblImage(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
-                }
-                else return new TblImage(-1);
+                _commandText = $"insert into TblImage (Name) values (N'{image.Name}' )";
+                command = new SqlCommand($"select TOP (1) * from TblImage where Name = N'{image.Name}' ORDER BY id DESC", _connection);
+                _command = new SqlCommand(_commandText, _connection);
+                _command.ExecuteNonQuery();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return new TblImage(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
             }
-
             else if (table.GetType() == typeof(TblClick))
             {
                 TblClick click = (TblClick)tableObj;
@@ -104,7 +99,7 @@ namespace PropSell.Utilities
                 TblPropertyImageRel propertyImageRel = (TblPropertyImageRel)tableObj;
 
                 _commandText = $"insert into TblPropertyImageRel (PropertyId , ImageId) values (N'{propertyImageRel.PropertyId}' , N'{propertyImageRel.ImageId}' )";
-                command = new SqlCommand($"select TOP (1) * from TblPropertyImageRel where id = N'{propertyImageRel.id}' ORDER BY id DESC", _connection);
+                command = new SqlCommand($"select TOP (1) * from TblPropertyImageRel where id = N'{propertyImageRel.PropertyId}' ORDER BY id DESC", _connection);
                 _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
                 SqlDataReader reader = command.ExecuteReader();
@@ -164,7 +159,7 @@ namespace PropSell.Utilities
                 TblPropertyClientRel propertyClientRel = (TblPropertyClientRel)tableObj;
 
                 _commandText = $"insert into TblPropertyClientRel (PropertyId , UserId , Status , PostDate) values (N'{propertyClientRel.PropertyId}' , N'{propertyClientRel.UserId}' , N'{propertyClientRel.Status}' , N'{propertyClientRel.PostDate}')";
-                command = new SqlCommand($"select TOP (1) * from TblPropertyClientRel where id = N'{propertyClientRel.id}' ORDER BY id DESC", _connection);
+                command = new SqlCommand($"select TOP (1) * from TblPropertyClientRel where id = N'{propertyClientRel.PropertyId}' ORDER BY id DESC", _connection);
                 _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
                 SqlDataReader reader = command.ExecuteReader();
