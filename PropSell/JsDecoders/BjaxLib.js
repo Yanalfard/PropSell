@@ -16,7 +16,7 @@ function Bjax(url, input, methodType)
     if (methodType === 'SP') //Short POST
         $.ajax(
             {
-                url: url + input,
+                url: APIUrl + url + input,
                 method: 'Post',
                 contentType: 'application/json',
                 dataType: 'json',
