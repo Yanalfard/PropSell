@@ -57,4 +57,9 @@
 {
     return Bjax('/api/ClientCore/SelectClientByPropertyId?propertyId=', propertyId, 'SP');
 }
-
+
+function SelectLatestProperties(count)
+{
+    return Bjax('/api/PropertyCore/SelectLatestProperties?count=', count, 'SP');
+}
+

@@ -38,8 +38,3 @@
 {
     return Bjax('/api/PropertyClientRelCore/SelectPropertyClientRelByStatus?status=', status, 'SP');
 }
-function SelectLatestProperties(count)
-{
-    return Bjax('/api/PropertyClientRelCore/SelectLatestProperties?count=', count, 'SP');
-}
-
