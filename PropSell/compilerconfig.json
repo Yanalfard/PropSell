@@ -18,5 +18,9 @@
   {
     "outputFile": "Styles/About.css",
     "inputFile": "Ignore/Scss/About.scss"
+  },
+  {
+    "outputFile": "Styles/Dashboard.css",
+    "inputFile": "Ignore/Scss/Dashboard.scss"
   }
 ]
