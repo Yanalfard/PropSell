@@ -57,164 +57,171 @@ namespace PropSell.Utilities
         {
             //try
             //{
-                object tableObj = table;
-                SqlCommand command;
-                if (table.GetType() == typeof(TblFriends))
-                {
-                    TblFriends friends = (TblFriends)tableObj;
+            object tableObj = table;
+            SqlCommand command;
+            if (table.GetType() == typeof(TblFriends))
+            {
+                TblFriends friends = (TblFriends)tableObj;
 
-                    _commandText = $"insert into TblFriends (MeId , FriendId) values (N'{friends.MeId}' , N'{friends.FriendId}' )";
-                    command = new SqlCommand($"select TOP (1) * from TblFriends where MeId = N'{friends.MeId}' ORDER BY id DESC", _connection);
-                    _command = new SqlCommand(_commandText, _connection);
-                    _command.ExecuteNonQuery();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    return new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0);
-                }
-                else if (table.GetType() == typeof(TblImage))
-                {
-                    TblImage image = (TblImage)tableObj;
-                    if (!MethodRepo.ExistInDb("TblImage", "Name", image.Name))
-                    {
-                        _commandText = $"insert into TblImage (Name) values (N'{image.Name}' )";
-                        command = new SqlCommand($"select TOP (1) * from TblImage where Name = N'{image.Name}' ORDER BY id DESC", _connection);
-                        _command = new SqlCommand(_commandText, _connection);
-                        _command.ExecuteNonQuery();
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Read();
-                        return new TblImage(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
-                    }
-                    else return new TblImage(-1);
-                }
-                else if (table.GetType() == typeof(TblClick))
-                {
-                    TblClick click = (TblClick)tableObj;
-
-                    _commandText = $"insert into TblClick (Date , PropertyId) values (N'{click.Date}' , N'{click.PropertyId}' )";
-                    command = new SqlCommand($"select TOP (1) * from TblClick where Date = N'{click.Date}' ORDER BY id DESC", _connection);
-                    _command = new SqlCommand(_commandText, _connection);
-                    _command.ExecuteNonQuery();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    return new TblClick(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Date"].ToString(), reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0);
-                }
-                else if (table.GetType() == typeof(TblPropertyImageRel))
-                {
-                    TblPropertyImageRel propertyImageRel = (TblPropertyImageRel)tableObj;
-
-                    _commandText = $"insert into TblPropertyImageRel (PropertyId , ImageId) values (N'{propertyImageRel.PropertyId}' , N'{propertyImageRel.ImageId}' )";
-                    command = new SqlCommand($"select TOP (1) * from TblPropertyImageRel where id = N'{propertyImageRel.id}' ORDER BY id DESC", _connection);
-                    _command = new SqlCommand(_commandText, _connection);
-                    _command.ExecuteNonQuery();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    return new TblPropertyImageRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["ImageId"].ToString() != "" ? Convert.ToInt32(reader["ImageId"]) : 0);
-                }
-                else if (table.GetType() == typeof(TblConstructor))
-                {
-                    TblConstructor constructor = (TblConstructor)tableObj;
-                    if (!MethodRepo.ExistInDb("TblConstructor", "TellNo", constructor.TellNo))
-                    {
-                        _commandText = $"insert into TblConstructor (TellNo , Identification , Address) values (N'{constructor.TellNo}' , N'{constructor.Identification}' , N'{constructor.Address}' )";
-                        command = new SqlCommand($"select TOP (1) * from TblConstructor where TellNo = N'{constructor.TellNo}' ORDER BY id DESC", _connection);
-                        _command = new SqlCommand(_commandText, _connection);
-                        _command.ExecuteNonQuery();
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Read();
-                        return new TblConstructor(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString(), reader["Address"].ToString());
-                    }
-                    else return new TblConstructor(-1);
-                }
-                else if (table.GetType() == typeof(TblDealer))
-                {
-                    TblDealer dealer = (TblDealer)tableObj;
-                    if (!MethodRepo.ExistInDb("TblDealer", "Name", dealer.Name))
-                    {
-                        _commandText = $"insert into TblDealer (TellNo , Identification , Address , Name) values (N'{dealer.TellNo}' , N'{dealer.Identification}' , N'{dealer.Address}' , N'{dealer.Name}' )";
-                        command = new SqlCommand($"select TOP (1) * from TblDealer where Name = N'{dealer.Name}' ORDER BY id DESC", _connection);
-                        _command = new SqlCommand(_commandText, _connection);
-                        _command.ExecuteNonQuery();
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Read();
-                        return new TblDealer(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString(), reader["Address"].ToString(), reader["Name"].ToString());
-                    }
-                    else return new TblDealer(-1);
-                }
-                else if (table.GetType() == typeof(TblClient))
-                {
-                    TblClient client = (TblClient)tableObj;
-                    if (!MethodRepo.ExistInDb("TblClient", "TellNo", client.TellNo))
-                    {
-                        _commandText = $"insert into TblClient (TellNo , Identification) values (N'{client.TellNo}' , N'{client.Identification}' )";
-                        command = new SqlCommand($"select TOP (1) * from TblClient where TellNo = N'{client.TellNo}' ORDER BY id DESC", _connection);
-                        _command = new SqlCommand(_commandText, _connection);
-                        _command.ExecuteNonQuery();
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Read();
-                        return new TblClient(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString());
-                    }
-                    else return new TblClient(-1);
-                }
-                else if (table.GetType() == typeof(TblPropertyClientRel))
-                {
-                    TblPropertyClientRel propertyClientRel = (TblPropertyClientRel)tableObj;
-
-                    _commandText = $"insert into TblPropertyClientRel (PropertyId , UserId , Status) values (N'{propertyClientRel.PropertyId}' , N'{propertyClientRel.UserId}' , N'{propertyClientRel.Status}' )";
-                    command = new SqlCommand($"select TOP (1) * from TblPropertyClientRel where id = N'{propertyClientRel.id}' ORDER BY id DESC", _connection);
-                    _command = new SqlCommand(_commandText, _connection);
-                    _command.ExecuteNonQuery();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    return new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
-                }
-                else if (table.GetType() == typeof(TblProvince))
-                {
-                    TblProvince province = (TblProvince)tableObj;
-                    if (!MethodRepo.ExistInDb("TblProvince", "Name", province.Name))
-                    {
-                        _commandText = $"insert into TblProvince (Name) values (N'{province.Name}' )";
-                        command = new SqlCommand($"select TOP (1) * from TblProvince where Name = N'{province.Name}' ORDER BY id DESC", _connection);
-                        _command = new SqlCommand(_commandText, _connection);
-                        _command.ExecuteNonQuery();
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Read();
-                        return new TblProvince(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
-                    }
-                    else return new TblProvince(-1);
-                }
-                else if (table.GetType() == typeof(TblCity))
-                {
-                    TblCity city = (TblCity)tableObj;
-                    if (!MethodRepo.ExistInDb("TblCity", "Name", city.Name))
-                    {
-                        _commandText = $"insert into TblCity (Name , ProvinceId) values (N'{city.Name}' , N'{city.ProvinceId}' )";
-                        command = new SqlCommand($"select TOP (1) * from TblCity where Name = N'{city.Name}' ORDER BY id DESC", _connection);
-                        _command = new SqlCommand(_commandText, _connection);
-                        _command.ExecuteNonQuery();
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Read();
-                        return new TblCity(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString(), reader["ProvinceId"].ToString() != "" ? Convert.ToInt32(reader["ProvinceId"]) : 0);
-                    }
-                    else return new TblCity(-1);
-                }
-                else if (table.GetType() == typeof(TblProperty))
-                {
-                    TblProperty property = (TblProperty)tableObj;
-                    if (!MethodRepo.ExistInDb("TblProperty", "Title", property.Title))
-                    {
-                        _commandText = $"insert into TblProperty (Title , Description , Valid , ShowToFriends , UserId , CityId , Neighborhood) values (N'{property.Title}' , N'{property.Description}' , N'{property.Valid}' , N'{property.ShowToFriends}' , N'{property.UserId}' , N'{property.CityId}' , N'{property.Neighborhood}' )";
-                        command = new SqlCommand($"select TOP (1) * from TblProperty where Title = N'{property.Title}' ORDER BY id DESC", _connection);
-                        _command = new SqlCommand(_commandText, _connection);
-                        _command.ExecuteNonQuery();
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Read();
-                        return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString());
-                    }
-                    else return new TblProperty(-1);
-                }
-                _command = new SqlCommand(_commandText, _connection);
+                _commandText = $"insert into TblFriends (MeId , FriendId) values (N'{friends.MeId}' , N'{friends.FriendId}' )";
+                command = new SqlCommand($"select TOP (1) * from TblFriends where MeId = N'{friends.MeId}' ORDER BY id DESC", _connection);
+                _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
-                return true;
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0);
+            }
+            else if (table.GetType() == typeof(TblImage))
+            {
+                TblImage image = (TblImage)tableObj;
+                if (!MethodRepo.ExistInDb("TblImage", "Name", image.Name))
+                {
+                    _commandText = $"insert into TblImage (Name) values (N'{image.Name}' )";
+                    command = new SqlCommand($"select TOP (1) * from TblImage where Name = N'{image.Name}' ORDER BY id DESC", _connection);
+                    _command = new SqlCommand(_commandText, _connection);
+                    _command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    return new TblImage(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
+                }
+                else return new TblImage(-1);
+            }
+
+            else if (table.GetType() == typeof(TblClick))
+            {
+                TblClick click = (TblClick)tableObj;
+
+                _commandText = $"insert into TblClick (Date , PropertyId) values (N'{click.Date}' , N'{click.PropertyId}' )";
+                command = new SqlCommand($"select TOP (1) * from TblClick where Date = N'{click.Date}' ORDER BY id DESC", _connection);
+                _command = new SqlCommand(_commandText, _connection);
+                _command.ExecuteNonQuery();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return new TblClick(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Date"].ToString(), reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0);
+            }
+            else if (table.GetType() == typeof(TblPropertyImageRel))
+            {
+                TblPropertyImageRel propertyImageRel = (TblPropertyImageRel)tableObj;
+
+                _commandText = $"insert into TblPropertyImageRel (PropertyId , ImageId) values (N'{propertyImageRel.PropertyId}' , N'{propertyImageRel.ImageId}' )";
+                command = new SqlCommand($"select TOP (1) * from TblPropertyImageRel where id = N'{propertyImageRel.id}' ORDER BY id DESC", _connection);
+                _command = new SqlCommand(_commandText, _connection);
+                _command.ExecuteNonQuery();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return new TblPropertyImageRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["ImageId"].ToString() != "" ? Convert.ToInt32(reader["ImageId"]) : 0);
+            }
+            else if (table.GetType() == typeof(TblConstructor))
+            {
+                TblConstructor constructor = (TblConstructor)tableObj;
+                if (!MethodRepo.ExistInDb("TblConstructor", "TellNo", constructor.TellNo))
+                {
+                    _commandText = $"insert into TblConstructor (TellNo , Identification , Address) values (N'{constructor.TellNo}' , N'{constructor.Identification}' , N'{constructor.Address}' )";
+                    command = new SqlCommand($"select TOP (1) * from TblConstructor where TellNo = N'{constructor.TellNo}' ORDER BY id DESC", _connection);
+                    _command = new SqlCommand(_commandText, _connection);
+                    _command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    return new TblConstructor(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString(), reader["Address"].ToString());
+                }
+                else return new TblConstructor(-1);
+            }
+
+            else if (table.GetType() == typeof(TblDealer))
+            {
+                TblDealer dealer = (TblDealer)tableObj;
+                if (!MethodRepo.ExistInDb("TblDealer", "Name", dealer.Name))
+                {
+                    _commandText = $"insert into TblDealer (TellNo , Identification , Address , Name) values (N'{dealer.TellNo}' , N'{dealer.Identification}' , N'{dealer.Address}' , N'{dealer.Name}' )";
+                    command = new SqlCommand($"select TOP (1) * from TblDealer where Name = N'{dealer.Name}' ORDER BY id DESC", _connection);
+                    _command = new SqlCommand(_commandText, _connection);
+                    _command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    return new TblDealer(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString(), reader["Address"].ToString(), reader["Name"].ToString());
+                }
+                else return new TblDealer(-1);
+            }
+
+            else if (table.GetType() == typeof(TblClient))
+            {
+                TblClient client = (TblClient)tableObj;
+                if (!MethodRepo.ExistInDb("TblClient", "TellNo", client.TellNo))
+                {
+                    _commandText = $"insert into TblClient (TellNo , Identification) values (N'{client.TellNo}' , N'{client.Identification}' )";
+                    command = new SqlCommand($"select TOP (1) * from TblClient where TellNo = N'{client.TellNo}' ORDER BY id DESC", _connection);
+                    _command = new SqlCommand(_commandText, _connection);
+                    _command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    return new TblClient(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString());
+                }
+                else return new TblClient(-1);
+            }
+
+            else if (table.GetType() == typeof(TblPropertyClientRel))
+            {
+                TblPropertyClientRel propertyClientRel = (TblPropertyClientRel)tableObj;
+
+                _commandText = $"insert into TblPropertyClientRel (PropertyId , UserId , Status , PostDate) values (N'{propertyClientRel.PropertyId}' , N'{propertyClientRel.UserId}' , N'{propertyClientRel.Status}' , N'{propertyClientRel.PostDate}')";
+                command = new SqlCommand($"select TOP (1) * from TblPropertyClientRel where id = N'{propertyClientRel.id}' ORDER BY id DESC", _connection);
+                _command = new SqlCommand(_commandText, _connection);
+                _command.ExecuteNonQuery();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0, reader["PostDate"].ToString());
+            }
+            else if (table.GetType() == typeof(TblProvince))
+            {
+                TblProvince province = (TblProvince)tableObj;
+                if (!MethodRepo.ExistInDb("TblProvince", "Name", province.Name))
+                {
+                    _commandText = $"insert into TblProvince (Name) values (N'{province.Name}' )";
+                    command = new SqlCommand($"select TOP (1) * from TblProvince where Name = N'{province.Name}' ORDER BY id DESC", _connection);
+                    _command = new SqlCommand(_commandText, _connection);
+                    _command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    return new TblProvince(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
+                }
+                else return new TblProvince(-1);
+            }
+
+            else if (table.GetType() == typeof(TblCity))
+            {
+                TblCity city = (TblCity)tableObj;
+                if (!MethodRepo.ExistInDb("TblCity", "Name", city.Name))
+                {
+                    _commandText = $"insert into TblCity (Name , ProvinceId) values (N'{city.Name}' , N'{city.ProvinceId}' )";
+                    command = new SqlCommand($"select TOP (1) * from TblCity where Name = N'{city.Name}' ORDER BY id DESC", _connection);
+                    _command = new SqlCommand(_commandText, _connection);
+                    _command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    return new TblCity(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString(), reader["ProvinceId"].ToString() != "" ? Convert.ToInt32(reader["ProvinceId"]) : 0);
+                }
+                else return new TblCity(-1);
+            }
+
+            else if (table.GetType() == typeof(TblProperty))
+            {
+                TblProperty property = (TblProperty)tableObj;
+                if (!MethodRepo.ExistInDb("TblProperty", "Title", property.Title))
+                {
+                    _commandText = $"insert into TblProperty (Title , Description , Valid , ShowToFriends , UserId , CityId , Neighborhood) values (N'{property.Title}' , N'{property.Description}' , N'{property.Valid}' , N'{property.ShowToFriends}' , N'{property.UserId}' , N'{property.CityId}' , N'{property.Neighborhood}' )";
+                    command = new SqlCommand($"select TOP (1) * from TblProperty where Title = N'{property.Title}' ORDER BY id DESC", _connection);
+                    _command = new SqlCommand(_commandText, _connection);
+                    _command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString());
+                }
+                else return new TblProperty(-1);
+            }
+
+            _command = new SqlCommand(_commandText, _connection);
+            _command.ExecuteNonQuery();
+            return true;
             //}
             //catch
             //{
@@ -269,7 +276,7 @@ namespace PropSell.Utilities
                 else if (table.GetType() == typeof(TblPropertyClientRel))
                 {
                     TblPropertyClientRel propertyClientRel = (TblPropertyClientRel)tableObj;
-                    _commandText = $"update TblPropertyClientRel set PropertyId = N'{propertyClientRel.PropertyId}' , UserId = N'{propertyClientRel.UserId}' , Status = N'{propertyClientRel.Status}' where id = N'{logId}'";
+                    _commandText = $"update TblPropertyClientRel set PropertyId = N'{propertyClientRel.PropertyId}' , UserId = N'{propertyClientRel.UserId}' , Status = N'{propertyClientRel.Status}' , PostDate = N'{propertyClientRel.PostDate}' where id = N'{logId}'";
                 }
                 else if (table.GetType() == typeof(TblProvince))
                 {
@@ -366,7 +373,8 @@ namespace PropSell.Utilities
                     case Tables.TblPropertyClientRel:
                         List<TblPropertyClientRel> propertyClientRels = new List<TblPropertyClientRel>();
                         while (reader.Read())
-                            propertyClientRels.Add(new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
+                            propertyClientRels.Add(new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0, reader["PostDate"].ToString()));
+
                         return propertyClientRels;
                     case Tables.TblProvince:
                         List<TblProvince> provinces = new List<TblProvince>();
@@ -419,7 +427,7 @@ namespace PropSell.Utilities
                 else if (table == Tables.TblClient)
                     return new TblClient(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["TellNo"].ToString(), reader["Identification"].ToString());
                 else if (table == Tables.TblPropertyClientRel)
-                    return new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
+                    return new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0, reader["PostDate"].ToString());
                 else if (table == Tables.TblProvince)
                     return new TblProvince(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
                 else if (table == Tables.TblCity)
@@ -720,7 +728,7 @@ namespace PropSell.Utilities
                     _command = new SqlCommand($"select* from TblPropertyClientRel where UserId = N'{entry}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
+                    ret.Add(new TblPropertyClientRel(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["PropertyId"].ToString() != "" ? Convert.ToInt32(reader["PropertyId"]) : 0, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0, reader["PostDate"].ToString()));
                 return ret;
             }
             catch
@@ -903,7 +911,28 @@ namespace PropSell.Utilities
                 _disconnect();
             }
         }
-        #endregion
+
+        public List<TblProperty> SelectLatestProperties(int count)
+        {
+            try
+            {
+                List<TblProperty> ret = new List<TblProperty>();
+                _command = new SqlCommand($"SELECT TOP({count}) * FROM dbo.TblProperty ORDER BY id DESC", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString()));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblProperty>();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        #endregion
 
     }
 }

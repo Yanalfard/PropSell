@@ -49,5 +49,9 @@ namespace PropSell.Repositories.Impl
             return new MainProvider().SelectPropertyByCityId(cityId);
         }
 
+        public List<TblProperty> SelectLatestProperties(int count)
+        {
+            return new MainProvider().SelectLatestProperties(count);
+        }
     }
 }

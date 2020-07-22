@@ -199,7 +199,22 @@ namespace PropSell.Controllers
                 else
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
+        }        [Route("SelectLatestProperties")]
+        [HttpPost]
+        public IHttpActionResult SelectLatestProperties(int count)
+        {
+            var task = Task.Run(() => new PropertyService().SelectLatestProperties(count));
+            if (task.Wait(TimeSpan.FromSeconds(10)))
+                if (task.Result.Count != 0)
+                {
+                    List<DtoTblProperty> dto = new List<DtoTblProperty>();
+                    foreach (TblProperty obj in task.Result)
+                        dto.Add(new DtoTblProperty(obj, HttpStatusCode.OK));
+                    return Ok(dto);
+                }
+                else
+                    return Conflict();
+            return StatusCode(HttpStatusCode.RequestTimeout);
         }
-
     }
 }
