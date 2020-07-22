@@ -9,6 +9,8 @@
 //TODO: Import bootstrap to your project;;
 var returner;
 
+const APIUrl = '';
+
 function Bjax(url, input, methodType)
 {
     if (methodType === 'SP') //Short POST

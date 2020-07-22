@@ -138,9 +138,16 @@ function ClientSignUp() {
     //console.log(Bjax('https://localhost:44374/api/ClientCore/AddClient', Client, 'LP'));
      
     const ans = AddClient(Client);
-    alert(ans);
+    console.log(ans);
+
+    if (ans.id == -1) {
+        alert("این شماره قبلا ثبت شده است");
+        return;
+    }
 
     //#endregion
+
+    return true;
 }
 
 function ConstructorSignUp() {
