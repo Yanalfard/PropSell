@@ -205,16 +205,13 @@
     <Content Include="Scripts\Jquery\umd\popper-utils.min.js" />
     <Content Include="Scripts\Jquery\umd\popper.js" />
     <Content Include="Scripts\Jquery\umd\popper.min.js" />
+    <Content Include="Scripts\Landing.js" />
     <Content Include="Scripts\LogIn.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\UIKit\uikit-icons.js" />
     <Content Include="Scripts\UIKit\uikit-icons.min.js" />
     <Content Include="Scripts\UIKit\uikit.js" />
     <Content Include="Scripts\UIKit\uikit.min.js" />
-    <Content Include="StylesDashboard.css" />
-    <Content Include="StylesDashboard.min.css">
-      <DependentUpon>StylesDashboard.css</DependentUpon>
-    </Content>
     <Content Include="Styles\About.css" />
     <Content Include="Styles\About.min.css" />
     <Content Include="Styles\Dashboard.css" />

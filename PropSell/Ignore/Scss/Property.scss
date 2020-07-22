@@ -74,6 +74,22 @@
     }
 }
 
+.uploader {
+    background:red;
+    top: 2.4vw;
+    left: 2vw;
+    position: absolute;
+    width: 35vw;
+    height: auto;
+    overflow-y: hidden !important;
+
+    @include shadow-medium();
+
+    @include border-radius(0.5vw,0.5vw,0.5vw,0.5vw);
+
+}
+
+
 .content {
     position: absolute;
     width: 56.5vw;

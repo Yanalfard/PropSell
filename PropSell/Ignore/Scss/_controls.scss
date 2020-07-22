@@ -100,10 +100,10 @@ nav {
 
         .search {
             flex: 2;
-            height:80%;
+            height: 80%;
 
-            input{
-                font-size:1.5em;
+            input {
+                font-size: 1.5em;
             }
         }
 
@@ -165,6 +165,7 @@ nav {
         }
     }
 }
+
 
 .search {
     display: flex;
@@ -292,7 +293,7 @@ select {
         outline: none;
         width: 100%;
         background: transparent;
-        padding-right:10px;
+        padding-right: 10px;
     }
 
     .slider::-webkit-slider-thumb {
@@ -304,7 +305,7 @@ select {
         @include mat();
         @include border-radius(100%,100%,100%,100%);
         @include trans(.5s);
-        background:#cccccc;
+        background: #cccccc;
     }
 
     .slider::-webkit-slider-thumb:hover {
@@ -438,7 +439,7 @@ select {
 .price {
     background: #61ed57;
     position: absolute;
-    margin-top:200px;
+    margin-top: 200px;
     padding: 8px;
     @include border-radius(2px,2px,2px,2px);
     @include subtle-glow(rgba(54, 255, 121, 0.40));
