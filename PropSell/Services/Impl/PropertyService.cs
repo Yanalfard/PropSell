@@ -50,6 +50,12 @@ namespace PropSell.Services.Impl
         {
             return new PropertyRepo().SelectPropertyByCityId(cityId);
         }
+
+        public List<TblProperty> SelectLatestProperties(int count)
+        {
+            return new PropertyRepo().SelectLatestProperties(count);
+        }
+
         public List<TblImage>SelectImagesByPropertyId(int propertyId)
         {
             List<TblPropertyImageRel> stp1 = new PropertyImageRelRepo().SelectPropertyImageRelByPropertyId(propertyId);

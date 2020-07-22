@@ -2,6 +2,7 @@
 //---> int PropertyId
 //---> int UserId
 //---> int Status
+//---> string PostDate
 function AddPropertyClientRel(propertyClientRel)
 {
     return Bjax('/api/PropertyClientRelCore/AddPropertyClientRel', propertyClientRel, 'LP');
@@ -36,5 +37,9 @@
 function SelectPropertyClientRelByStatus(status)
 {
     return Bjax('/api/PropertyClientRelCore/SelectPropertyClientRelByStatus?status=', status, 'SP');
+}
+function SelectLatestProperties(count)
+{
+    return Bjax('/api/PropertyClientRelCore/SelectLatestProperties?count=', count, 'SP');
 }
 
