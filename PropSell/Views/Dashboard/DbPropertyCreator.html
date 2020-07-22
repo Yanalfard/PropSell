@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>ملک</title>
+    <title>ملک جدید</title>
     <link href="/Styles/Property.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="../Styles/UIKit/uikit.min.css" />
-    <script src="/Scripts/UIKit/uikit.min.js"></script>
-    <script src="/Scripts/UIKit/uikit-icons.min.js"></script>
+    <link href="../../Styles/UIKit/uikit.min.css" rel="stylesheet" />
+    <script src="../../Scripts/UIKit/uikit.min.js"></script>
+    <script src="../../Scripts/UIKit/uikit-icons.js"></script>
 </head>
 <body class="column">
 
@@ -33,50 +33,31 @@
 
     <!-- #endregion -->
 
+
     <aside class="call row">
-        <label class="call-number">
-            0914 586 ** **
-        </label>
+        <button class="call-button">
+            <img class="center" src="/Resources/Vector/Icons/call.svg" alt="" />
+        </button>
         <button class="call-button">
             <img class="center" src="/Resources/Vector/Icons/call.svg" alt="" />
         </button>
     </aside>
 
-
     <!-- #region ImageSlider -->
 
-    <aside class="slide-show uk-position-relative uk-visible-toggle uk-light " tabindex="-1" uk-slideshow>
-
-        <ul class="uk-slideshow-items">
-            <li>
-                <img src="/Resources/Raster/BrickTexture.jpeg" alt="" uk-cover>
-            </li>
-            <li>
-                <img src="/Resources/Raster/HardVertical.jpeg" alt="" uk-cover>
-            </li>
-            <li>
-                <img src="/Resources/Raster/House.jpeg" alt="" uk-cover>
-            </li>
-            <li>
-                <img src="/Resources/Raster/Hero.jpeg" alt="" uk-cover>
-            </li>
-        </ul>
-
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
-    </aside>
+    <div class="column uploader ">
+        <input type="file" value="" />
+    </div>
 
     <!-- #endregion -->
-
     <!-- #region Content -->
     <section class="content center column">
         <header class="column">
-            <p> لورم ایپسوم متن ساختگی </p>
+            <p class="uk-textarea" id="lblName" contenteditable="true"> لورم ایپسوم متن ساختگی </p>
             <hr />
         </header>
 
-        <p>
+        <p class="uk-textarea" id="txtText" contenteditable="true">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
             استفاده از طراحان گرافیک است چاپگرها و متون بلکه
             وزنامه و مجله در ستون و سطرآنچنان که لازم است و
@@ -88,12 +69,12 @@
         </p>
 
         <content>
-            
+
         </content>
 
-        <div class="price row">
-            <img src="/Resources/Vector/real.svg" />
-            <label>19005000</label>
+        <div class="column">
+            <p> قیمت به ریال</p>
+            <p class="uk-textarea right" id="lblName" contenteditable="true"> 000 </p>
         </div>
     </section>
     <!-- #endregion -->

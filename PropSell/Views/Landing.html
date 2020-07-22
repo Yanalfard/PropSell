@@ -4,7 +4,12 @@
     <meta charset="utf-8" />
     <title>خانه</title>
 
+    <script src="../Scripts/Jquery/jquery-3.5.1.js"></script>
+    <script src="../JsDecoders/PropertyJore.js"></script>
+    <script src="../JsDecoders/BjaxLib.js"></script>
+    <script src="../Scripts/UIKit/uikit.js"></script>
 
+    <link href="../Styles/UIKit/uikit.css" rel="stylesheet" />
     <link href="/Styles/Landing.css" rel="stylesheet" />
 </head>
 <body>
@@ -29,364 +34,29 @@
     <div class="space-nav"></div>
 
     <!-- #endregion -->
-    <!-- hero -->
-    <section class="hero row">
-        <img class="hero-image" src="/Resources/Raster/Hero.jpeg" />
-        <div class="hero-overlay column">
-            <strong class="header">لورم ایپسوم متن متن ساختگی با</strong>
-            <div class="space"></div>
+
+    <section class="hero uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: 250">
+
+        <div class="column ">
+            <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">این یک تست است</h1>
             <p>
-                لورم ایپسوم متن ساختگی با تولید
-                سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان گرافیک است
-                استفاده از طراحان گرافیک است
-                چاپ و با استفاده از طراحان
-                چاپ و با استفاده از طراحان
-                چاپ و با استفاده از طراحان
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
+                متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم ا
+                ست، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای 
+                شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
             </p>
-            <div class="space-half"></div>
-            <div class="row">
-                <a href="SignUp.html" class="CallToAction"><p>ثبت نام</p></a>
-            </div>
         </div>
+
     </section>
 
-    <!-- nav -->
-    <!--<nav class="row">
-        <div class="block search row">
-            <img src="../Resources/Vector/Alert.svg" class="icon" />
-            <div class="column">
-                <strong>جستجوی املاک</strong>
-                <p>
-                    لورم ایپسوم متن ساختگی با تولید
-                    استفاده از طراحان گرافیک است
-                    چاپ و با استفاده از طراحان
-                </p>
-            </div>
-        </div>
-        <div class="block about row">
-            <img src="../Resources/Vector/Alert.svg" class="icon" />
-            <div class="column">
-                <strong>درباره ما</strong>
-                <p>
-                    لورم ایپسوم متن ساختگی با تولید
-                    سادگی نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک است
-                </p>
-            </div>
-        </div>
 
-        <div class="block dashboard row">
-            <img src="../Resources/Vector/Alert.svg" class="icon" />
-            <div class="column">
-                <strong>چک کردن داشبورد</strong>
-                <p>
-                    ستفاده از طراحان گرافیک است
-                    چاپ و با استفاده از طراحان
-                </p>
-            </div>
-        </div>
-    </nav>-->
-
-    <div class="space"></div>
 
 
     <!-- recent uploads -->
-    <content class="browse center">
+    <content id="recent" class="browse center">
 
-        <!-- #region Model -->
 
-        <a href="" class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
 
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="/Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="/Resources/Raster/House.jpeg" alt="" />
-
-        </a>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
     </content>
     <!-- about -->
     <footer class="row">
@@ -412,5 +82,8 @@
         </content>
         <iframe class="map" src="" frameborder="0"></iframe>
     </footer>
+
+
+    <script src="../Scripts/Landing.js"></script>
 </body>
 </html>
