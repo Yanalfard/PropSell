@@ -44,10 +44,15 @@ function LoadTop9() {
 //---> int UserId
 //---> int CityId
 //---> string Neighborhood
+//---> long Price
 function generateBlock(divId, model) {
+
 
     let div = document.getElementById(divId);
     if (!model.Valid) return;
+
+    const images = SelectImageByPropertyId(model.id);
+    console.log(images);
 
     div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
@@ -63,11 +68,11 @@ function generateBlock(divId, model) {
                 </p>
                 <div class="price row">
                     <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
+                    <label>${model.Price}</label>
                 </div>
             </div>
 
-            <img src="../Resources/Raster/House.jpeg" alt="" />
+            <img src="${images[0]}" alt="" />
         </div>
 
         <!-- #endregion -->
