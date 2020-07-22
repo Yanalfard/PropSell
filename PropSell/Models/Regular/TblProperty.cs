@@ -10,13 +10,13 @@ namespace PropSell.Models.Regular
         public int UserId { get; set; }
         public int CityId { get; set; }
         public string Neighborhood { get; set; }
-
+        public long Price { get; set; }
         public TblProperty(int id)
         {
             this.id = id;
         }
 
-		public TblProperty(int id, string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood)
+        public TblProperty(int id, string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood, long price)
         {
             this.id = id;
             Title = title;
@@ -26,8 +26,9 @@ namespace PropSell.Models.Regular
             UserId = userId;
             CityId = cityId;
             Neighborhood = neighborhood;
+            Price = price;
         }
-        public TblProperty(string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood)
+        public TblProperty(string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood, long price)
         {
             Title = title;
             Description = description;
@@ -36,11 +37,12 @@ namespace PropSell.Models.Regular
             UserId = userId;
             CityId = cityId;
             Neighborhood = neighborhood;
+            Price = price;
         }
 
         public TblProperty()
         {
-            
+
         }
     }
 }

@@ -13,12 +13,13 @@ namespace PropSell.Models.Dto
         public int UserId { get; set; }
         public int CityId { get; set; }
         public string Neighborhood { get; set; }
+        public long Price { get; set; }
 
         public HttpStatusCode StatusEffect { get; set; }
 
         public TblProperty ToRegular()
         {
-            return new TblProperty(id, Title, Description, Valid, ShowToFriends, UserId, CityId, Neighborhood);
+            return new TblProperty(id, Title, Description, Valid, ShowToFriends, UserId, CityId, Neighborhood, Price);
         }
 
         public DtoTblProperty(TblProperty property, HttpStatusCode statusEffect)
@@ -31,7 +32,7 @@ namespace PropSell.Models.Dto
             UserId = property.UserId;
             CityId = property.CityId;
             Neighborhood = property.Neighborhood;
-
+            Price = property.Price;
             StatusEffect = statusEffect;
         }
 

@@ -6,7 +6,10 @@
 //---> int UserId
 //---> int CityId
 //---> string Neighborhood
-function AddProperty(property)
+//---> long Price
+
+
+function AddProperty(property)
 {
     return Bjax('/api/PropertyCore/AddProperty', property, 'LP');
 }
