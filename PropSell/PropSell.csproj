@@ -207,6 +207,7 @@
     <Content Include="Scripts\Jquery\umd\popper.min.js" />
     <Content Include="Scripts\Landing.js" />
     <Content Include="Scripts\LogIn.js" />
+    <Content Include="Scripts\Property.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\UIKit\uikit-icons.js" />
     <Content Include="Scripts\UIKit\uikit-icons.min.js" />

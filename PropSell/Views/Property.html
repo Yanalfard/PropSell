@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="../Styles/UIKit/uikit.min.css" />
     <script src="/Scripts/UIKit/uikit.min.js"></script>
     <script src="/Scripts/UIKit/uikit-icons.min.js"></script>
+    <script src="../JsDecoders/PropertyJore.js"></script>
+    <script src="../JsDecoders/PropertyClientRelJore.js"></script>
+    <script src="../Scripts/Jquery/jquery-3.5.1.js"></script>
+    <script src="../JsDecoders/BjaxLib.js"></script>
+    <script src="../JsDecoders/ClickJore.js"></script>
+    <script src="../JsDecoders/ImageJore.js"></script>
+
 </head>
 <body class="column">
 
@@ -34,10 +41,10 @@
     <!-- #endregion -->
 
     <aside class="call row">
-        <label class="call-number">
+        <label id="callNumber" class="call-number collapsed">
             0914 586 ** **
         </label>
-        <button class="call-button">
+        <button class="call-button" onclick="Click()">
             <img class="center" src="/Resources/Vector/Icons/call.svg" alt="" />
         </button>
     </aside>
@@ -47,8 +54,8 @@
 
     <aside class="slide-show uk-position-relative uk-visible-toggle uk-light " tabindex="-1" uk-slideshow>
 
-        <ul class="uk-slideshow-items">
-            <li>
+        <ul id="slideshow" class="uk-slideshow-items">
+            <!--<li>
                 <img src="/Resources/Raster/BrickTexture.jpeg" alt="" uk-cover>
             </li>
             <li>
@@ -59,7 +66,7 @@
             </li>
             <li>
                 <img src="/Resources/Raster/Hero.jpeg" alt="" uk-cover>
-            </li>
+            </li>-->
         </ul>
 
         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -68,15 +75,14 @@
     </aside>
 
     <!-- #endregion -->
-
     <!-- #region Content -->
     <section class="content center column">
         <header class="column">
-            <p> لورم ایپسوم متن ساختگی </p>
+            <p id="Title"> لورم ایپسوم متن ساختگی </p>
             <hr />
         </header>
 
-        <p>
+        <p id="Description">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
             استفاده از طراحان گرافیک است چاپگرها و متون بلکه
             وزنامه و مجله در ستون و سطرآنچنان که لازم است و
@@ -88,12 +94,12 @@
         </p>
 
         <content>
-            
+
         </content>
 
         <div class="price row">
             <img src="/Resources/Vector/real.svg" />
-            <label>19005000</label>
+            <label id="Price">19005000</label>
         </div>
     </section>
     <!-- #endregion -->
@@ -102,5 +108,6 @@
     <div class="space-double"></div>
     <div class="space-double"></div>
 
+    <script src="../Scripts/Property.js"></script>
 </body>
 </html>
