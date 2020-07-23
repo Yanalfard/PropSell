@@ -83,9 +83,9 @@ namespace PropSell.Controllers
         }
         [Route("SelectPropertyClientRelByPropertyId")]
         [HttpPost]
-        public IHttpActionResult SelectPropertyClientRelByPropertyId(int pertyId)
+        public IHttpActionResult SelectPropertyClientRelByPropertyId(int propertyId)
         {
-            var task = Task.Run(() => new PropertyClientRelService().SelectPropertyClientRelByPropertyId(pertyId));
+            var task = Task.Run(() => new PropertyClientRelService().SelectPropertyClientRelByPropertyId(propertyId));
             if (task.Wait(TimeSpan.FromSeconds(10)))
                 if (task.Result.Count != 0)
                 {
@@ -100,9 +100,9 @@ namespace PropSell.Controllers
         }
         [Route("SelectPropertyClientRelByUserId")]
         [HttpPost]
-        public IHttpActionResult SelectPropertyClientRelByUserId(int rId)
+        public IHttpActionResult SelectPropertyClientRelByUserId(int userId)
         {
-            var task = Task.Run(() => new PropertyClientRelService().SelectPropertyClientRelByUserId(rId));
+            var task = Task.Run(() => new PropertyClientRelService().SelectPropertyClientRelByUserId(userId));
             if (task.Wait(TimeSpan.FromSeconds(10)))
                 if (task.Result.Count != 0)
                 {

@@ -34,7 +34,3 @@
 {
     return Bjax('/api/PropertyClientRelCore/SelectPropertyClientRelByUserId?userId=', userId, 'SP');
 }
-function SelectPropertyClientRelByStatus(status)
-{
-    return Bjax('/api/PropertyClientRelCore/SelectPropertyClientRelByStatus?status=', status, 'SP');
-}
