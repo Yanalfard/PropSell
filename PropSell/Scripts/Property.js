@@ -39,7 +39,6 @@ let hasClicked = false;
 function Click() {
     if (hasClicked) return;
 
-    debugger;
     var today = new Date();
     const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}-${today.getHours()}:${today.getMinutes()}`;
 
@@ -61,30 +60,39 @@ function Click() {
     //---> int Status
     //---> string PostDate
     const rel = SelectPropertyClientRelByPropertyId(Property.id);
+    console.log(rel);
 
-    if (rel.StatusEffect != 200) {
+    try {
+        if (rel[0].StatusEffect != 200) {
+            alert("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
+            return;
+        }
+    }
+    catch {
         alert("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
         return;
     }
 
     let person = "";
 
-    switch (rel.Status) {
+    switch (rel[0].Status) {
         //client
         case 0:
-            person = SelectClientById(UserId);
+            person = SelectClientById(rel[0].UserId);
             break;
         //constructor
         case 1:
-            person = SelectConstructorById(UserId);
+            person = SelectConstructorById(rel[0].UserId);
             break;
         //dealer
         case 2:
-            person = SelectDealerById(UserId);
+            person = SelectDealerById(rel[0].UserId);
             break;
         default:
             break;
     }
+
+    debugger;
 
     if (person.StatusEffect != 200) {
         alert("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
@@ -92,7 +100,7 @@ function Click() {
         return;
     }
 
-    const label = document.getElementById(callNumber);
+    const label = document.getElementById("callNumber");
     label.classList.remove("collapsed");
     label.textContent = person.TellNo;
 
