@@ -708,7 +708,7 @@ select {
     background: #fff; }
 
 .slide-show {
-  top: 2.4vw;
+  top: 1.95vw;
   left: 2vw;
   position: absolute;
   width: 35vw;
@@ -752,6 +752,7 @@ select {
   padding: 1.2vw;
   overflow-y: hidden !important;
   background-color: #F3F3F3;
+  /*min-height: 234px;*/
   background: #f0f0f0;
   border: none;
   -moz-box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;

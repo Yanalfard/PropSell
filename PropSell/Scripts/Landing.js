@@ -1,5 +1,4 @@
-﻿
-function generateBlocks(count, id) {
+﻿function generateBlocks(count, id) {
 
     let div = document.getElementById(id);
     console.log(div);
@@ -44,15 +43,24 @@ function LoadTop9() {
 //---> int UserId
 //---> int CityId
 //---> string Neighborhood
+//---> long Price
 function generateBlock(divId, model) {
 
     let div = document.getElementById(divId);
     if (!model.Valid) return;
 
+    const images = SelectImageByPropertyId(model.id);
+
+    //console.log("RAW:" + JSON.stringify(model));
+
+
     div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
 
-        <div class="model row center">
+        <a class="model row center">
+            <data class="collapsed">
+                ${JSON.stringify(model)}
+            </data>
             <div class="column">
                 <header>
                     ${model.Title}
@@ -63,12 +71,12 @@ function generateBlock(divId, model) {
                 </p>
                 <div class="price row">
                     <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
+                    <label>${model.Price}</label>
                 </div>
             </div>
 
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-        </div>
+            <img src="${images[0].Name}" alt="" />
+        </a>
 
         <!-- #endregion -->
         `)
@@ -76,3 +84,16 @@ function generateBlock(divId, model) {
 
 //generateBlocks(9, "recent");
 LoadTop9();
+
+$('.model').click(function () {
+    //var x1 = $(this).children("data").val();
+    localStorage.setItem("property", $(this).children("data").text());
+
+    openInNewTab("Property.html");
+    //console.log(x1);
+})
+
+function openInNewTab(url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+}

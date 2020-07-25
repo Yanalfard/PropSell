@@ -7,7 +7,7 @@
     bottom: 0;
     right: 0;
     margin: 2vw;
-    z-index:100;
+    z-index: 100;
 
     .call-button {
         border: none;
@@ -44,7 +44,7 @@
 }
 
 .slide-show {
-    top:  2.4vw;
+    top: 1.95vw;
     left: 2vw;
     position: absolute;
     width: 35vw;
@@ -75,7 +75,7 @@
 }
 
 .uploader {
-    background:red;
+    background: red;
     top: 2.4vw;
     left: 2vw;
     position: absolute;
@@ -86,7 +86,6 @@
     @include shadow-medium();
 
     @include border-radius(0.5vw,0.5vw,0.5vw,0.5vw);
-
 }
 
 
@@ -98,6 +97,7 @@
     padding: 1.2vw;
     overflow-y: hidden !important;
     background-color: #F3F3F3;
+    /*min-height: 234px;*/
     @include mat();
 
     header {
@@ -127,7 +127,7 @@
     }
 
     .price {
-        position:relative;
+        position: relative;
         margin: 16px auto 0 0;
 
         img {
@@ -150,7 +150,7 @@
         }
 
         .call-number {
-            font-size:3em;
+            font-size: 3em;
             margin: auto 10px;
             padding: .6vw 1vw;
         }
@@ -179,7 +179,7 @@
         width: 92vw;
         right: 0;
         top: 0;
-        margin:auto!important;
+        margin: auto !important;
 
         header {
             position: relative;
@@ -194,7 +194,7 @@
 
             hr {
                 width: 100%;
-                height:3px;
+                height: 3px;
                 margin: 0;
             }
         }
@@ -211,12 +211,11 @@
         .price {
             position: relative;
             margin: 24px auto 0 0;
-            padding:1vw;
+            padding: 1vw;
 
             label {
                 font-size: 2.5em;
             }
         }
     }
-
 }
