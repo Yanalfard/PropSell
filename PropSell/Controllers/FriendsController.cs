@@ -115,6 +115,25 @@ namespace PropSell.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-
+
+        [Route("SelectFriendsByFriendIdAndMeId")]
+        [HttpPost]
+        public IHttpActionResult SelectFriendsByFriendIdAndMeId(List<object> friendIdMeId)
+        {
+            int friendId = JsonConvert.DeserializeObject<int>(friendIdMeId[0].ToString());
+            int meId = JsonConvert.DeserializeObject<int>(friendIdMeId[1].ToString());
+            var task = Task.Run(() => new FriendsService().SelectFriendsByFriendIdAndMeId(friendId, meId));
+            if (task.Wait(TimeSpan.FromSeconds(10)))
+                if (task.Result.Count != 0)
+                {
+                    List<DtoTblFriends> dto = new List<DtoTblFriends>();
+                    foreach (TblFriends obj in task.Result)
+                        dto.Add(new DtoTblFriends(obj, HttpStatusCode.OK));
+                    return Ok(dto);
+                }
+                else
+                    return Conflict();
+            return StatusCode(HttpStatusCode.RequestTimeout);
+        }
     }
 }

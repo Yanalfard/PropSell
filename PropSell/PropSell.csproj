@@ -245,18 +245,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiDecoder\CityCore.cs" />
-    <Compile Include="ApiDecoder\ClickCore.cs" />
-    <Compile Include="ApiDecoder\ClientCore.cs" />
-    <Compile Include="ApiDecoder\Config.cs" />
-    <Compile Include="ApiDecoder\ConstructorCore.cs" />
-    <Compile Include="ApiDecoder\DealerCore.cs" />
-    <Compile Include="ApiDecoder\FriendsCore.cs" />
-    <Compile Include="ApiDecoder\ImageCore.cs" />
-    <Compile Include="ApiDecoder\PropertyClientRelCore.cs" />
-    <Compile Include="ApiDecoder\PropertyCore.cs" />
-    <Compile Include="ApiDecoder\PropertyImageRelCore.cs" />
-    <Compile Include="ApiDecoder\ProvinceCore.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\ClickController.cs" />

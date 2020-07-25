@@ -482,6 +482,25 @@ namespace PropSell.Utilities
             {
                 _disconnect();
             }
+        }        public List<TblFriends> SelectFriendsByFriendIdAndMeId(int friendId, int meId)
+        {
+            try
+            {
+                List<TblFriends> ret = new List<TblFriends>();
+                _command = new SqlCommand($"select* from TblFriends where FriendId = N'{friendId}' and MeId = N'{meId}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblFriends>();
+            }
+            finally
+            {
+                _disconnect();
+            }
         }
 
         #endregion
