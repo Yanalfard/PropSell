@@ -82,8 +82,8 @@ function generateBlock(divId, model) {
         `)
 }
 
-//generateBlocks(9, "recent");
-LoadTop9();
+generateBlocks(12, "recent");
+//LoadTop9();
 
 $('.model').click(function () {
     //var x1 = $(this).children("data").val();
@@ -96,4 +96,8 @@ $('.model').click(function () {
 function openInNewTab(url) {
     var win = window.open(url, '_blank');
     win.focus();
+}
+
+function PropertyDesigner() {
+    openInNewTab("DbPropertyCreator")
 }

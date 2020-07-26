@@ -6,8 +6,23 @@
     <link href="/Styles/Property.min.css" rel="stylesheet" />
 
     <link href="../../Styles/UIKit/uikit.min.css" rel="stylesheet" />
+
     <script src="../../Scripts/UIKit/uikit.min.js"></script>
     <script src="../../Scripts/UIKit/uikit-icons.js"></script>
+
+    <script src="../../Scripts/Jquery/jquery-3.5.1.js"></script>
+
+    <script src="../../JsDecoders/ClientJore.js"></script>
+    <script src="../../JsDecoders/ConstructorJore.js"></script>
+    <script src="../../JsDecoders/DealerJore.js"></script>
+    <script src="../../JsDecoders/PropertyClientRelJore.js"></script>
+    <script src="../../JsDecoders/PropertyImageRelJore.js"></script>
+    <script src="../../JsDecoders/PropertyJore.js"></script>
+    <script src="../../JsDecoders/UploadJore.js"></script>
+    <script src="../../JsDecoders/BjaxLib.js"></script>
+    <script src="../../JsDecoders/ImageJore.js"></script>
+
+
 </head>
 <body class="column">
 
@@ -24,48 +39,41 @@
             </button>
         </div>
         <section class="row">
-            <a class="login" href="LogIn.html">ورود</a>
-            <a href="Search.html">جستجو</a>
-            <a href="About.html">درباره</a>
+            <a class="login" href="DbMain.html">داشبورد</a>
+            <a href="../Search.html">جستجو</a>
+            <a href="../About.html">درباره</a>
         </section>
     </nav>
     <div class="space-nav"></div>
 
     <!-- #endregion -->
 
-
-    <aside class="call row">
-        <button class="call-button">
-            <img class="center" src="/Resources/Vector/Icons/call.svg" alt="" />
-        </button>
-        <button class="call-button">
-            <img class="center" src="/Resources/Vector/Icons/call.svg" alt="" />
-        </button>
-    </aside>
-
     <!-- #region ImageSlider -->
-
-    <div class="column uploader ">
-        <input type="file" value="" />
+    <div class="uploader column">
+        <div class="row class=" uk-margin-small-bottom"">
+            <div id="imgspinner" class="uk-spinner collapsed" uk-spinner></div>
+            <label class="right">تعدادی عکس انتخاب کنید</label>
+        </div>
+        <div class="row">
+            <input id="file-input" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" multiple />
+            <button class=" uk-button uk-button-primary collapsed" onclick="UploadImages()">آپلود</button>
+        </div>
+        <div class="row">
+            <progress id="imageProgress" class="uk-progress" value="0" max="100"></progress>
+        </div>
     </div>
 
     <!-- #endregion -->
+
     <!-- #region Content -->
     <section class="content center column">
         <header class="column">
-            <p class="uk-textarea" id="lblName" contenteditable="true"> لورم ایپسوم متن ساختگی </p>
+            <p class="uk-textarea" id="lblName" contenteditable="true"> تیتر</p>
             <hr />
         </header>
 
         <p class="uk-textarea" id="txtText" contenteditable="true">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-            استفاده از طراحان گرافیک است چاپگرها و متون بلکه
-            وزنامه و مجله در ستون و سطرآنچنان که لازم است و
-            برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-            متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی
-            در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و
-            متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری
-            را برای طراحان رایانه ای علی الخصوص طراحان خلاقی
+            توضیحات
         </p>
 
         <content>
@@ -76,12 +84,29 @@
             <p> قیمت به ریال</p>
             <p class="uk-textarea right" id="lblName" contenteditable="true"> 000 </p>
         </div>
+
+        <div class="space-half"></div>
+
+        <div class="row right">
+            <p class="uk-margin-auto-top">به همکاران نشان داده شود</p>
+            <input id="chShowToFriends" class="uk-checkbox uk-margin-small-left uk-margin-auto-top" type="checkbox" />
+        </div>
+
+        <div class="space-half"></div>
+
+        <div class="row right">
+            <button class="uk-button uk-button-danger ">لغو</button>
+            <button class="uk-margin-small-left uk-button uk-button-primary" onclick="AcceptCreation()">اضافه کردن</button>
+        </div>
     </section>
     <!-- #endregion -->
 
+    
+
     <div class="space-double"></div>
     <div class="space-double"></div>
     <div class="space-double"></div>
 
+    <script src="../../Scripts/Creator.js"></script>
 </body>
 </html>

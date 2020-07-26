@@ -2,6 +2,131 @@
 @import '_general.scss';
 @import '_controls.scss';
 
+.layout {
+    padding: 0 2vw;
+    @include row();
 
-body {
+    .collabers {
+        width: auto;
+        margin-left: auto;
+        padding: 12px 1.2vw 1.2vw 1.2vw;
+
+        .model {
+            margin-bottom: 2vw;
+        }
+
+        li {
+            margin-bottom: 3vh;
+            @include mat();
+
+            button {
+                padding: .5vw;
+                outline: none;
+                border: none;
+                @include border-radius(0,0,0,0);
+                @include trans(.45s);
+                background: $Alert;
+
+                img {
+                    width: 2vw;
+                    height: 2vw;
+                    margin: auto;
+                }
+            }
+
+            button:hover {
+                background: darken($Alert,12%);
+                @include trans(.2s);
+            }
+
+            label {
+                margin: auto;
+                flex: 5;
+                padding: 0.5vw 1vw 0.5vw 0.5vw;
+                font-size: 1.4vw;
+            }
+        }
+    }
+
+    .controlPanel {
+        width: 32vw;
+        margin-bottom: auto;
+
+        section {
+            margin-bottom: 3vh;
+            padding: 1vw ;
+            background: darken($Background, 4%);
+
+            label {
+                position: relative;
+            }
+
+            small {
+                margin-bottom: 1vw;
+            }
+
+            .search {
+                margin-top: 1vw;
+                margin-bottom: 1vw;
+            }
+
+            button {
+                margin-left: auto;
+                padding: 0.5vw;
+            }
+        }
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .layout {
+        @include column();
+
+        .collabers {
+            width: 100vw;
+            margin: auto;
+            padding: 2vw;
+
+
+            li {
+                margin-bottom: 3vh;
+
+                button {
+                    padding: 2vw;
+                }
+
+                label {
+                    margin: auto;
+                    flex: auto;
+                    padding: 2vw;
+                    font-size: 4.4vw;
+                }
+            }
+        }
+
+        .controlPanel {
+            margin: auto;
+            width: 65vw;
+
+            label {
+                margin-bottom: 2vw;
+                font-size: 2.8vw;
+            }
+
+            .search {
+                margin-bottom: 3vw;
+                padding: 1vw;
+            }
+
+            .uk-spinner {
+                margin-top: 3vw
+            }
+
+            button {
+                margin-left: auto;
+                padding: 1.5vw;
+                font-size: 3.2vw;
+            }
+        }
+    }
 }

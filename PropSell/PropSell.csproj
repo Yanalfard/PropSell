@@ -152,6 +152,7 @@
     <Content Include="JsDecoders\PropertyImageRelJore.js" />
     <Content Include="JsDecoders\PropertyJore.js" />
     <Content Include="JsDecoders\ProvinceJore.js" />
+    <Content Include="JsDecoders\UploadJore.js" />
     <Content Include="Resources\Raster\BrickTexture.jpeg" />
     <Content Include="Resources\Raster\HardVertical.jpeg" />
     <Content Include="Resources\Raster\Hero.jpeg" />
@@ -159,7 +160,10 @@
     <Content Include="Resources\Vector\Alert.svg" />
     <Content Include="Resources\Vector\ArvinTavLogo.svg" />
     <Content Include="Resources\Vector\Icons\call.svg" />
+    <Content Include="Resources\Vector\Icons\check.svg" />
+    <Content Include="Resources\Vector\Icons\cross.svg" />
     <Content Include="Resources\Vector\Icons\Logo.svg" />
+    <Content Include="Resources\Vector\Icons\plus.svg" />
     <Content Include="Resources\Vector\Icons\Search.svg" />
     <Content Include="Resources\Vector\Iso\Comercial.svg" />
     <Content Include="Resources\Vector\Iso\Group 12.svg" />
@@ -172,6 +176,10 @@
     <Content Include="Resources\Vector\Logo.svg" />
     <Content Include="Resources\Vector\real.svg" />
     <Content Include="Resources\Vector\SCroll.svg" />
+    <Content Include="Scripts\Collabers.js" />
+    <Content Include="Scripts\Creator.js" />
+    <Content Include="Scripts\Dashboard.js" />
+    <Content Include="Scripts\general.js" />
     <Content Include="Scripts\Jquery\esm\popper-utils.js" />
     <Content Include="Scripts\Jquery\esm\popper-utils.min.js" />
     <Content Include="Scripts\Jquery\esm\popper.js" />
@@ -208,6 +216,7 @@
     <Content Include="Scripts\Landing.js" />
     <Content Include="Scripts\LogIn.js" />
     <Content Include="Scripts\Property.js" />
+    <Content Include="Scripts\Search.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\UIKit\uikit-icons.js" />
     <Content Include="Scripts\UIKit\uikit-icons.min.js" />
@@ -270,6 +279,7 @@
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\PropertyImageRelController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
+    <Compile Include="Controllers\uploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

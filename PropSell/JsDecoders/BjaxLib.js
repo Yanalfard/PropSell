@@ -58,7 +58,7 @@ function Bjax(url, input, methodType)
                 async: false,
                 success: function (data)
                 {
-                    returner = data;
+                    return r = data;
                 },
                 error: function ()
                 {

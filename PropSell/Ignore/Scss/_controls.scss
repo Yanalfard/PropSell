@@ -184,20 +184,19 @@ nav {
         overflow-y: hidden;
         padding: 0 1vw;
         border: none;
-        height: 100%;
         @include border-radius(0,.5vw,.5vw,0);
-        @include trans(.2s);
-
+        height: auto;
+        background: transparent;
+        @include trans(.4s);
 
         .icon {
-            margin: 52% 0;
             vertical-align: middle;
             display: inline-block;
         }
     }
 
     button:hover {
-        background: darken($ControlBackground, 16%);
+        background: darken($ControlBackground, 12%);
         @include trans(.2s);
     }
 }

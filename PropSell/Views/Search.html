@@ -5,7 +5,7 @@
     <title>جستجو</title>
 
     <link href="/Styles/Search.min.css" rel="stylesheet" />
-
+    <script src="../Scripts/Search.js"></script>
 </head>
 <body>
 
@@ -16,10 +16,9 @@
             <img class="fillwidth center" src="../Resources/Vector/Logo.svg" />
         </a>
         <section class="row">
-            <a href="">لورم</a>
-            <a href="">ایپسوم</a>
-            <a href="">دولور</a>
-            <a href="">ست امتد</a>
+            <a class="login" href="LogIn.html">ورود</a>
+            <a href="Search.html">جستجو</a>
+            <a href="About.html">درباره</a>
         </section>
     </nav>
 
@@ -31,8 +30,8 @@
     <section class="filter row">
         <!-- search -->
         <div class="search row">
-            <input type="text" placeholder=" جستجو" />
-            <button>
+            <input id="searchbox" type="text" placeholder=" جستجو" />
+            <button onclick="Fetch(searchbox.value)">
                 <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
             </button>
         </div>
@@ -52,10 +51,10 @@
             </option>
         </select>
 
-        <div class="slider-control column center" >
+        <!--<div class="slider-control column center" >
             <input type="range" min="1" max="100" value="50" class="slider">
             <label></label>
-        </div>
+        </div>-->
     </section>
 
     <content class="browse ">

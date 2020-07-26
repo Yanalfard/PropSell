@@ -138,7 +138,7 @@ img {
 
 .space-nav {
   width: 100vw;
-  height: 4.7vw; }
+  height: 4.53vw; }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .space-nav {
@@ -365,20 +365,20 @@ nav {
     overflow-y: hidden;
     padding: 0 1vw;
     border: none;
-    height: 100%;
     -moz-border-radius: 0 0.5vw 0.5vw 0;
     -webkit-border-radius: 0 0.5vw 0.5vw 0;
     border-radius: 0 0.5vw 0.5vw 0;
-    -moz-transition: all ease 0.2s;
-    -o-transition: all ease 0.2s;
-    -webkit-transition: all ease 0.2s;
-    transition: all ease 0.2s; }
+    height: auto;
+    background: transparent;
+    -moz-transition: all ease 0.4s;
+    -o-transition: all ease 0.4s;
+    -webkit-transition: all ease 0.4s;
+    transition: all ease 0.4s; }
     .search button .icon {
-      margin: 52% 0;
       vertical-align: middle;
       display: inline-block; }
   .search button:hover {
-    background: #c7c7c7;
+    background: #d1d1d1;
     -moz-transition: all ease 0.2s;
     -o-transition: all ease 0.2s;
     -webkit-transition: all ease 0.2s;
@@ -707,6 +707,9 @@ select {
     border-radius: 2vw 2vw 2vw 2vw;
     background: #fff; }
 
+.dropzone {
+  width: 40vw; }
+
 .slide-show {
   top: 1.95vw;
   left: 2vw;
@@ -730,19 +733,20 @@ select {
     overflow-y: hidden !important; }
 
 .uploader {
-  background: red;
   top: 2.4vw;
   left: 2vw;
-  position: absolute;
-  width: 35vw;
-  height: auto;
+  position: relative;
   overflow-y: hidden !important;
-  -moz-box-shadow: rgba(48, 48, 48, 0.54) 0 0px 0.6vw;
-  -webkit-box-shadow: rgba(48, 48, 48, 0.54) 0 0px 0.6vw;
-  box-shadow: rgba(48, 48, 48, 0.54) 0 0px 0.6vw;
-  -moz-border-radius: 0.5vw 0.5vw 0.5vw 0.5vw;
-  -webkit-border-radius: 0.5vw 0.5vw 0.5vw 0.5vw;
-  border-radius: 0.5vw 0.5vw 0.5vw 0.5vw; }
+  width: 34vw; }
+  .uploader .row {
+    background: #f0f0f0;
+    padding: 1vw; }
+    .uploader .row button {
+      margin-left: auto !important; }
+    .uploader .row input {
+      margin: auto; }
+  .uploader > * {
+    overflow-y: hidden; }
 
 .content {
   position: absolute;
@@ -794,6 +798,21 @@ select {
       font-size: 3em;
       margin: auto 10px;
       padding: .6vw 1vw; }
+  .uploader {
+    top: 0;
+    left: 0;
+    margin-left: auto;
+    padding: 3vw;
+    width: 34vw; }
+    .uploader .row {
+      background: #f0f0f0;
+      padding: 1vw; }
+      .uploader .row button {
+        margin-left: auto !important; }
+      .uploader .row input {
+        margin: auto; }
+    .uploader > * {
+      overflow-y: hidden; }
   .slide-show {
     position: relative;
     right: 0;
