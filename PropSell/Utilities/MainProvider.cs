@@ -99,7 +99,7 @@ namespace PropSell.Utilities
                 TblPropertyImageRel propertyImageRel = (TblPropertyImageRel)tableObj;
 
                 _commandText = $"insert into TblPropertyImageRel (PropertyId , ImageId) values (N'{propertyImageRel.PropertyId}' , N'{propertyImageRel.ImageId}' )";
-                command = new SqlCommand($"select TOP (1) * from TblPropertyImageRel where id = N'{propertyImageRel.PropertyId}' ORDER BY id DESC", _connection);
+                command = new SqlCommand($"select TOP (1) * from TblPropertyImageRel where PropertyId = N'{propertyImageRel.PropertyId}' ORDER BY id DESC", _connection);
                 _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
                 SqlDataReader reader = command.ExecuteReader();
@@ -159,7 +159,7 @@ namespace PropSell.Utilities
                 TblPropertyClientRel propertyClientRel = (TblPropertyClientRel)tableObj;
 
                 _commandText = $"insert into TblPropertyClientRel (PropertyId , UserId , Status , PostDate) values (N'{propertyClientRel.PropertyId}' , N'{propertyClientRel.UserId}' , N'{propertyClientRel.Status}' , N'{propertyClientRel.PostDate}')";
-                command = new SqlCommand($"select TOP (1) * from TblPropertyClientRel where id = N'{propertyClientRel.PropertyId}' ORDER BY id DESC", _connection);
+                command = new SqlCommand($"select TOP (1) * from TblPropertyClientRel where PropertyId = N'{propertyClientRel.PropertyId}' ORDER BY id DESC", _connection);
                 _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
                 SqlDataReader reader = command.ExecuteReader();
@@ -469,6 +469,25 @@ namespace PropSell.Utilities
             {
                 List<TblFriends> ret = new List<TblFriends>();
                 _command = new SqlCommand($"select* from TblFriends where FriendId = N'{friendId}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblFriends>();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }        public List<TblFriends> SelectFriendsByFriendIdAndMeId(int friendId, int meId)
+        {
+            try
+            {
+                List<TblFriends> ret = new List<TblFriends>();
+                _command = new SqlCommand($"select* from TblFriends where FriendId = N'{friendId}' and MeId = N'{meId}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
                     ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0));

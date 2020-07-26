@@ -12,6 +12,7 @@ namespace PropSell.Repositories.Api
         TblFriends SelectFriendsById(int id);
         List<TblFriends> SelectFriendsByMeId(int meId);
         List<TblFriends> SelectFriendsByFriendId(int friendId);
+        List<TblFriends> SelectFriendsByFriendIdAndMeId(int friendId, int meId);
 
     }
 }

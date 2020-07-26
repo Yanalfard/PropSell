@@ -32,4 +32,12 @@
 {
     return Bjax('/api/FriendsCore/SelectFriendsByFriendId?friendId=', friendId, 'SP');
 }
-
+
+
+function SelectFriendsByFriendIdAndMeId(friendId, meId)
+{
+    var friendIdMeId = new Array();
+    friendIdMeId.push(friendId);
+    friendIdMeId.push(meId);
+    return Bjax('/api/FriendsCore/SelectFriendsByFriendIdAndMeId', friendIdMeId, 'LP');
+}

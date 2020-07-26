@@ -39,5 +39,9 @@ namespace PropSell.Services.Impl
             return new FriendsRepo().SelectFriendsByFriendId(friendId);
         }
 
+        public List<TblFriends> SelectFriendsByFriendIdAndMeId(int friendId, int meId)
+        {
+            return new FriendsRepo().SelectFriendsByFriendIdAndMeId(friendId, meId);
+        }
     }
 }
