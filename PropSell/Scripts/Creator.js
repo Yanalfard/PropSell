@@ -1,5 +1,4 @@
-﻿
-function ChangeProvinceSelection() {
+﻿function ChangeProvinceSelection() {
     const value = document.getElementById("Province").value;
     const citySelector = document.getElementById("slcity");
     if (value == 0) {
@@ -11,14 +10,12 @@ function ChangeProvinceSelection() {
     for (let item of findCityByProvince(ProvinceList[value])) {
         citySelector.innerHTML +=
             `
-                    <option value="${item}">${item}</option>
+                <option value="${item}">${item}</option>
             `
     }
 }
 
 function AcceptCreation() {
-
-   
 
     if (document.getElementById("lblName").innerText == "") {
         UIkit.notification("لطفا یک تیتر برای ملک خود انتخاب کنید");
@@ -56,12 +53,12 @@ function AcceptCreation() {
         return;
     }
 
-    
-
     if (ImageList == [] || ImageList == false || ImageList.length == 0) {
         UIkit.notification("لطفا تعدادی عکس آپلود کنید");
         return;
     }
+
+    const city = SelectCityByName(cit);
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
 
@@ -71,7 +68,7 @@ function AcceptCreation() {
         Valid: true,
         ShowToFriends: (document.getElementById("chShowToFriends").value == "on") ? true : false,
         UserId: currentUser.id,
-        CityId: 16,
+        CityId: city.id,
         NeighborHood: document.getElementById("Neighborhood").innerText,
         Price:          document.getElementById("lblPrice").innerText
     }
@@ -228,7 +225,7 @@ function HidePreloader() {
 }
 
 ///Image Objects
-const ImageList = [];
+let ImageList = [];
 
 function SendImagesToTheDatabase(imageName) {
     document.getElementById("imgspinner").classList.remove("collapsed");
@@ -257,7 +254,3 @@ function SendImagesToTheDatabase(imageName) {
     document.getElementById("imgspinner").classList.add("collapsed");
 
 }
-
-
-
-

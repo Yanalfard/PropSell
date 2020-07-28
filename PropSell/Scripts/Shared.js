@@ -52,19 +52,17 @@ function openInNewTab(url) {
 }
 
 function InitializeDashboardBlocks() {
+    debugger;
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
 
+    const Properties = SelectFriendsProperties(currentUser.id);
 
-    const Properties = SelectPropertyByUserId(currentUser.id);
-
-    if (!Properties) return;
+    if (Properties == false) return;
 
     for (let prop of Properties) {
         generateBlock("blocks", prop);
     }
-
-
 }
 
 InitializeDashboardBlocks()

@@ -65,7 +65,16 @@ function Fetch(keyword) {
 
     //#region search
 
-    const search = SelectPropertyByTitle(keyword);
+    debugger;
+
+    let search = false;
+
+    try {
+        search = SelectPropertyByTitle(keyword);
+    } catch {
+
+    }
+
     document.getElementById("browse").innerHTML = "";
     if (search == false) return
 
@@ -76,8 +85,20 @@ function Fetch(keyword) {
     //#endregion
 }
 
+function SearchClick() {
+    const min = document.getElementById("priceMin").value;
+    const max = document.getElementById("priceMax").value;
 
-function FilterEntries() {
+    let props = [];
+
+    if (min != "" && max != "") {
+        props = SelectPropertiesByPriceBetween(min, max);
+        if (props == null || props == false) {
+            return;
+        }
+    }
+
+    Fetch(document.getElementById('searchbox').value);
 }
 
 function ChangeProvinceSelection() {

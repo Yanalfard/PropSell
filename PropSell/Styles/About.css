@@ -236,6 +236,8 @@ nav {
     margin-right: 2vw;
     flex-direction: row-reverse !important; }
     nav section.row .exit {
+      border: none;
+      outline: none;
       align-self: center;
       padding: .5vw 1.2vw .8vw 1.2vw;
       vertical-align: central;

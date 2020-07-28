@@ -10,7 +10,6 @@
 
     <script src="../Scripts/UIKit/uikit.js"></script>
     <link href="../Styles/UIKit/uikit.css" rel="stylesheet" />
-    <script src="uikit/dist/js/uikit-icons.min.js"></script>
 
     <script src="../JsDecoders/PropertyJore.js"></script>
 
@@ -39,7 +38,7 @@
     <section class="filter row">
 
         <div class="uk-search uk-search-navbar ">
-            <button class="uk-search-icon-flip" uk-search-icon onclick="Fetch(document.getElementById('searchbox').value)"></button>
+            <button class="uk-search-icon-flip" uk-search-icon onclick="SearchClick()"></button>
             <input id="searchbox" class="uk-search-input" type="search" placeholder="نام">
         </div>
 
@@ -80,15 +79,14 @@
 
         <select id="slcity" class="uk-select " contenteditable="true"></select>
 
-        <input id="price" class="uk-input" type="tel" placeholder="سقف قیمت" />
+            <input id="priceMin" class="uk-input" type="tel" placeholder="کف قیمت" />
+            <input id="priceMax" class="uk-input" type="tel" placeholder="سقف قیمت" />
 
         <div class="uk-margin-small-right"></div>
 
     </section>
 
     <content id="browse" class="browse">
-
-
 
     </content>
 

@@ -11,6 +11,7 @@
     <script src="../../Scripts/UIKit/uikit-icons.js"></script>
 
     <script src="../../Scripts/Jquery/jquery-3.5.1.js"></script>
+    <script src="../../Utilities/Cities.js"></script>
 
     <script src="../../JsDecoders/ClientJore.js"></script>
     <script src="../../JsDecoders/ConstructorJore.js"></script>
@@ -21,6 +22,8 @@
     <script src="../../JsDecoders/UploadJore.js"></script>
     <script src="../../JsDecoders/BjaxLib.js"></script>
     <script src="../../JsDecoders/ImageJore.js"></script>
+    <script src="../../JsDecoders/CityJore.js"></script>
+    <script src="../../JsDecoders/ProvinceJore.js"></script>
 
     <script src="../Scripts/general.js"></script>
 
@@ -60,7 +63,7 @@
 
         <div class="row">
             <input id="file-input" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" multiple />
-            <button class="collapsed uk-button uk-button-primary " onclick="UploadImages()">آپلود</button>
+            <button class="uk-button uk-button-primary " onclick="UploadImages()">آپلود</button>
         </div>
         <div class="row">
             <progress id="imageProgress" class="uk-progress" value="0" max="100"></progress>
@@ -159,7 +162,7 @@
 
         <div class="row right">
             <button class="uk-button uk-button-danger " onclick="window.location.href = 'DbMain.html'">بازگشت</button>
-            <button class="uk-margin-small-left uk-button uk-button-primary" onclick="AcceptCreation()">اضافه</button>
+            <button class="uk-margin-small-left uk-button uk-button-primary" onclick="AcceptEddition()">اضافه</button>
         </div>
     </section>
     <!-- #endregion -->
@@ -167,6 +170,7 @@
 
     <div class="space-double"></div>
 
+    <script src="../../Scripts/Creator.js"></script>
     <script src="../../Scripts/Editor.js"></script>
     <script src="/Scripts/general.js"></script>
 </body>

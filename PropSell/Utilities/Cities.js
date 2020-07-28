@@ -13,12 +13,6 @@ function findCityByProvince(prov) {
     return ans;
 }
 
-const dictionary = {
-}
-
-console.log(findCityByProvince("مرکزی"));
-
-
 const ProvinceList =
     [
         "unselected",

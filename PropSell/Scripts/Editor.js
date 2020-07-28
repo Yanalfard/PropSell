@@ -1,15 +1,22 @@
-﻿//---> int id
-//---> string Title
-//---> string Description
-//---> bool Valid
-//---> bool ShowToFriends
-//---> int UserId
-//---> int CityId
-//---> string Neighborhood
-//---> long Price
-
-
+﻿
 let Property = "";
+
+function ChangeProvinceSelection() {
+    const value = document.getElementById("Province").value;
+    const citySelector = document.getElementById("slcity");
+    if (value == 0) {
+        citySelector.innerHTML = "";
+        return;
+    }
+
+    citySelector.innerHTML = "";
+    for (let item of findCityByProvince(ProvinceList[value])) {
+        citySelector.innerHTML +=
+            `
+                    <option value="${item}">${item}</option>
+            `
+    }
+}
 
 function RetrieveData() {
 
@@ -21,16 +28,29 @@ function RetrieveData() {
     document.getElementById("lblPrice").textContent = Property.Price;
 
     const city = SelectCityById(Property.CityId);
+    const province = SelectProvinceById(city.ProvinceId); 
 
-    document.getElementById("slcity").value = city;
+    if (province == false) {
+        location.reload();
+    }
 
+    document.getElementById("Province").value = province.id;
+
+    ChangeProvinceSelection();
+
+
+    document.getElementById("slcity").value = city.Name;
+
+    document.getElementById("Neighborhood").textContent = Property.Neighborhood;
+
+    //document.getElementById("chShowToFriends").value = Property.ShowToFriends ? "on" : "off";
+    document.getElementById("chShowToFriends").checked = Property.ShowToFriends;
 }
-
-RetrieveData();
 
 function AcceptEddition() {
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
+    const currentProperty = JSON.parse(localStorage.getItem("property"));
 
     const property = {
         Title: document.getElementById("lblName").innerText,
@@ -43,15 +63,43 @@ function AcceptEddition() {
         Price: document.getElementById("lblPrice").innerText
     }
 
-    const ans = AddProperty(property);
+    //const ans = UpdateProperty(property);
 
-    if (ans == false || ans.StatusEffect != 200) {
-        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
-        return;
+    //if (ans == false || ans.StatusEffect != 200) {
+    //    UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+    //    return;
+    //}
+
+    //if (ans.id == -1) {
+    //    UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+    //    return;
+    //}
+
+    const imges = SelectImageByPropertyId(currentProperty.id);
+
+    for (let img of imges) {
+        const t = DeleteImage(img.id);
     }
 
-    if (ans.id == -1) {
-        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
-        return;
+
+    //---> int id
+    //---> int PropertyId
+    //---> int ImageId
+    for (let img of ImageList) {
+        const rel = {
+            PropertyId: currentProperty.id,
+            ImageId: img.id
+        }
+
+        const imageAns = AddPropertyImageRel(rel);
+        if (imageAns == false || imageAns.StatusEffect != 200) {
+            UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+            return;
+        }
     }
+
 }
+
+
+//-
+RetrieveData();
