@@ -8,12 +8,14 @@ namespace PropSell.Models.Dto
         public int id { get; set; }
         public int MeId { get; set; }
         public int FriendId { get; set; }
+        public int Status { get; set; }
+
 
         public HttpStatusCode StatusEffect { get; set; }
 
         public TblFriends ToRegular()
         {
-            return new TblFriends(id, MeId, FriendId);
+            return new TblFriends(id, MeId, FriendId, Status);
         }
 
         public DtoTblFriends(TblFriends friends, HttpStatusCode statusEffect)
@@ -21,7 +23,7 @@ namespace PropSell.Models.Dto
             id = friends.id;
             MeId = friends.MeId;
             FriendId = friends.FriendId;
-
+            Status = friends.Status;
             StatusEffect = statusEffect;
         }
 

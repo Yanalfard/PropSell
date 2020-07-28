@@ -16,6 +16,7 @@ namespace PropSell.Repositories.Api
         List<TblProperty> SelectPropertyByUserId(int userId);
         List<TblProperty> SelectPropertyByCityId(int cityId);
         List<TblProperty> SelectLatestProperties(int count);
+        List<TblProperty> SelectPropertiesByPriceBetween(long min, long max);
 
     }
 }

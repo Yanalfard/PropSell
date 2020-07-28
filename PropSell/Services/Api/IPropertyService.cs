@@ -6,8 +6,8 @@ namespace PropSell.Services.Api
 {
     public interface IPropertyService : IPropertyRepo
     {
-        List<TblImage>SelectImagesByPropertyId(int propertyId);
-        List<TblClient>SelectClientsByPropertyId(int propertyId);
-
+        List<TblImage> SelectImagesByPropertyId(int propertyId);
+        List<TblClient> SelectClientsByPropertyId(int propertyId);
+        List<TblProperty> SelectFriendsProperties(int meId);
     }
 }

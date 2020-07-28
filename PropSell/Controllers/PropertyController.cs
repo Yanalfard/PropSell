@@ -216,5 +216,40 @@ namespace PropSell.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
+
+        public IHttpActionResult SelectFriendsProperties(int meId)
+        {
+            var task = Task.Run(() => new PropertyService().SelectFriendsProperties(meId));
+            if (task.Wait(TimeSpan.FromSeconds(10)))
+                if (task.Result.Count != 0)
+                {
+                    List<DtoTblProperty> dto = new List<DtoTblProperty>();
+                    foreach (TblProperty obj in task.Result)
+                        dto.Add(new DtoTblProperty(obj, HttpStatusCode.OK));
+                    return Ok(dto);
+                }
+                else
+                    return Conflict();
+            return StatusCode(HttpStatusCode.RequestTimeout);
+        }
+
+        public IHttpActionResult SelectPropertiesByPriceBetween(List<object> minMax)
+        {
+            long min = JsonConvert.DeserializeObject<long>(minMax[0].ToString());
+            long max = JsonConvert.DeserializeObject<long>(minMax[1].ToString());
+            var task = Task.Run(() => new PropertyService().SelectPropertiesByPriceBetween(min, max));
+            if (task.Wait(TimeSpan.FromSeconds(10)))
+                if (task.Result.Count != 0)
+                {
+                    List<DtoTblProperty> dto = new List<DtoTblProperty>();
+                    foreach (TblProperty obj in task.Result)
+                        dto.Add(new DtoTblProperty(obj, HttpStatusCode.OK));
+                    return Ok(dto);
+                }
+                else
+                    return Conflict();
+            return StatusCode(HttpStatusCode.RequestTimeout);
+        }
+
     }
 }

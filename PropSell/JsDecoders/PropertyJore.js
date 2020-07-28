@@ -66,3 +66,15 @@ function SelectLatestProperties(count)
     return Bjax('/api/PropertyCore/SelectLatestProperties?count=', count, 'SP');
 }
 
+function SelectFriendsProperties(meId)
+{
+    return Bjax('/api/PropertyCore/SelectFriendsProperties?meId=', meId, 'SP');
+}
+
+function SelectPropertiesByPriceBetween(min, max)
+{
+    var minMax = new Array();
+    minMax.push(min);
+    minMax.push(max);
+    return Bjax('/api/PropertyCore/SelectPropertiesByPriceBetween?meId=', minMax, 'LP');
+}

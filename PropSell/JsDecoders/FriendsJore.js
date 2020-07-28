@@ -1,6 +1,7 @@
 //---> int id
 //---> int MeId
 //---> int FriendId
+//---> int Status
 function AddFriends(friends)
 {
     return Bjax('/api/FriendsCore/AddFriends', friends, 'LP');
