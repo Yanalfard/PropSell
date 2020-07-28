@@ -951,7 +951,7 @@ namespace PropSell.Utilities
             try
             {
                 List<TblProperty> ret = new List<TblProperty>();
-                _command = new SqlCommand($"SELECT * FROM dbo.TblProperty WHERE Price > N'{min}' AND Price < N'{max}'", _connection);
+                _command = new SqlCommand($"SELECT * FROM dbo.TblProperty WHERE Price >= N'{min}' AND Price <= N'{max}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
                     ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? Convert.ToInt32(reader["Price"]) : 0));

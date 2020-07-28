@@ -233,6 +233,8 @@ namespace PropSell.Controllers
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
 
+        [Route("SelectPropertiesByPriceBetween")]
+        [HttpPost]
         public IHttpActionResult SelectPropertiesByPriceBetween(List<object> minMax)
         {
             long min = JsonConvert.DeserializeObject<long>(minMax[0].ToString());
