@@ -38,13 +38,12 @@
   outline: none; }
 
 html {
-  scroll-behavior: smooth;
   /* width */
   /* Track */
   /* Handle */
   /* Handle on hover */ }
   html ::-webkit-scrollbar {
-    width: 1.6vw;
+    width: 1.2vw;
     min-width: 6px; }
   html ::-webkit-scrollbar-track {
     background: #efefef; }
@@ -236,6 +235,24 @@ nav {
     float: right;
     margin-right: 2vw;
     flex-direction: row-reverse !important; }
+    nav section.row .exit {
+      align-self: center;
+      padding: .5vw 1.2vw .8vw 1.2vw;
+      vertical-align: central;
+      color: white;
+      float: right;
+      margin-right: 1vw;
+      overflow-y: hidden;
+      -moz-border-radius: 100px 100px 100px 100px;
+      -webkit-border-radius: 100px 100px 100px 100px;
+      border-radius: 100px 100px 100px 100px;
+      -moz-transition: all ease 0.3s;
+      -o-transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+      transition: all ease 0.3s;
+      background: #dd6458; }
+    nav section.row .exit:hover {
+      background: #e7938b; }
     nav section.row .login {
       align-self: center;
       padding: .5vw 1.2vw .8vw 1.2vw;
@@ -661,8 +678,30 @@ select {
   z-index: 100; }
   .filter > * {
     margin-left: 3vw !important; }
-  .filter .search {
-    min-width: 45vw; }
+  .filter .uk-search {
+    min-width: 30vw;
+    height: 40px;
+    background: #f0f0f0;
+    border: none;
+    -moz-box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
+    -webkit-box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
+    box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
+    -moz-border-radius: 0.3vw 0.3vw 0.3vw 0.3vw;
+    -webkit-border-radius: 0.3vw 0.3vw 0.3vw 0.3vw;
+    border-radius: 0.3vw 0.3vw 0.3vw 0.3vw;
+    background: #FFFFFF; }
+    .filter .uk-search .uk-search-input {
+      font-size: 1rem; }
+  .filter input {
+    background: #f0f0f0;
+    border: none;
+    -moz-box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
+    -webkit-box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
+    box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
+    -moz-border-radius: 0.3vw 0.3vw 0.3vw 0.3vw;
+    -webkit-border-radius: 0.3vw 0.3vw 0.3vw 0.3vw;
+    border-radius: 0.3vw 0.3vw 0.3vw 0.3vw;
+    background: #FFFFFF; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
   .filter {

@@ -3,9 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title>about</title>
+
+    <script src="../Scripts/general.js"></script>
     <link href="/Styles/About.min.css" rel="stylesheet" />
 </head>
 <body>
+
+
 
     <!-- #region Nav -->
     <nav class="row">
@@ -14,8 +18,8 @@
         </a>
         <!-- search -->
         <div class="search row">
-            <input type="text" placeholder=" جستجو" />
-            <button>
+            <input id="txtSearch" type="text" placeholder=" جستجو" />
+            <button onclick="search('txtSearch','Search.html'); ">
                 <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
             </button>
         </div>

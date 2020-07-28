@@ -1,19 +1,8 @@
-﻿//---> int id
-//---> string Title
-//---> string Description
-//---> bool Valid
-//---> bool ShowToFriends
-//---> int UserId
-//---> int CityId
-//---> string Neighborhood
-//---> long Price
-
-let Property = "";
+﻿let Property = "";
 
 function RetrieveData() {
 
     const object = localStorage.getItem("property");
-    console.log(object);
 
     Property = JSON.parse(object);
     document.getElementById("Title").textContent = Property.Title;
@@ -22,13 +11,19 @@ function RetrieveData() {
 
     const images = SelectImageByPropertyId(Property.id);
     const slideshow = document.getElementById("slideshow");
+    const sliderNav = document.getElementById("sliderNav");
     for (const img of images) {
         slideshow.innerHTML = slideshow.innerHTML +
             `
                 <li>
-                   <img src="${img.Name}" alt="" uk-cover>
+                   <img src="${img.Name}" uk-cover>
                 </li>
+            `;
+        sliderNav.innerHTML = sliderNav.innerHTML +
             `
+                <li uk-slideshow-item="${images.indexOf(img)}"><a href="#"><img src="${img.Name}"></a></li>
+            `;
+
     }
 }
 
@@ -50,7 +45,7 @@ function Click() {
     const ans = AddClick(click);
 
     if (ans.StatusEffect != 200) {
-        alert("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
+        UIkit.notification("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
         return;
     }
 
@@ -64,12 +59,12 @@ function Click() {
 
     try {
         if (rel[0].StatusEffect != 200) {
-            alert("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
+            UIkit.notification("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
             return;
         }
     }
     catch {
-        alert("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
+        UIkit.notification("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
         return;
     }
 
@@ -92,10 +87,9 @@ function Click() {
             break;
     }
 
-    debugger;
 
     if (person.StatusEffect != 200) {
-        alert("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
+        UIkit.notification("مشکلی پیش آمد، لطفا بعدا امتحان کنید");
         console.log(person);
         return;
     }

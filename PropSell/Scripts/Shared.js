@@ -1,13 +1,4 @@
-﻿//---> int id
-//---> string Title
-//---> string Description
-//---> bool Valid
-//---> bool ShowToFriends
-//---> int UserId
-//---> int CityId
-//---> string Neighborhood
-//---> long Price
-function generateBlock(divId, model) {
+﻿function generateBlock(divId, model) {
 
     let div = document.getElementById(divId);
     if (!model.Valid) return;
@@ -52,7 +43,7 @@ function modelClick(model) {
 
     localStorage.setItem("property", JSON.stringify(data));
 
-    openInNewTab("DbPropertyEditor.html");
+    openInNewTab("../Property.html");
 }
 
 function openInNewTab(url) {
@@ -62,19 +53,6 @@ function openInNewTab(url) {
 
 function InitializeDashboardBlocks() {
 
-    //switch (localStorage.getItem("userType")) {
-    //    case "Client":
-    //        SelectPropertyByUserId
-    //        break;
-    //    case "Constructor"
-
-    //        break;
-    //    case "Dealer"
-    //        break;
-
-    //    default:
-    //}
-
     const currentUser = JSON.parse(localStorage.getItem("user"));
 
 
@@ -83,7 +61,7 @@ function InitializeDashboardBlocks() {
     if (!Properties) return;
 
     for (let prop of Properties) {
-        generateBlock("blocks", prop );
+        generateBlock("blocks", prop);
     }
 
 

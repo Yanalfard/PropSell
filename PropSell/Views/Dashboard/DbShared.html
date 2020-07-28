@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title></title>
     <link href="/Styles/Dashboard.min.css" rel="stylesheet" />
+    <script src="../Scripts/general.js"></script>
 </head>
 <body>
     <!-- #region Nav -->
@@ -13,13 +14,13 @@
         </a>
         <!-- search -->
         <div class="search row">
-            <input type="text" placeholder=" جستجو" />
-            <button>
+            <input id="txtSearch" type="text" placeholder=" جستجو" />
+            <button onclick="search('txtSearch','../Search.html'); ">
                 <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
             </button>
         </div>
         <section class="row">
-            <a class="exit" href="../Landing.html">خروج</a>
+            <button class="exit" onclick="LogOut()">خروج</button>
             <a href="DbMain.html">داشبورد</a>
             <a href="DbCollabers.html">همکاران</a>
             <a href="DbShared.html">مشارکتی</a>
@@ -29,5 +30,10 @@
 
     <!-- #endregion -->
 
+
+
+
+    <script src="../../Scripts/Shared.js"></script>
+    <script src="/Scripts/general.js"></script>
 </body>
 </html>

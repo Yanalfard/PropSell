@@ -32,7 +32,7 @@ function InitializeFriends() {
                     user = Constructor;
                 }
                 else {
-                    alert("این شماره در سیستم ثبت نشده است");
+                    UIkit.notification("این شماره در سیستم ثبت نشده است");
                     return;
                 }
             }
@@ -53,29 +53,29 @@ function LookForUser() {
     const Tel = document.getElementById("txtTel").value;
 
     if (Tel == "") {
-        alert("لطفا شماره تلفن همراه خود را وارد نمایید");
+        UIkit.notification("لطفا شماره تلفن همراه خود را وارد نمایید");
         return;
     }
 
     if (Tel.length != 11) {
-        alert("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
+        UIkit.notification("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
         return;
     }
 
     if (/^\d+$/.test(Tel) == false) {
-        alert("شماره تلفن صحیح نمی باشد");
+        UIkit.notification("شماره تلفن صحیح نمی باشد");
         return;
     }
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
 
     if (currentUser.TellNo == Tel) {
-        alert("شما نمی توانید خودتان را به عنوان دوست اضافه کنید");
+        UIkit.notification("شما نمی توانید خودتان را به عنوان دوست اضافه کنید");
         return;
     }
 
     if (FriendNums.includes(Tel)) {
-        alert("این شماره در لیست شما وجود دارد");
+        UIkit.notification("این شماره در لیست شما وجود دارد");
         return;
     }
 
@@ -100,7 +100,7 @@ function LookForUser() {
                 user = Constructor;
             }
             else {
-                alert("این شماره در سیستم ثبت نشده است");
+                UIkit.notification("این شماره در سیستم ثبت نشده است");
                 return;
             }
         }
@@ -119,7 +119,7 @@ function LookForUser() {
     }
     catch
     {
-        alert("مشکلی پیش آمد لطفا بعدا امتحان کنید");
+        UIkit.notification("مشکلی پیش آمد لطفا بعدا امتحان کنید");
         return;
     }
 
@@ -133,7 +133,7 @@ function GenerateFriend(user) {
     list.innerHTML = list.innerHTML +
         `
             <!-- #region model -->
-            <li class="row">
+            <li id="${user.TellNo}" class="row">
                 <label>
                     ${user.TellNo}
                 </label>
@@ -147,7 +147,6 @@ function GenerateFriend(user) {
 
 function remove(Tel) {
     let user = ""
-
     const Client = SelectClientByTellNo(Tel);
     if (Client == undefined) return;
 
@@ -167,11 +166,27 @@ function remove(Tel) {
                 user = Constructor;
             }
             else {
-                alert("این شماره در سیستم ثبت نشده است");
+                UIkit.notification("این شماره در سیستم ثبت نشده است");
                 return;
             }
         }
     }
+
+    debugger;
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+    const ans = SelectFriendsByFriendIdAndMeId(user.id, currentUser.id);
+    const delans = DeleteFriends(ans[0].id);
+
+    if (delans != true) {
+        UIkit.notification("مشکلی پیش آمده لطفا بعدا تکرار کنید");
+        return;
+    }
+
+    const ae = document.getElementById(Tel);
+    ae.parentElement.removeChild(ae);
+
+    console.log(ans);
+
 
 
     //Remove Friend by MEID and FriendID

@@ -84,10 +84,12 @@ body {
 
 .userSelector {
     align-content: space-around;
-    padding: .8vw;
+    padding:0 .8vw;
+
+    min-height:32px;
 
     p {
-        margin-bottom: .6vw;
+        margin:auto auto .6vw auto;
     }
 
     .user:hover {
@@ -123,12 +125,16 @@ body {
 }
 
 hr {
-    margin: 10px 25px 15px 25px;
+    margin: 10px 25px 15px 25px!important;
 }
 
 .CallToAction {
     width: 60%;
     margin-bottom: 10px;
+
+    p{
+        margin:auto!important;
+    }
 }
 
 a {
@@ -150,7 +156,7 @@ a {
 
     .userSelector {
         align-content: space-around;
-        padding: 2vw;
+        padding:0 2vw;
 
         p {
             margin-bottom: 1vw;
@@ -199,10 +205,11 @@ a {
             flex: 1.2 !important;
             @include border-radius(0,0,5vw,5vw);
             margin-top: -5vw;
-            z-index: -20;
+            z-index: 1;
             -o-object-fit: cover;
             object-fit: cover;
             background-size: 100% auto;
+            visibility:visible;
         }
 
         .signUp {
@@ -300,7 +307,7 @@ a {
             flex: 1 !important;
             @include border-radius(0,0,2.5vw,2.5vw);
             margin-top: -5vw;
-            z-index: -20;
+            z-index: 1;
             -o-object-fit: cover;
             object-fit: cover;
             background-size: 100% auto;

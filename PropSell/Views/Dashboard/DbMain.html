@@ -27,13 +27,14 @@
         </a>
         <!-- search -->
         <div class="search row">
-            <input type="text" placeholder=" جستجو" />
-            <button>
+            <input id="txtSearch" type="text" placeholder=" جستجو" />
+            <button onclick="search('txtSearch','../Search.html'); ">
                 <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
             </button>
         </div>
         <section class="row">
-            <a class="exit" href="../Landing.html">خروج</a>
+            <button class="exit" onclick="LogOut()">خروج</button>
+
             <a href="DbMain.html">داشبورد</a>
             <a href="DbCollabers.html">همکاران</a>
             <a href="DbShared.html">مشارکتی</a>
@@ -48,7 +49,7 @@
 
     <div class="layout ">
 
-        <aside class="controlPanel column" >
+        <aside class="controlPanel column">
 
             <section>
                 <label>اضافه کردن ملک جدید</label>
@@ -71,5 +72,7 @@
 
 
     <script src="../../Scripts/Dashboard.js"></script>
+    <script src="/Scripts/general.js"></script>
+
 </body>
 </html>

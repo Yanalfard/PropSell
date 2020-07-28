@@ -49,7 +49,8 @@ function generateBlock(divId, model) {
     let div = document.getElementById(divId);
     if (!model.Valid) return;
 
-    const images = SelectImageByPropertyId(model.id);
+    let images = SelectImageByPropertyId(model.id);
+    if (images == undefined || images == false) images = [{ Name: "" }]
 
     //console.log("RAW:" + JSON.stringify(model));
 
@@ -82,8 +83,8 @@ function generateBlock(divId, model) {
         `)
 }
 
-generateBlocks(12, "recent");
-//LoadTop9();
+//generateBlocks(12, "recent");
+LoadTop9();
 
 $('.model').click(function () {
     //var x1 = $(this).children("data").val();

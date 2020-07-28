@@ -179,6 +179,7 @@
     <Content Include="Scripts\Collabers.js" />
     <Content Include="Scripts\Creator.js" />
     <Content Include="Scripts\Dashboard.js" />
+    <Content Include="Scripts\Editor.js" />
     <Content Include="Scripts\general.js" />
     <Content Include="Scripts\Jquery\esm\popper-utils.js" />
     <Content Include="Scripts\Jquery\esm\popper-utils.min.js" />
@@ -217,6 +218,7 @@
     <Content Include="Scripts\LogIn.js" />
     <Content Include="Scripts\Property.js" />
     <Content Include="Scripts\Search.js" />
+    <Content Include="Scripts\Shared.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\UIKit\uikit-icons.js" />
     <Content Include="Scripts\UIKit\uikit-icons.min.js" />
@@ -241,6 +243,7 @@
     <Content Include="Styles\UIKit\uikit.css" />
     <Content Include="Styles\UIKit\uikit.min.css" />
     <Content Include="Test.html" />
+    <Content Include="Utilities\Cities.js" />
     <Content Include="Views\About.html" />
     <Content Include="Views\Dashboard\DbCollabers.html" />
     <Content Include="Views\Dashboard\DbMain.html" />
@@ -357,6 +360,7 @@
     <Content Include="Scripts\Jquery\popper.js.map" />
     <Content Include="Scripts\Jquery\popper-utils.min.js.map" />
     <Content Include="Scripts\Jquery\popper-utils.js.map" />
+    <Content Include="Utilities\Cities.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

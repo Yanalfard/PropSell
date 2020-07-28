@@ -13,9 +13,6 @@ nav {
     background: $NavBackground;
     @include shadow-mega();
 
-
-
-
     > * {
         z-index: 80;
         margin-left: 10px;
@@ -46,6 +43,23 @@ nav {
         float: right;
         margin-right: 2vw;
         flex-direction: row-reverse !important;
+
+        .exit {
+            align-self: center;
+            padding: .5vw 1.2vw .8vw 1.2vw;
+            vertical-align: central;
+            color: white;
+            float: right;
+            margin-right: 1vw;
+            overflow-y: hidden;
+            @include border-radius(100px,100px,100px,100px);
+            @include trans(.3s);
+            background:$Alert;
+        }
+
+        .exit:hover{
+            background:lighten($Alert , 12%);
+        }
 
         .login {
             align-self: center;

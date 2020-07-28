@@ -1,46 +1,90 @@
 ﻿
+function ChangeProvinceSelection() {
+    const value = document.getElementById("Province").value;
+    const citySelector = document.getElementById("slcity");
+    if (value == 0) {
+        citySelector.innerHTML = "";
+        return;
+    }
+
+    citySelector.innerHTML = "";
+    for (let item of findCityByProvince(ProvinceList[value])) {
+        citySelector.innerHTML +=
+            `
+                    <option value="${item}">${item}</option>
+            `
+    }
+}
+
 function AcceptCreation() {
 
-    UploadImages();
+   
 
-    //if (ImageList.length == 0) {
-    //    alert("لطفا تعدادی عکس از ملک خود آپلود کنید");
-    //    return;
-    //}
+    if (document.getElementById("lblName").innerText == "") {
+        UIkit.notification("لطفا یک تیتر برای ملک خود انتخاب کنید");
+        return;
+    }
+    if (document.getElementById("txtText").innerText == "") {
+        UIkit.notification("لطفا مقداری درباره ملک خود توضیح دهید");
+        return;
+    }
+    if (document.getElementById("lblPrice").innerText == "") {
+        UIkit.notification("لطفا قیمت ملک خود را وارد کنید");
+        return;
+    }
 
-    //---> string Title
-    const Title = document.getElementById("lblName").innerText;
-    //---> string Description
-    const Description = document.getElementById("txtText").innerText;
-    //---> bool Valid
-    const Valid = true;
-    //---> bool ShowToFriends
-    let ShowToFriends = document.getElementById("chShowToFriends").value;
-    ShowToFriends = (ShowToFriends == "on") ? true : false;
-    //---> int UserId
-    const UserId = JSON.parse(localStorage.getItem("user")).id;
-    //---> int CityId
-    const CityId = 1;
-    //---> string Neighborhood
-    const NeighborHood = "Here";
-    //---> long Price
-    const Price = document.getElementById("lblName").innerText;
+    if (/^\d+$/.test(document.getElementById("lblPrice").innerText) == false) {
+        UIkit.notification("قسمت قیمت را به ریال و تنها با اعداد وارد کنید");
+        return;
+    }
+
+    const cit = document.getElementById("slcity").value;
+    const prov = document.getElementById("Province").value;
+
+    if (prov == 0) {
+        UIkit.notification("لطفا استان خود را انتخاب کنید");
+        return;
+    }
+
+    if (cit == null || cit == undefined || cit == "") {
+        UIkit.notification("لطفا شهر خود را انتخاب کنید");
+        return;
+    }
+
+    if (document.getElementById("Neighborhood").innerText == "") {
+        UIkit.notification("لطفا محله ملک خود را ذکر کنید");
+        return;
+    }
+
+    
+
+    if (ImageList == [] || ImageList == false || ImageList.length == 0) {
+        UIkit.notification("لطفا تعدادی عکس آپلود کنید");
+        return;
+    }
+
+    const currentUser = JSON.parse(localStorage.getItem("user"));
 
     const property = {
-        Title: Title,
-        Description: Description,
-        Valid: Valid,
-        ShowToFriends: ShowToFriends,
-        UserId: UserId,
-        CityId: CityId,
-        NeighborHood: NeighborHood,
-        Price: Price
+        Title:          document.getElementById("lblName").innerText,
+        Description:    document.getElementById("txtText").innerText,
+        Valid: true,
+        ShowToFriends: (document.getElementById("chShowToFriends").value == "on") ? true : false,
+        UserId: currentUser.id,
+        CityId: 16,
+        NeighborHood: document.getElementById("Neighborhood").innerText,
+        Price:          document.getElementById("lblPrice").innerText
     }
 
     const ans = AddProperty(property);
 
     if (ans == false || ans.StatusEffect != 200) {
-        alert("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+        return;
+    }
+
+    if (ans.id == -1) {
+        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
         return;
     }
 
@@ -55,7 +99,7 @@ function AcceptCreation() {
 
         const imageAns = AddPropertyImageRel(rel);
         if (imageAns == false || imageAns.StatusEffect != 200) {
-            alert("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+            UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
             return;
         }
     }
@@ -72,15 +116,13 @@ function AcceptCreation() {
             Status = 2;
             break;
         default:
-            alert("لطفا یک بار دیگر لاگین کنید");
+            UIkit.notification("لطفا یک بار دیگر لاگین کنید");
             return;
     }
 
 
     var today = new Date();
     const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}-${today.getHours()}:${today.getMinutes()}`;
-
-    debugger;
 
     //--->  id
     //--->  PropertyId
@@ -90,25 +132,32 @@ function AcceptCreation() {
     const rel = {
         id: 0,
         PropertyId: ans.id,
-        UserId: UserId,
+        UserId: currentUser.id,
         Status: Status,
         PostDate: date
     }
 
     const relAns = AddPropertyClientRel(rel);
+    if (relAns == false || relAns.StatusEffect != 200) {
+        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+        return;
+    }
+
+    window.location.href = 'DbMain.html';
 }
 
 
 function UploadImages() {
+
     // user has not chosen any file
     if (document.querySelector('#file-input').files.length == 0) {
-        alert('لطفا عکس انتخاب کنید');
+        UIkit.notification('لطفا عکس انتخاب کنید');
         return;
     }
 
     // user has not chosen any file
     if (document.querySelector('#file-input').files.length >= 6) {
-        alert('لطفا شش عکس انتخاب کنید');
+        UIkit.notification('لطفا شش عکس انتخاب کنید');
         return;
     }
 
@@ -118,13 +167,13 @@ function UploadImages() {
 
         // validate MIME type
         if (mime_types.indexOf(file.type) == -1) {
-            alert('این نوع فایل قابل قبول نیست');
+            UIkit.notification('این نوع فایل قابل قبول نیست');
             return;
         }
 
-        // max 2 MB size allowed
-        if (file.size > 2 * 1024 * 1024) {
-            alert('حد اکثر حجم هر عکس 2 مگا بایت می باشد');
+        // max 1 MB size allowed
+        if (file.size > 1 * 1024 * 1024) {
+            UIkit.notification('حد اکثر حجم هر عکس 1 مگا بایت می باشد');
             return;
         }
     }
@@ -139,13 +188,12 @@ function UploadImages() {
     // in case of multiple files append each of them
     for (let file of files) {
 
-        data.append('file', document.querySelector('#file-input').files[0]);
+        data.append('file', file);
     }
 
     console.log(data);
 
     const brob = data;
-    let ans;
 
     //ans = AjaxImageUpload(brob);
     $.ajax({
@@ -158,15 +206,13 @@ function UploadImages() {
 
         success: function (imageName) {
 
-            ans = imageName;
-
             SendImagesToTheDatabase(imageName);
-
+            return true;
         },
 
         error: function () {
-            alert("مشکلی پیش آمده لطفا بعدا امتحان کنید");
-            return;
+            UIkit.notification("در آپلود عکس ها به سرور مشکلی پیش آمد لطفا بعدا امتحان کنید");
+            return false;
         }
     });
 }
@@ -188,7 +234,7 @@ function SendImagesToTheDatabase(imageName) {
     document.getElementById("imgspinner").classList.remove("collapsed");
 
     var bar = document.getElementById('imageProgress');
-    bar.max = imageName.length;
+    bar.max = imageName.length + 1;
 
     for (let img of imageName) {
 
@@ -199,16 +245,13 @@ function SendImagesToTheDatabase(imageName) {
 
         const ans = AddImage(image);
         if (ans == false) {
-            alert("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+            UIkit.notification("در تعریف عکس ها در پایگاه داده مشکلی پیش آمده لطفا بعدا امتحان کنید");
             return;
         }
-
-        console.log(ans);
 
         ImageList.push(ans);
 
         bar.value += 1;
-
 
     }
     document.getElementById("imgspinner").classList.add("collapsed");

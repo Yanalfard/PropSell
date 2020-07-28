@@ -38,13 +38,12 @@
   outline: none; }
 
 html {
-  scroll-behavior: smooth;
   /* width */
   /* Track */
   /* Handle */
   /* Handle on hover */ }
   html ::-webkit-scrollbar {
-    width: 1.6vw;
+    width: 1.2vw;
     min-width: 6px; }
   html ::-webkit-scrollbar-track {
     background: #efefef; }
@@ -236,6 +235,24 @@ nav {
     float: right;
     margin-right: 2vw;
     flex-direction: row-reverse !important; }
+    nav section.row .exit {
+      align-self: center;
+      padding: .5vw 1.2vw .8vw 1.2vw;
+      vertical-align: central;
+      color: white;
+      float: right;
+      margin-right: 1vw;
+      overflow-y: hidden;
+      -moz-border-radius: 100px 100px 100px 100px;
+      -webkit-border-radius: 100px 100px 100px 100px;
+      border-radius: 100px 100px 100px 100px;
+      -moz-transition: all ease 0.3s;
+      -o-transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+      transition: all ease 0.3s;
+      background: #dd6458; }
+    nav section.row .exit:hover {
+      background: #e7938b; }
     nav section.row .login {
       align-self: center;
       padding: .5vw 1.2vw .8vw 1.2vw;
@@ -707,14 +724,10 @@ select {
     border-radius: 2vw 2vw 2vw 2vw;
     background: #fff; }
 
-.dropzone {
-  width: 40vw; }
-
 .slide-show {
-  top: 1.95vw;
-  left: 2vw;
   position: absolute;
-  width: 35vw;
+  margin: auto;
+  width: 36vw;
   height: auto;
   overflow-y: hidden !important;
   -moz-box-shadow: rgba(48, 48, 48, 0.54) 0 0px 0.6vw;
@@ -733,14 +746,17 @@ select {
     overflow-y: hidden !important; }
 
 .uploader {
-  top: 2.4vw;
+  top: 6.4vw;
   left: 2vw;
-  position: relative;
+  position: fixed;
   overflow-y: hidden !important;
-  width: 34vw; }
+  width: 38vw; }
   .uploader .row {
     background: #f0f0f0;
-    padding: 1vw; }
+    padding: 1vw;
+    overflow-y: hidden !important; }
+    .uploader .row > * {
+      overflow-y: hidden !important; }
     .uploader .row button {
       margin-left: auto !important; }
     .uploader .row input {
@@ -748,23 +764,22 @@ select {
   .uploader > * {
     overflow-y: hidden; }
 
+#sliderNav li a img {
+  width: 3vw !important;
+  height: 3vw !important; }
+
 .content {
-  position: absolute;
-  width: 56.5vw;
-  right: 2vw;
-  top: 6.8vw;
+  margin-left: auto;
+  margin-right: 2vw;
+  width: 52vw;
+  margin-top: 2vw;
   padding: 1.2vw;
   overflow-y: hidden !important;
   background-color: #F3F3F3;
   /*min-height: 234px;*/
-  background: #f0f0f0;
-  border: none;
   -moz-box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
   -webkit-box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
-  box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw;
-  -moz-border-radius: 0.3vw 0.3vw 0.3vw 0.3vw;
-  -webkit-border-radius: 0.3vw 0.3vw 0.3vw 0.3vw;
-  border-radius: 0.3vw 0.3vw 0.3vw 0.3vw; }
+  box-shadow: rgba(48, 48, 48, 0.36) 0 0px 0.4vw; }
   .content header {
     position: relative;
     margin-left: auto;
@@ -799,11 +814,11 @@ select {
       margin: auto 10px;
       padding: .6vw 1vw; }
   .uploader {
-    top: 0;
     left: 0;
-    margin-left: auto;
-    padding: 3vw;
-    width: 34vw; }
+    position: relative;
+    margin: auto auto 5vh auto;
+    padding: 0 !important;
+    width: 96vw; }
     .uploader .row {
       background: #f0f0f0;
       padding: 1vw; }
@@ -813,6 +828,13 @@ select {
         margin: auto; }
     .uploader > * {
       overflow-y: hidden; }
+  #sliderNav li {
+    margin: 0 !important; }
+    #sliderNav li a img {
+      width: 5vw !important;
+      height: 5vw !important; }
+  #slideshow li img {
+    width: 100vw !important; }
   .slide-show {
     position: relative;
     right: 0;
