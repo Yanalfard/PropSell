@@ -76,5 +76,5 @@ function SelectPropertiesByPriceBetween(min, max)
     var minMax = new Array();
     minMax.push(min);
     minMax.push(max);
-    return Bjax('/api/PropertyCore/SelectPropertiesByPriceBetween?meId=', minMax, 'LP');
+    return Bjax('/api/PropertyCore/SelectPropertiesByPriceBetween?minMax=', minMax, 'LP');
 }
