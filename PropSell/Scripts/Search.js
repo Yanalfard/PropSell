@@ -65,8 +65,6 @@ function Fetch(keyword) {
 
     //#region search
 
-    debugger;
-
     let search = false;
 
     try {
@@ -86,6 +84,8 @@ function Fetch(keyword) {
 }
 
 function SearchClick() {
+    debugger;
+
     const min = document.getElementById("priceMin").value;
     const max = document.getElementById("priceMax").value;
 
