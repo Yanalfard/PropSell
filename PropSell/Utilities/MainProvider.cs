@@ -63,13 +63,13 @@ namespace PropSell.Utilities
             {
                 TblFriends friends = (TblFriends)tableObj;
 
-                _commandText = $"insert into TblFriends (MeId , FriendId) values (N'{friends.MeId}' , N'{friends.FriendId}' )";
+                _commandText = $"insert into TblFriends (MeId , FriendId , Status) values (N'{friends.MeId}' , N'{friends.FriendId}' , N'{friends.Status}')";
                 command = new SqlCommand($"select TOP (1) * from TblFriends where MeId = N'{friends.MeId}' ORDER BY id DESC", _connection);
                 _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                return new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0);
+                return new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
             }
             else if (table.GetType() == typeof(TblImage))
             {
@@ -236,7 +236,7 @@ namespace PropSell.Utilities
                 if (table.GetType() == typeof(TblFriends))
                 {
                     TblFriends friends = (TblFriends)tableObj;
-                    _commandText = $"update TblFriends set MeId = N'{friends.MeId}' , FriendId = N'{friends.FriendId}' where id = N'{logId}'";
+                    _commandText = $"update TblFriends set MeId = N'{friends.MeId}' , FriendId = N'{friends.FriendId}' , Status = N'{friends.Status}' where id = N'{logId}'";
                 }
                 else if (table.GetType() == typeof(TblImage))
                 {
@@ -333,7 +333,7 @@ namespace PropSell.Utilities
                     case Tables.TblFriends:
                         List<TblFriends> friendses = new List<TblFriends>();
                         while (reader.Read())
-                            friendses.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0));
+                            friendses.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
                         return friendses;
                     case Tables.TblImage:
                         List<TblImage> images = new List<TblImage>();
@@ -408,7 +408,7 @@ namespace PropSell.Utilities
                 SqlDataReader reader = _command.ExecuteReader();
                 reader.Read();
                 if (table == Tables.TblFriends)
-                    return new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0);
+                    return new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0);
                 else if (table == Tables.TblImage)
                     return new TblImage(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString());
                 else if (table == Tables.TblClick)
@@ -451,7 +451,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select* from TblFriends where MeId = N'{meId}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0));
+                    ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
                 return ret;
             }
             catch
@@ -471,7 +471,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select* from TblFriends where FriendId = N'{friendId}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0));
+                    ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
                 return ret;
             }
             catch
@@ -490,7 +490,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select* from TblFriends where FriendId = N'{friendId}' and MeId = N'{meId}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0));
+                    ret.Add(new TblFriends(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["MeId"].ToString() != "" ? Convert.ToInt32(reader["MeId"]) : 0, reader["FriendId"].ToString() != "" ? Convert.ToInt32(reader["FriendId"]) : 0, reader["Status"].ToString() != "" ? Convert.ToInt32(reader["Status"]) : 0));
                 return ret;
             }
             catch
@@ -945,7 +945,28 @@ namespace PropSell.Utilities
                 _disconnect();
             }
         }
-        #endregion
+
+        public List<TblProperty> SelectPropertiesByPriceBetween(long min, long max)
+        {
+            try
+            {
+                List<TblProperty> ret = new List<TblProperty>();
+                _command = new SqlCommand($"SELECT * FROM dbo.TblProperty WHERE Price > N'{min}' AND Price < N'{max}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                while (reader.Read())
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? Convert.ToInt32(reader["Price"]) : 0));
+                return ret;
+            }
+            catch
+            {
+                return new List<TblProperty>();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+        #endregion
 
     }
 }

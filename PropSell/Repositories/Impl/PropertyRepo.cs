@@ -53,5 +53,10 @@ namespace PropSell.Repositories.Impl
         {
             return new MainProvider().SelectLatestProperties(count);
         }
+
+        public List<TblProperty> SelectPropertiesByPriceBetween(long min, long max)
+        {
+            return new MainProvider().SelectPropertiesByPriceBetween(min, max);
+        }
     }
 }
