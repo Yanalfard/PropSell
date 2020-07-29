@@ -217,6 +217,8 @@ namespace PropSell.Controllers
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
 
+        [Route("SelectFriendsProperties")]
+        [HttpPost]
         public IHttpActionResult SelectFriendsProperties(int meId)
         {
             var task = Task.Run(() => new PropertyService().SelectFriendsProperties(meId));
