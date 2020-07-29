@@ -101,5 +101,9 @@ namespace PropSell.Services.Impl
             return new PropertyRepo().SelectPropertiesByPriceBetween(min, max);
         }
 
+        public List<TblProperty> SelectPropertyByIsOnFirstPage(bool isOnFirstPage)
+        {
+            return new PropertyRepo().SelectPropertyByIsOnFirstPage(isOnFirstPage);
+        }
     }
 }
