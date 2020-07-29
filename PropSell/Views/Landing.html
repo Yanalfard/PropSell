@@ -13,6 +13,11 @@
     <script src="../Scripts/UIKit/uikit.js"></script>
     <link href="../Styles/UIKit/uikit.css" rel="stylesheet" />
     <link href="/Styles/Landing.css" rel="stylesheet" />
+    <script src="../Scripts/general.js"></script>
+    <script src="../Utilities/Cities.js"></script>
+
+    <script src="../JsDecoders/ProvinceJore.js"></script>
+    <script src="../JsDecoders/CityJore.js"></script>
 </head>
 <body>
     <!-- #region Nav -->
@@ -20,10 +25,12 @@
         <a href="Landing.html" class="logo">
             <img class="fillwidth center" src="/Resources/Vector/Logo.svg" />
         </a>
+
+        <!-- NOVIN MELK -->
         <!-- search -->
         <div class="search row">
-            <input type="text" placeholder=" جستجو" />
-            <button>
+            <input id="txtSearch" type="text" placeholder=" جستجو" />
+            <button onclick="search('txtSearch','Search.html');">
                 <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
             </button>
         </div>
@@ -37,6 +44,7 @@
 
     <!-- #endregion -->
 
+
     <section class="hero uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: 250">
 
         <div class="column ">
@@ -44,7 +52,7 @@
             <p>
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
                 متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم ا
-                ست، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای 
+                ست، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای
                 شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
             </p>
         </div>
@@ -52,59 +60,57 @@
     </section>
 
 
-
+    <div class="column uk-margin-medium-right uk-margin-medium-left uk-margin-medium-top uk-margin-remove-bottom">
+        <label class="uk-label uk-margin-auto-left">آپلود های اخیر</label>
+        <hr class="uk-margin-small-top"/>
+    </div>
 
     <!-- recent uploads -->
     <content id="recent" class="browse center">
 
         <!-- #region Model -->
 
-        <!--<a href="Property.html" class="model row center">
+        <!--<a class="model row center">
+            <data class="collapsed">
+            </data>
             <div class="column">
-                <header>
-                    ${model.Title}
-                </header>
+                <header></header>
+
+                <div class="row right uk-margin-small-top uk-margin-remove-bottom">
+                    <label>
+                        تبریز
+                    </label>
+                    <label>
+                        آذربایجان شرقی
+                    </label>
+                </div>
 
                 <p>
-                    ${model.Description}
                 </p>
                 <div class="price row">
                     <img src="../Resources/Vector/real.svg" />
-                    <label>${model.Price}</label>
+                    <label>
+                    </label>
                 </div>
             </div>
 
-            <img src="${images[0].Name}" alt="" />
+            <img src="" alt="" />
         </a>-->
 
         <!-- #endregion -->
 
     </content>
-    <!-- about -->
-    <footer class="row">
-        <ul class="social column">
-            <li>
-                <a href="">
-                    <img src="" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="" alt="" />
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="" alt="" />
-                </a>
-            </li>
-        </ul>
-        <content class="column">
 
-        </content>
-        <iframe class="map" src="" frameborder="0"></iframe>
+    <footer>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d50261.053713977!2d46.27739562910156!3d38.063024599999984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1596010520961!5m2!1sen!2s"
+                    frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"
+                    class="right"></iframe>
+            <div class="row">
+                <label class="uk-label">09355932930</label>
+                <label class="uk-label">www.yoursite.com</label>
+                <label class="uk-label">your address</label>
+            </div>
     </footer>
-
 
     <script src="../Scripts/Landing.js"></script>
 </body>

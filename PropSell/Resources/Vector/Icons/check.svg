@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52">
+  <g id="check" transform="translate(0.352 0.135)">
+    <g id="background">
+      <rect id="Rectangle_97" data-name="Rectangle 97" width="52" height="52" transform="translate(-0.352 -0.135)" fill="none"/>
+    </g>
+    <g id="accept" transform="translate(6.456 9.683)">
+      <path id="Path_327" data-name="Path 327" d="M4,22.139l6.456-6.456,9.683,9.683L39.505,6l6.456,6.456L20.139,38.278Z" transform="translate(-4 -6)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

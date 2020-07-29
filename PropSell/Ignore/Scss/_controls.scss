@@ -13,9 +13,6 @@ nav {
     background: $NavBackground;
     @include shadow-mega();
 
-
-
-
     > * {
         z-index: 80;
         margin-left: 10px;
@@ -46,6 +43,25 @@ nav {
         float: right;
         margin-right: 2vw;
         flex-direction: row-reverse !important;
+
+        .exit {
+            border: none;
+            outline: none;
+            align-self: center;
+            padding: .5vw 1.2vw .8vw 1.2vw;
+            vertical-align: central;
+            color: white;
+            float: right;
+            margin-right: 1vw;
+            overflow-y: hidden;
+            @include border-radius(100px,100px,100px,100px);
+            @include trans(.3s);
+            background: $Alert;
+        }
+
+        .exit:hover {
+            background: lighten($Alert, 12%);
+        }
 
         .login {
             align-self: center;
@@ -166,6 +182,25 @@ nav {
     }
 }
 
+footer {
+    padding: 0;
+    background: $FooterBackround;
+
+        iframe {
+            height: 16vw;
+            width: 30vw;
+            float:right;
+        }
+
+        .row {
+            float:left;
+            label{
+                margin:12px!important;
+
+            }
+        }
+}
+
 
 .search {
     display: flex;
@@ -184,20 +219,19 @@ nav {
         overflow-y: hidden;
         padding: 0 1vw;
         border: none;
-        height: 100%;
         @include border-radius(0,.5vw,.5vw,0);
-        @include trans(.2s);
-
+        height: auto;
+        background: transparent;
+        @include trans(.4s);
 
         .icon {
-            margin: 52% 0;
             vertical-align: middle;
             display: inline-block;
         }
     }
 
     button:hover {
-        background: darken($ControlBackground, 16%);
+        background: darken($ControlBackground, 12%);
         @include trans(.2s);
     }
 }

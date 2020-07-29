@@ -3,8 +3,198 @@
 <head>
     <meta charset="utf-8" />
     <title>ویرایش ملک</title>
-</head>
-<body>
+    <link href="/Styles/Property.min.css" rel="stylesheet" />
 
+    <link href="../../Styles/UIKit/uikit.min.css" rel="stylesheet" />
+
+    <script src="../../Scripts/UIKit/uikit.min.js"></script>
+    <script src="../../Scripts/UIKit/uikit-icons.js"></script>
+
+    <script src="../../Scripts/Jquery/jquery-3.5.1.js"></script>
+    <script src="../../Utilities/Cities.js"></script>
+
+    <script src="../../JsDecoders/ClientJore.js"></script>
+    <script src="../../JsDecoders/ConstructorJore.js"></script>
+    <script src="../../JsDecoders/DealerJore.js"></script>
+    <script src="../../JsDecoders/PropertyClientRelJore.js"></script>
+    <script src="../../JsDecoders/PropertyImageRelJore.js"></script>
+    <script src="../../JsDecoders/PropertyJore.js"></script>
+    <script src="../../JsDecoders/UploadJore.js"></script>
+    <script src="../../JsDecoders/BjaxLib.js"></script>
+    <script src="../../JsDecoders/ImageJore.js"></script>
+    <script src="../../JsDecoders/CityJore.js"></script>
+    <script src="../../JsDecoders/ProvinceJore.js"></script>
+
+    <script src="../Scripts/general.js"></script>
+
+
+</head>
+<body class="column">
+
+    <!-- #region Nav -->
+    <nav class="row">
+        <a href="../Landing.html" class="logo">
+            <img class="fillwidth center" src="/Resources/Vector/Logo.svg" />
+        </a>
+        <!-- search -->
+        <div class="search row">
+            <input id="txtSearch" type="text" placeholder=" جستجو" />
+            <button onclick="search('txtSearch','../Search.html'); ">
+                <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
+            </button>
+        </div>
+        <section class="row">
+            <button class="exit" onclick="LogOut()">خروج</button>
+
+            <a href="DbMain.html">داشبورد</a>
+            <a href="DbCollabers.html">همکاران</a>
+            <a href="DbShared.html">مشارکتی</a>
+        </section>
+    </nav>
+    <div class="space-nav"></div>
+
+    <!-- #endregion -->
+    <!-- #region ImageSlider -->
+    <div class="uploader column">
+
+        <div class="row">
+            <div id="imgspinner" class="uk-spinner collapsed" uk-spinner></div>
+            <label class="right">انتخاب دسته جدید از عکس ها</label>
+        </div>
+
+            <label class="uk-alert-warning uk-padding-small uk-padding-remove-bottom uk-padding-remove-top">با انتخاب عکس جدید، عکس های قبلی از میان می روند</label>
+        <div class="row">
+            <input id="file-input1" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input1'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input2" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input2'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input3" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input3'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input4" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input4'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input5" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input5'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input6" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input6'))">آپلود</button>
+        </div>
+
+        <div class="row">
+            <progress id="imageProgress" class="uk-progress" value="0" max="100"></progress>
+        </div>
+
+    </div>
+
+    <!-- #endregion -->
+    <!-- #region Content -->
+    <section class="content column uk-margin-medium-bottom">
+        <header class="column ">
+            <label class="uk-margin-small-bottom">تیتر</label>
+            <p class="uk-textarea" id="lblName" contenteditable="true"></p>
+            <hr />
+        </header>
+
+        <div class="column uk-margin-small-top">
+            <small>
+                توضیحات
+            </small>
+            <p class="uk-textarea" id="txtText" contenteditable="true">
+
+            </p>
+        </div>
+
+        <content>
+
+        </content>
+
+        <div class="column">
+            <p> قیمت به ریال</p>
+            <p class="uk-textarea right" id="lblPrice" contenteditable="true"></p>
+        </div>
+
+        <div class="space-half"></div>
+
+
+        <div class="column">
+            <div class="column uk-margin-auto-left">
+                <p>استان</p>
+                <select id="Province" class="uk-select uk-margin-small-top" onclick="ChangeProvinceSelection()" contenteditable="true">
+                    <option value="0">استان را انتخاب کنید</option>
+                    <option value="1">آذربایجان شرقی</option>
+                    <option value="2">آذربایجان غربی</option>
+                    <option value="3">اردبیل        </option>
+                    <option value="4">اصفهان</option>
+                    <option value="5">البرز</option>
+                    <option value="6">ایلام</option>
+                    <option value="7">بوشهر</option>
+                    <option value="8">تهران</option>
+                    <option value="9">چهارمحال بختیاری</option>
+                    <option value="10">خراسان جنوبی</option>
+                    <option value="11">خراسان رضوی</option>
+                    <option value="12">خراسان شمالی</option>
+                    <option value="13">خوزستان</option>
+                    <option value="14">زنجان</option>
+                    <option value="15">سمنان</option>
+                    <option value="16">سیستان و بلوچستان</option>
+                    <option value="17">فارس</option>
+                    <option value="18">قزوین</option>
+                    <option value="19">قم</option>
+                    <option value="20">کردستان</option>
+                    <option value="21">کرمان</option>
+                    <option value="22">کرمانشاه</option>
+                    <option value="23">کهکیلویه و بویراحمد</option>
+                    <option value="24">گلستان</option>
+                    <option value="25">گیلان</option>
+                    <option value="26">لرستان</option>
+                    <option value="27">مازندران</option>
+                    <option value="28">مرکزی</option>
+                    <option value="29">هرمزگان</option>
+                    <option value="30">همدان</option>
+                    <option value="31">یزد</option>
+                </select>
+            </div>
+            <div class="column uk-margin-auto-left">
+                <p> شهر </p>
+                <select id="slcity" class="uk-select uk-margin-small-top" contenteditable="true"></select>
+            </div>
+            <div class="column ">
+                <p> محله</p>
+                <p class="uk-textarea" id="Neighborhood" contenteditable="true"></p>
+            </div>
+        </div>
+
+
+        <div class="space-half"></div>
+
+        <div class="row right">
+            <p class="uk-margin-auto-top">به همکاران نشان داده شود</p>
+            <input id="chShowToFriends" class="uk-checkbox uk-margin-small-left uk-margin-auto-top" type="checkbox" />
+        </div>
+
+
+        <div class="space-half"></div>
+
+        <div class="row right">
+            <button class="uk-button uk-button-danger " onclick="window.location.href = 'DbMain.html'">بازگشت</button>
+            <button class="uk-margin-small-left uk-button uk-button-primary" onclick="AcceptEddition()">ویرایش</button>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+
+    <div class="space-double"></div>
+
+    <script src="../../Scripts/Creator.js"></script>
+    <script src="../../Scripts/Editor.js"></script>
+    <script src="/Scripts/general.js"></script>
 </body>
 </html>

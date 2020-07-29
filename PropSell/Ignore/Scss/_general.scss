@@ -13,10 +13,9 @@
 }
 
 html {
-    scroll-behavior: smooth;
     /* width */
     ::-webkit-scrollbar {
-        width: 1.6vw;
+        width: 1.2vw;
         min-width: 6px;
     }
     /* Track */
@@ -139,7 +138,7 @@ img {
 
 .space-nav {
     width: 100vw;
-    height: 4.7vw;
+    height: 4.53vw;
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {

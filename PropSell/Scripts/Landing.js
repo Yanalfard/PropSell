@@ -49,10 +49,13 @@ function generateBlock(divId, model) {
     let div = document.getElementById(divId);
     if (!model.Valid) return;
 
-    const images = SelectImageByPropertyId(model.id);
+    let images = SelectImageByPropertyId(model.id);
+    if (images == undefined || images == false) images = [{ Name: "" }]
 
     //console.log("RAW:" + JSON.stringify(model));
 
+    const city = SelectCityById(model.CityId);
+    const province = SelectProvinceById(city.ProvinceId);
 
     div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
@@ -65,6 +68,15 @@ function generateBlock(divId, model) {
                 <header>
                     ${model.Title}
                 </header>
+
+                <div class="uk-padding-remove right uk-margin-remove-top uk-margin-remove-bottom">
+                    <label>
+                        ${province.Name}
+                    </label>
+                    <label >
+                        ${city.Name}   
+                    </label>
+                </div>
 
                 <p>
                     ${model.Description}
@@ -82,7 +94,7 @@ function generateBlock(divId, model) {
         `)
 }
 
-//generateBlocks(9, "recent");
+//generateBlocks(12, "recent");
 LoadTop9();
 
 $('.model').click(function () {
@@ -96,4 +108,8 @@ $('.model').click(function () {
 function openInNewTab(url) {
     var win = window.open(url, '_blank');
     win.focus();
+}
+
+function PropertyDesigner() {
+    openInNewTab("DbPropertyCreator")
 }

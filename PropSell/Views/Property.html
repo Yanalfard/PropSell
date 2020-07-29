@@ -19,6 +19,7 @@
     <script src="../JsDecoders/ClientJore.js"></script>
     <script src="../JsDecoders/ConstructorJore.js"></script>
     <script src="../JsDecoders/DealerJore.js"></script>
+    <script src="../Scripts/general.js"></script>
 
 </head>
 <body class="column">
@@ -30,8 +31,8 @@
         </a>
         <!-- search -->
         <div class="search row">
-            <input type="text" placeholder=" جستجو" />
-            <button>
+            <input id="txtSearch" type="text" placeholder=" جستجو" />
+            <button onclick="search('txtSearch','Search.html'); ">
                 <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
             </button>
         </div>
@@ -57,29 +58,15 @@
 
     <!-- #region ImageSlider -->
 
-    <aside class="slide-show uk-position-relative uk-visible-toggle uk-light " tabindex="-1" uk-slideshow>
-
-        <ul id="slideshow" class="uk-slideshow-items">
-            <!--<li>
-                <img src="/Resources/Raster/BrickTexture.jpeg" alt="" uk-cover>
-            </li>
-            <li>
-                <img src="/Resources/Raster/HardVertical.jpeg" alt="" uk-cover>
-            </li>
-            <li>
-                <img src="/Resources/Raster/House.jpeg" alt="" uk-cover>
-            </li>
-            <li>
-                <img src="/Resources/Raster/Hero.jpeg" alt="" uk-cover>
-            </li>-->
-        </ul>
-
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
+    <aside class="uploader">
+        <content class="slide-show uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+                <ul id="slideshow" class="uk-slideshow-items"></ul>
+                <ul id="sliderNav" class="row uk-thumbnav "></ul>
+        </content>
     </aside>
 
     <!-- #endregion -->
+
     <!-- #region Content -->
     <section class="content center column">
         <header class="column">
@@ -101,8 +88,6 @@
     </section>
     <!-- #endregion -->
 
-    <div class="space-double"></div>
-    <div class="space-double"></div>
     <div class="space-double"></div>
 
     <script src="../Scripts/Property.js"></script>

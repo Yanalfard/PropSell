@@ -43,11 +43,12 @@
     }
 }
 
+
+
 .slide-show {
-    top: 1.95vw;
-    left: 2vw;
     position: absolute;
-    width: 35vw;
+    margin: auto;
+    width: 36vw;
     height: auto;
     overflow-y: hidden !important;
 
@@ -74,31 +75,67 @@
     }
 }
 
+
+
 .uploader {
-    background: red;
-    top: 2.4vw;
+    top: 2.4vw + 4vw;
     left: 2vw;
-    position: absolute;
-    width: 35vw;
-    height: auto;
+    position: fixed;
     overflow-y: hidden !important;
+    width: 38vw;
 
-    @include shadow-medium();
+    .row {
+        background: darken($Background, 4%);
+        padding: 1vw;
+        overflow-y: hidden !important;
 
-    @include border-radius(0.5vw,0.5vw,0.5vw,0.5vw);
+        > * {
+            overflow-y: hidden !important;
+        }
+
+        button {
+            margin-left: auto !important;
+        }
+
+        input {
+            margin: auto;
+        }
+    }
+
+    > * {
+        overflow-y: hidden;
+    }
 }
 
+#sliderNav {
+    li {
+        a {
+            img {
+                width: 3vw !important;
+                height: 3vw !important;
+            }
+        }
+    }
+}
+
+#slideshow{
+    li{
+        img{
+
+        }
+    }
+}
 
 .content {
-    position: absolute;
-    width: 56.5vw;
-    right: 2vw;
-    top: 2.4vw + 4.4vw;
+    margin-left: auto;
+    margin-right: 2vw;
+    width: 52vw;
+    margin-top: 2vw;
     padding: 1.2vw;
     overflow-y: hidden !important;
     background-color: #F3F3F3;
     /*min-height: 234px;*/
-    @include mat();
+    @include shadow-mild();
 
     header {
         position: relative;
@@ -156,6 +193,53 @@
         }
     }
 
+
+    .uploader {
+        left: 0;
+        position:relative;
+        margin: auto auto 5vh auto;
+        padding: 0 !important;
+        width: 96vw;
+
+        .row {
+            background: darken($Background, 4%);
+            padding: 1vw;
+
+            button {
+                margin-left: auto !important;
+            }
+
+            input {
+                margin: auto;
+            }
+        }
+
+        > * {
+            overflow-y: hidden;
+        }
+    }
+
+    #sliderNav {
+
+        li {
+            margin:0!important;
+            a {
+                img {
+                    width: 5vw !important;
+                    height: 5vw !important;
+                }
+            }
+        }
+    }
+
+
+    #slideshow {
+        li {
+            img {
+                width:100vw!important;
+            }
+        }
+    }
 
     .slide-show {
         position: relative;

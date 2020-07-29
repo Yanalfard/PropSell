@@ -73,27 +73,52 @@ function DealerClick() {
 
 function SignUp() {
     if (mode == "None") {
-        alert("لطفا نوع حساب خود را تعیین کنید");
+        UIkit.notification("لطفا نوع حساب خود را تعیین کنید");
         return;
     }
 
-    switch (mode) {
+    let ans;
+    let userType;
 
-        case "Client":
-            ClientSignUp();
-            break;
+    try {
+        switch (mode) {
 
-        case "Constructor":
-            ConstructorSignUp();
-            break;
+            case "Client":
+                ans = ClientSignUp();
+                userType = "client";
+                break;
 
-        case "Dealer":
-            DealerSignUp();
-            break;
+            case "Constructor":
+                ans = ConstructorSignUp();
+                userType = "constructor";
+                break;
 
-        default:
-            alert("نوع حساب انتخاب نشده است");
+            case "Dealer":
+                ans = DealerSignUp();
+                userType = "dealer";
+                break;
+
+            default:
+                UIkit.notification("نوع حساب انتخاب نشده است");
+        }
+    } catch (e) {
+        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+        console.log(e);
+        return;
     }
+
+    
+    if (ans == undefined) {
+        return;
+    }
+    if (ans == false) {
+        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+        return;
+    }
+    localStorage.setItem("user", JSON.stringify(ans));
+    localStorage.setItem("userType", userType);
+
+    window.location.href = "Dashboard/DbMain.html";
 }
 
 function ClientSignUp() {
@@ -101,36 +126,33 @@ function ClientSignUp() {
     const Identification = document.getElementById('Identification').value;
 
     if (Tel == "") {
-        alert("لطفا شماره تلفن همراه خود را وارد نمایید");
+        UIkit.notification("لطفا شماره تلفن همراه خود را وارد نمایید");
         return;
     }
 
     if (Tel.length != 11) {
-        alert("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
+        UIkit.notification("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
         return;
     }
 
     if (/^\d+$/.test(Tel) == false) {
-        alert("شماره تلفن صحیح نمی باشد");
+        UIkit.notification("شماره تلفن صحیح نمی باشد");
         return;
     }
 
-
-
     if (Identification == "") {
-        alert("لطفا کد ملی خود را وارد نمایید");
+        UIkit.notification("لطفا کد ملی خود را وارد نمایید");
         return;
     }
 
     if (Identification.length != 10) {
-        alert("کد ملی صحیح نمی باشد");
+        UIkit.notification("کد ملی صحیح نمی باشد");
         return;
     }
 
 
     //#region SignUp
 
-    //debugger;
     const Client = {
         TellNo: Tel,
         Identification: Identification
@@ -138,16 +160,15 @@ function ClientSignUp() {
     //console.log(Bjax('https://localhost:44374/api/ClientCore/AddClient', Client, 'LP'));
      
     const ans = AddClient(Client);
-    console.log(ans);
 
     if (ans.id == -1) {
-        alert("این شماره قبلا ثبت شده است");
+        UIkit.notification("این شماره قبلا ثبت شده است");
         return;
     }
 
     //#endregion
 
-    return true;
+    return ans;
 }
 
 function ConstructorSignUp() {
@@ -157,36 +178,36 @@ function ConstructorSignUp() {
 
 
     if (Tel == "") {
-        alert("لطفا شماره تلفن همراه خود را وارد نمایید");
+        UIkit.notification("لطفا شماره تلفن همراه خود را وارد نمایید");
         return;
     }
 
     if (Tel.length != 11) {
-        alert("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
+        UIkit.notification("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
         return;
     }
 
-    if (/^\d+$/.test(Tel)) {
-        alert("شماره تلفن صحیح نمی باشد");
+    if (/^\d+$/.test(Tel) == false) {
+        UIkit.notification("شماره تلفن صحیح نمی باشد");
         return;
     }
 
     if (Identification == "") {
-        alert("لطفا کد ملی خود را وارد نمایید");
+        UIkit.notification("لطفا کد ملی خود را وارد نمایید");
         return;
     }
 
     if (Identification.length != 10) {
-        alert("کد ملی صحیح نمی باشد");
+        UIkit.notification("کد ملی صحیح نمی باشد");
         return;
     }
 
     if (Address == "") {
-        alert("لطفا نام خود را وارد نمایید");
+        UIkit.notification("لطفا نام خود را وارد نمایید");
         return;
     }
 
-    //#region SignUp
+    //#region ()
 
     const Constructor = {
         Tell: Tel,
@@ -195,6 +216,13 @@ function ConstructorSignUp() {
     }
 
     const ans = AddConstructor(Constructor);
+
+    if (ans.id == -1) {
+        UIkit.notification("این شماره قبلا ثبت شده است");
+        return;
+    }
+
+    return ans;
 
     //#endregion
 }
@@ -206,37 +234,37 @@ function DealerSignUp() {
     const Address = document.getElementById('Address').value;
 
     if (Name == "") {
-        alert("لطفا نام و نام خانوادگی خود را وارد نمایید");
+        UIkit.notification("لطفا نام و نام خانوادگی خود را وارد نمایید");
         return;
     }
 
     if (Tel == "") {
-        alert("لطفا شماره تلفن همراه خود را وارد نمایید");
+        UIkit.notification("لطفا شماره تلفن همراه خود را وارد نمایید");
         return;
     }
 
     if (Tel.length != 11) {
-        alert("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
+        UIkit.notification("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
         return;
     }
 
-    if (/^\d+$/.test(Tel)) {
-        alert("شماره تلفن صحیح نمی باشد");
+    if (/^\d+$/.test(Tel) == false) {
+        UIkit.notification("شماره تلفن صحیح نمی باشد");
         return;
     }
 
     if (Identification == "") {
-        alert("لطفا کد ملی خود را وارد نمایید");
+        UIkit.notification("لطفا کد ملی خود را وارد نمایید");
         return;
     }
 
     if (Identification.length != 10) {
-        alert("کد ملی صحیح نمی باشد");
+        UIkit.notification("کد ملی صحیح نمی باشد");
         return;
     }
 
     if (Address == "") {
-        alert("لطفا آدرس خود را وارد نمایید");
+        UIkit.notification("لطفا آدرس خود را وارد نمایید");
         return;
     }
 
@@ -249,7 +277,13 @@ function DealerSignUp() {
         Address: Address
     }
 
-    //const ans = AddDealer(Dealer);
+    const ans = AddDealer(Dealer);
 
+    if (ans.id == -1) {
+        UIkit.notification("این شماره قبلا ثبت شده است");
+        return;
+    }
+
+    return ans;
     //#endregion
 }

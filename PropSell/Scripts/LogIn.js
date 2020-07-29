@@ -7,22 +7,22 @@ function login() {
     const Identification = document.getElementById("Identification").value;
 
     if (Tel == "") {
-        alert("لطفا شماره تلفن همراه خود را وارد نمایید");
+        UIkit.notification("لطفا شماره تلفن همراه خود را وارد نمایید");
         return;
     }
 
     if (Tel.length != 11) {
-        alert("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
+        UIkit.notification("شماره تلفن همراه خود را بدون کد و علامت + وارد نمایید");
         return;
     }
 
     if (/^\d+$/.test(Tel) == false) {
-        alert("شماره تلفن صحیح نمی باشد");
+        UIkit.notification("شماره تلفن صحیح نمی باشد");
         return;
     }
 
     if (Identification == "") {
-        alert("لطفا کد ملی خود را وارد نمایید");
+        UIkit.notification("لطفا کد ملی خود را وارد نمایید");
         return;
     }
 
@@ -46,12 +46,12 @@ function login() {
     }
 
     if (userType === "") {
-        alert("این شماره در سیستم ثبت نشده است");
+        UIkit.notification("این شماره در سیستم ثبت نشده است");
         return;
     }
 
     if (user.Identification !== Identification) {
-        alert("کد ملی درست وارد نشده است");
+        UIkit.notification("کد ملی درست وارد نشده است");
         return;
     }
     //retrieve with 

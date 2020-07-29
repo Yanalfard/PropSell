@@ -2,8 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>همکاران</title>
     <link href="/Styles/Dashboard.min.css" rel="stylesheet" />
+
+
+    <script src="../../JsDecoders/BjaxLib.js"></script>
+    <script src="../../Scripts/Jquery/jquery-3.5.1.js"></script>
+
+    <link href="../../Styles/UIKit/uikit.min.css" rel="stylesheet" />
+    <script src="../../Scripts/UIKit/uikit.min.js"></script>
+    <script src="../../Scripts/UIKit/uikit-icons.js"></script>
+
+    <script src="../../JsDecoders/FriendsJore.js"></script>
+    <script src="../../JsDecoders/ClientJore.js"></script>
+    <script src="../../JsDecoders/ConstructorJore.js"></script>
+    <script src="../../JsDecoders/DealerJore.js"></script>
+
 </head>
 <body>
     <!-- #region Nav -->
@@ -13,13 +27,13 @@
         </a>
         <!-- search -->
         <div class="search row">
-            <input type="text" placeholder=" جستجو" />
-            <button>
+            <input id="txtSearch" type="text" placeholder=" جستجو" />
+            <button onclick="search('txtSearch','../Search.html'); ">
                 <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
             </button>
         </div>
         <section class="row">
-            <a class="exit" href="../Landing.html">خروج</a>
+            <button class="exit" onclick="LogOut()">خروج</button>
             <a href="DbMain.html">داشبورد</a>
             <a href="DbCollabers.html">همکاران</a>
             <a href="DbShared.html">مشارکتی</a>
@@ -29,6 +43,43 @@
 
     <!-- #endregion -->
 
+    <div class="space-half"></div>
 
+    <div class="layout ">
+
+        <aside class="controlPanel column">
+
+            <section>
+                <label>اضافه کردن شریک جدید</label>
+                <small>لطفا شماره تلفن کاربر را وارد نمایید</small>
+
+                <!-- search -->
+                <div class="search row">
+                    <input id="txtTel" type="tel" placeholder="شماره تلفن" />
+                </div>
+
+                <div class="row">
+                    <div id="spinner" class="uk-spinner collapsed" uk-spinner></div>
+                    <button class="uk-button-primary" onclick="LookForUser()">اضافه</button>
+                </div>
+            </section>
+
+        </aside>
+
+        <ul id="collabers" class="collabers column">
+            <!-- #region model -->
+            <!--<li class="row">
+                <label>
+                    1
+                </label>
+                <button onclick="remove('1')">
+                    <img src="../../Resources/Vector/Icons/cross.svg " class="fillwidth" uk-svg />
+                </button>
+            </li>-->
+            <!-- #endregion -->
+        </ul>
+    </div>
+    <script src="../../Scripts/Collabers.js"></script>
+    <script src="/Scripts/general.js"></script>
 </body>
 </html>

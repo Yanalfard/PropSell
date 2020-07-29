@@ -5,7 +5,17 @@
     <title>جستجو</title>
 
     <link href="/Styles/Search.min.css" rel="stylesheet" />
+    <script src="../JsDecoders/BjaxLib.js"></script>
+    <script src="../Scripts/Jquery/jquery-3.5.1.js"></script>
 
+    <script src="../Scripts/UIKit/uikit.js"></script>
+    <link href="../Styles/UIKit/uikit.css" rel="stylesheet" />
+
+    <script src="../JsDecoders/PropertyJore.js"></script>
+
+    <script src="../Utilities/Cities.js"></script>
+    <script src="../JsDecoders/CityJore.js"></script>
+    <script src="../JsDecoders/ProvinceJore.js"></script>
 </head>
 <body>
 
@@ -16,10 +26,9 @@
             <img class="fillwidth center" src="../Resources/Vector/Logo.svg" />
         </a>
         <section class="row">
-            <a href="">لورم</a>
-            <a href="">ایپسوم</a>
-            <a href="">دولور</a>
-            <a href="">ست امتد</a>
+            <a class="login" href="LogIn.html">ورود</a>
+            <a href="Search.html">جستجو</a>
+            <a href="About.html">درباره</a>
         </section>
     </nav>
 
@@ -29,331 +38,62 @@
     <!-- #endregion -->
 
     <section class="filter row">
-        <!-- search -->
-        <div class="search row">
-            <input type="text" placeholder=" جستجو" />
-            <button>
-                <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
-            </button>
+
+        <div class="uk-search uk-search-navbar ">
+            <button class="uk-search-icon-flip" uk-search-icon onclick="SearchClick()"></button>
+            <input id="searchbox" class="uk-search-input" type="search" placeholder="نام">
         </div>
 
-        <select>
-            <option value="0">
-                Hello
-            </option>
-            <option value="0">
-                Hello World
-            </option>
-            <option value="0">
-                Hello ...
-            </option>
-            <option value="0">
-                Bye
-            </option>
+        <select id="Province" class="uk-select " onclick="ChangeProvinceSelection()" contenteditable="true">
+            <option value="0">استان را انتخاب کنید</option>
+            <option value="1">آذربایجان شرقی</option>
+            <option value="2">آذربایجان غربی</option>
+            <option value="3">اردبیل        </option>
+            <option value="4">اصفهان</option>
+            <option value="5">البرز</option>
+            <option value="6">ایلام</option>
+            <option value="7">بوشهر</option>
+            <option value="8">تهران</option>
+            <option value="9">چهارمحال بختیاری</option>
+            <option value="10">خراسان جنوبی</option>
+            <option value="11">خراسان رضوی</option>
+            <option value="12">خراسان شمالی</option>
+            <option value="13">خوزستان</option>
+            <option value="14">زنجان</option>
+            <option value="15">سمنان</option>
+            <option value="16">سیستان و بلوچستان</option>
+            <option value="17">فارس</option>
+            <option value="18">قزوین</option>
+            <option value="19">قم</option>
+            <option value="20">کردستان</option>
+            <option value="21">کرمان</option>
+            <option value="22">کرمانشاه</option>
+            <option value="23">کهکیلویه و بویراحمد</option>
+            <option value="24">گلستان</option>
+            <option value="25">گیلان</option>
+            <option value="26">لرستان</option>
+            <option value="27">مازندران</option>
+            <option value="28">مرکزی</option>
+            <option value="29">هرمزگان</option>
+            <option value="30">همدان</option>
+            <option value="31">یزد</option>
         </select>
 
-        <div class="slider-control column center" >
-            <input type="range" min="1" max="100" value="50" class="slider">
-            <label></label>
-        </div>
+        <select id="slcity" class="uk-select " contenteditable="true">
+            <option value="0">شهر</option>
+        </select>
+
+        <input id="priceMin" class="uk-input" type="tel" placeholder="کف قیمت" />
+        <input id="priceMax" class="uk-input" type="tel" placeholder="سقف قیمت" />
+
+        <div class="uk-margin-small-right"></div>
+
     </section>
 
-    <content class="browse ">
+    <content id="browse" class="browse">
 
-        <!-- #region Model -->
-
-        <a href="" class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="/Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="/Resources/Raster/House.jpeg" alt="" />
-
-        </a>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
-        <!-- #region Model -->
-
-        <div class="model row center">
-            <div class="column">
-                <header>
-                    لورم ایپسوم متن ساختگی
-                </header>
-
-                <p>
-                    با تولید سادگی
-                    نامفهوم از صنعت چاپ و با
-                    استفاده از طراحان گرافیک
-                    است چاپگرها و متون بلکه
-                    روزنامه و مجله در ستون
-                    و سطرآنچنان که لازم است
-                    و برای شرایط فعلی تکنول
-                </p>
-                <div class="price row">
-                    <img src="../Resources/Vector/real.svg" />
-                    <label>1900000</label>
-                </div>
-            </div>
-            <img src="../Resources/Raster/House.jpeg" alt="" />
-
-        </div>
-
-        <!-- #endregion -->
     </content>
 
+    <script src="../Scripts/Search.js"></script>
 </body>
 </html>
