@@ -5,6 +5,7 @@ using System.Web;
 using PropSell.Models.Regular;
 using PropSell.Repositories.Impl;
 using PropSell.Services.Api;
+using PropSell.Utilities;
 
 namespace PropSell.Services.Impl
 {
@@ -88,7 +89,12 @@ namespace PropSell.Services.Impl
                         friendsProperties.AddRange(new PropertyRepo().SelectPropertyByUserId(rel.UserId).Where(i => i.ShowToFriends).Where(j => j.Valid));
                     }
                 }
-                return friendsProperties;
+                List<TblProperty> result = friendsProperties
+                    .GroupBy(s => s.id)
+                    .Select(grp => grp.FirstOrDefault())
+                    .OrderBy(s => s.id)
+                    .ToList();
+                return result;
             }
             catch
             {
