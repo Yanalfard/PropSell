@@ -14,12 +14,13 @@ namespace PropSell.Models.Dto
         public int CityId { get; set; }
         public string Neighborhood { get; set; }
         public long Price { get; set; }
+        public bool IsOnFirstPage { get; set; }
 
         public HttpStatusCode StatusEffect { get; set; }
 
         public TblProperty ToRegular()
         {
-            return new TblProperty(id, Title, Description, Valid, ShowToFriends, UserId, CityId, Neighborhood, Price);
+            return new TblProperty(id, Title, Description, Valid, ShowToFriends, UserId, CityId, Neighborhood, Price, IsOnFirstPage);
         }
 
         public DtoTblProperty(TblProperty property, HttpStatusCode statusEffect)
@@ -33,6 +34,7 @@ namespace PropSell.Models.Dto
             CityId = property.CityId;
             Neighborhood = property.Neighborhood;
             Price = property.Price;
+            IsOnFirstPage = property.IsOnFirstPage;
             StatusEffect = statusEffect;
         }
 

@@ -7,6 +7,7 @@
 //---> int CityId
 //---> string Neighborhood
 //---> long Price
+//---> bool isOnFirstPage
 
 
 function AddProperty(property)
@@ -77,4 +78,9 @@ function SelectPropertiesByPriceBetween(min, max)
     minMax.push(min);
     minMax.push(max);
     return Bjax('/api/PropertyCore/SelectPropertiesByPriceBetween?minMax=', minMax, 'LP');
+}
+
+function SelectPropertyByIsOnFirstPage(isOnFirstPage)
+{
+    return Bjax('/api/PropertyCore/SelectPropertyByIsOnFirstPage?isOnFirstPage=', isOnFirstPage, 'SP');
 }

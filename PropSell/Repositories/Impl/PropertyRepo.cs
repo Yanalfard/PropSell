@@ -58,5 +58,10 @@ namespace PropSell.Repositories.Impl
         {
             return new MainProvider().SelectPropertiesByPriceBetween(min, max);
         }
+
+        public List<TblProperty> SelectPropertyByIsOnFirstPage(bool isOnFirstPage)
+        {
+            return new MainProvider().SelectPropertyByIsOnFirstPage(isOnFirstPage);
+        }
     }
 }

@@ -253,5 +253,22 @@ namespace PropSell.Controllers
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
 
+        [Route("SelectPropertyByIsOnFirstPage")]
+        [HttpPost]
+        public IHttpActionResult SelectPropertyByIsOnFirstPage(bool isOnFirstPage)
+        {
+            var task = Task.Run(() => new PropertyService().SelectPropertyByIsOnFirstPage(isOnFirstPage));
+            if (task.Wait(TimeSpan.FromSeconds(10)))
+                if (task.Result.Count != 0)
+                {
+                    List<DtoTblProperty> dto = new List<DtoTblProperty>();
+                    foreach (TblProperty obj in task.Result)
+                        dto.Add(new DtoTblProperty(obj, HttpStatusCode.OK));
+                    return Ok(dto);
+                }
+                else
+                    return Conflict();
+            return StatusCode(HttpStatusCode.RequestTimeout);
+        }
     }
 }
