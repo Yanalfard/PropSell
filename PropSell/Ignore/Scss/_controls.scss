@@ -186,19 +186,19 @@ footer {
     padding: 0;
     background: $FooterBackround;
 
-        iframe {
-            height: 16vw;
-            width: 30vw;
-            float:right;
-        }
+    iframe {
+        height: 16vw;
+        width: 30vw;
+        float: right;
+    }
 
-        .row {
-            float:left;
-            label{
-                margin:12px!important;
+    .row {
+        float: left;
 
-            }
+        label {
+            margin: 12px !important;
         }
+    }
 }
 
 
@@ -439,6 +439,24 @@ select {
     }
 }
 
+.pilldel {
+    margin: auto auto auto 12px;
+    outline: none;
+    border: none;
+    width: 42px;
+    height: 42px;
+    background: #EE395B;
+    overflow-y: hidden;
+    @include border-radius(21px,21px,21px,21px);
+    padding: 8px;
+    @include trans(0.6s);
+}
+
+.pilldel:hover {
+    background: lighten(#EE395B,12%);
+    @include trans(0.3s);
+}
+
 .model {
     width: 400px;
     height: 260px;
@@ -455,6 +473,9 @@ select {
     .column {
         flex: 1;
         padding: 12px;
+
+
+       
 
         header {
             font-weight: bold;

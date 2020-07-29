@@ -21,26 +21,28 @@ function generateBlock(divId, model) {
     div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
 
-        <a class="model row center" onclick="modelClick(this)">
-            <data class="collapsed">
-                ${JSON.stringify(model)}
-            </data>
-            <div class="column">
-                <header>
-                    ${model.Title}
-                </header>
+                <div class="model row center" onclick="modelClick(this)">
+                    <data class="collapsed">
+                        ${JSON.stringify(model)}
+                    </data>
+                    <div class="column">
+                       
 
-                <p>
-                    ${model.Description}
-                </p>
-                <div class="price row">
-                    <img src="../../Resources/Vector/real.svg" class="uk-margin-small-right"/>
-                    <label>${model.Price}</label>
+                        <header>
+                            ${model.Title}
+                        </header>
+
+                        <p>
+                            ${model.Description}
+                        </p>
+                        <div class="price row">
+                            <img src="../../Resources/Vector/real.svg" class="uk-margin-small-right"/>
+                            <label>${model.Price}</label>
+                        </div>
+                    </div>
+
+                    <img src="${images[0].Name}" alt="" />
                 </div>
-            </div>
-
-            <img src="${images[0].Name}" alt="" />
-        </a>
 
         <!-- #endregion -->
         `)
@@ -53,7 +55,6 @@ function modelClick(model) {
     localStorage.setItem("property", JSON.stringify(data));
 
     window.location = "DbPropertyEditor.html";
-    //openInNewTab("DbPropertyEditor.html");
 }
 
 function openInNewTab(url) {
@@ -84,7 +85,7 @@ function InitializeDashboardBlocks() {
     if (!Properties) return;
 
     for (let prop of Properties) {
-        generateBlock("blocks", prop );
+        generateBlock("blocks", prop);
     }
 
 

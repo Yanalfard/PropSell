@@ -29,6 +29,16 @@
     }
 }
 
+function LoadPremiumBlocks() {
+    const prem = SelectPropertyByIsOnFirstPage(true);
+
+    if (prem == false) return;
+
+    for (let model of prem) {
+        generateBlock("premium", model);
+    }
+}
+
 function LoadTop9() {
     for (const model of SelectLatestProperties(9)) {
         generateBlock("recent", model);
@@ -94,7 +104,7 @@ function generateBlock(divId, model) {
         `)
 }
 
-//generateBlocks(12, "recent");
+LoadPremiumBlocks()
 LoadTop9();
 
 $('.model').click(function () {

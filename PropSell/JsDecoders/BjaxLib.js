@@ -33,7 +33,7 @@ function Bjax(url, input, methodType)
     else if (methodType === 'LP') //Long POST
         $.ajax(
             {
-                url: url,
+                url: APIUrl + url,
                 data: JSON.stringify(input),
                 method: 'Post',
                 contentType: 'application/json',
@@ -51,14 +51,14 @@ function Bjax(url, input, methodType)
     else if (methodType === 'G')//GET
         $.ajax(
             {
-                url: url,
+                url: APIUrl + url,
                 method: 'Get',
                 contentType: 'application/json',
                 dataType: 'json',
                 async: false,
                 success: function (data)
                 {
-                    return r = data;
+                    returner = data;
                 },
                 error: function ()
                 {

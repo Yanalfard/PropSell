@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>مشتریان</title>
+
+    <!-- UIkit CSS -->
+    <link href="../../Styles/UIKit/uikit-rtl.min.css" rel="stylesheet" />
+    <link href="../../Styles/Admin.css" rel="stylesheet" />
+
+    <script src="../../Scripts/Jquery/jquery-3.5.1.js"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.5/dist/js/uikit-icons.min.js"></script>
+
+    <script src="../../JsDecoders/BjaxLib.js"></script>
+    <script src="../../JsDecoders/PropertyJore.js"></script>
+
+    <script src="../../JsDecoders/CityJore.js"></script>
+    <script src="../../JsDecoders/ClientJore.js"></script>
+    <script src="../../JsDecoders/ConstructorJore.js"></script>
+    <script src="../../JsDecoders/DealerJore.js"></script>
+
+
+</head>
+<body onload="LoadClients()">
+
+    <!-- #region Nav -->
+    <nav class="row">
+        <a href="../Landing.html" class="logo">
+            <img class="fillwidth center" src="/Resources/Vector/Logo.svg" />
+        </a>
+
+        <!-- NOVIN MELK -->
+        <section class="row">
+            <a href="AdProperty.html">املاک</a>
+            <a href="AdClient.html">مشتریان</a>
+            <a href="AdConstructor.html">فروشندگان</a>
+            <a href="AdDealer.html">بنگاه</a>
+        </section>
+    </nav>
+    <div class="space-nav"></div>
+
+    <!-- #endregion -->
+    <table dir="rtl" class="uk-margin-small-right uk-table .uk-table-hover uk-table-middle uk-table-divider uk-table uk-table-striped ">
+        <thead>
+            <tr>
+                <th>آی دی</th>
+                <th>شماره تلفن</th>
+                <th>کد ملی</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <script src="../../Scripts/Admin.js"></script>
+</body>
+</html>

@@ -47,6 +47,17 @@ function RetrieveData() {
     document.getElementById("chShowToFriends").checked = Property.ShowToFriends;
 }
 
+function InvalidateProperty() {
+    const currentProperty = JSON.parse(localStorage.getItem("property"));
+    currentProperty.Valid = false;
+
+    const ans = UpdateProperty(currentProperty, currentProperty.id);
+
+    if (ans == false || ans == undefined) return;
+
+    window.location.href = 'DbMain.html';
+}
+
 function AcceptEddition() {
 
     const currentUser = JSON.parse(localStorage.getItem("user"));

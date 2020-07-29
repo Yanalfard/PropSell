@@ -176,6 +176,7 @@
     <Content Include="Resources\Vector\Logo.svg" />
     <Content Include="Resources\Vector\real.svg" />
     <Content Include="Resources\Vector\SCroll.svg" />
+    <Content Include="Scripts\Admin.js" />
     <Content Include="Scripts\Collabers.js" />
     <Content Include="Scripts\Creator.js" />
     <Content Include="Scripts\Dashboard.js" />
@@ -201,6 +202,7 @@
     <Content Include="Ignore\Scss\_general.scss" />
     <Content Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults" />
+    <Content Include="Ignore\Scss\Admin.scss" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.js" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.min.js" />
@@ -226,6 +228,10 @@
     <Content Include="Scripts\UIKit\uikit.min.js" />
     <Content Include="Styles\About.css" />
     <Content Include="Styles\About.min.css" />
+    <Content Include="Styles\Admin.css" />
+    <Content Include="Styles\Admin.min.css">
+      <DependentUpon>Admin.css</DependentUpon>
+    </Content>
     <Content Include="Styles\Dashboard.css" />
     <Content Include="Styles\Dashboard.min.css">
       <DependentUpon>Dashboard.css</DependentUpon>
@@ -245,6 +251,10 @@
     <Content Include="Test.html" />
     <Content Include="Utilities\Cities.js" />
     <Content Include="Views\About.html" />
+    <Content Include="Views\Admin\AdClient.html" />
+    <Content Include="Views\Admin\AdConstructor.html" />
+    <Content Include="Views\Admin\AdDealer.html" />
+    <Content Include="Views\Admin\AdProperty.html" />
     <Content Include="Views\Dashboard\DbCollabers.html" />
     <Content Include="Views\Dashboard\DbMain.html" />
     <Content Include="Views\Dashboard\DbPropertyCreator.html" />
