@@ -82,5 +82,5 @@ function SelectPropertiesByPriceBetween(min, max)
 
 function SelectPropertyByIsOnFirstPage(isOnFirstPage)
 {
-    return Bjax('true', isOnFirstPage, 'SP');
+    return Bjax('/api/PropertyCore/SelectPropertyByIsOnFirstPage?isOnFirstPage=', isOnFirstPage, 'SP');
 }
