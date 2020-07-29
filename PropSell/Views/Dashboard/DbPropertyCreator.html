@@ -25,8 +25,7 @@
     <script src="../../JsDecoders/ProvinceJore.js"></script>
     <script src="../../Utilities/Cities.js"></script>
 
-    <script src="../Scripts/general.js"></script>
-
+    <script src="../../Scripts/general.js"></script>
 </head>
 <body class="column">
 
@@ -45,23 +44,47 @@
         <section class="row">
             <button class="exit" onclick="LogOut()">خروج</button>
 
-            <a href="../Search.html">جستجو</a>
-            <a href="../About.html">درباره</a>
+            <a href="DbMain.html">داشبورد</a>
+            <a href="DbCollabers.html">همکاران</a>
+            <a href="DbShared.html">مشارکتی</a>
         </section>
     </nav>
     <div class="space-nav"></div>
 
     <!-- #endregion -->
+
     <!-- #region ImageSlider -->
     <div class="uploader column">
         <div class="row ">
-            <div id="imgspinner" class="uk-spinner collapsed" uk-spinner></div>
+            <div id="imgspinner" class="uk-spinner uk-margin-auto collapsed" uk-spinner></div>
             <label class="right">تعدادی عکس انتخاب کنید</label>
         </div>
+
         <div class="row">
-            <input id="file-input" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" multiple />
-            <button class="uk-button uk-button-primary" onclick="UploadImages()">آپلود</button>
+            <input id="file-input1" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input1'))">آپلود</button>
         </div>
+        <div class="row">
+            <input id="file-input2" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input2'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input3" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input3'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input4" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input4'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input5" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input5'))">آپلود</button>
+        </div>
+        <div class="row">
+            <input id="file-input6" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input6'))">آپلود</button>
+        </div>
+
         <div class="row">
             <progress id="imageProgress" class="uk-progress" value="0" max="100"></progress>
         </div>
@@ -102,7 +125,7 @@
                 <p>استان</p>
                 <select id="Province" class="uk-select uk-margin-small-top" onclick="ChangeProvinceSelection()" contenteditable="true">
                     <option value="0">استان را انتخاب کنید</option>
-                    <option value="1">آذربایجان شرقی</option>
+                    <option value="1">آذربايجان شرقي</option>
                     <option value="2">آذربایجان غربی</option>
                     <option value="3">اردبیل        </option>
                     <option value="4">اصفهان</option>

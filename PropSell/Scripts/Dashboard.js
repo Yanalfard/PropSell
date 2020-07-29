@@ -52,7 +52,8 @@ function modelClick(model) {
 
     localStorage.setItem("property", JSON.stringify(data));
 
-    openInNewTab("DbPropertyEditor.html");
+    window.location = "DbPropertyEditor.html";
+    //openInNewTab("DbPropertyEditor.html");
 }
 
 function openInNewTab(url) {
@@ -93,5 +94,6 @@ InitializeDashboardBlocks()
 
 function PropertyDesigner() {
 
-    openInNewTab("DbPropertyCreator.html");
+    //openInNewTab("DbPropertyCreator.html");
+    window.location = "DbPropertyCreator.html";
 }

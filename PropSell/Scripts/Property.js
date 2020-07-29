@@ -12,6 +12,12 @@ function RetrieveData() {
     const images = SelectImageByPropertyId(Property.id);
     const slideshow = document.getElementById("slideshow");
     const sliderNav = document.getElementById("sliderNav");
+
+    if (images == false) {
+        document.querySelector(".slide-show").classList.add('collapsed');
+        return;
+    }
+
     for (const img of images) {
         slideshow.innerHTML = slideshow.innerHTML +
             `

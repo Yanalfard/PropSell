@@ -144,21 +144,23 @@ function AcceptCreation() {
 }
 
 
-function UploadImages() {
+function UploadImages(element) {
+
+    debugger;
 
     // user has not chosen any file
-    if (document.querySelector('#file-input').files.length == 0) {
+    if (element.files.length == 0) {
         UIkit.notification('لطفا عکس انتخاب کنید');
         return;
     }
 
     // user has not chosen any file
-    if (document.querySelector('#file-input').files.length >= 6) {
-        UIkit.notification('لطفا شش عکس انتخاب کنید');
+    if (element.files.length != 1) {
+        UIkit.notification('لطفا تنها یک عکس انتخاب کنید');
         return;
     }
 
-    for (let file of document.querySelector('#file-input').files) {
+    for (let file of element.files) {
         // allowed types
         var mime_types = ['image/jpeg', 'image/png'];
 
@@ -180,19 +182,15 @@ function UploadImages() {
     var data = new FormData();
 
     // file selected by the user
-    const files = document.querySelector('#file-input').files;
+    const files = element.files;
 
     // in case of multiple files append each of them
     for (let file of files) {
-
         data.append('file', file);
     }
 
-    console.log(data);
-
     const brob = data;
 
-    //ans = AjaxImageUpload(brob);
     $.ajax({
         url: '/api/upload/uploadfile',
         type: 'POST',
@@ -230,9 +228,6 @@ let ImageList = [];
 function SendImagesToTheDatabase(imageName) {
     document.getElementById("imgspinner").classList.remove("collapsed");
 
-    var bar = document.getElementById('imageProgress');
-    bar.max = imageName.length + 1;
-
     for (let img of imageName) {
 
         const image = {
@@ -248,9 +243,11 @@ function SendImagesToTheDatabase(imageName) {
 
         ImageList.push(ans);
 
-        bar.value += 1;
-
     }
+
+    var bar = document.getElementById('imageProgress');
+    bar.value = bar.max;
+
     document.getElementById("imgspinner").classList.add("collapsed");
 
 }

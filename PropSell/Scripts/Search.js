@@ -20,11 +20,13 @@ function generateBlock(divId, model) {
 
     //console.log("RAW:" + JSON.stringify(model));
 
+    const city = SelectCityById(model.CityId);
+    const province = SelectProvinceById(city.ProvinceId);
 
     div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
 
-        <a class="model row center">
+        <a class="model row center" onclick="modelClick(this)">
             <data class="collapsed">
                 ${JSON.stringify(model)}
             </data>
@@ -32,6 +34,15 @@ function generateBlock(divId, model) {
                 <header>
                     ${model.Title}
                 </header>
+
+                <div class="uk-padding-remove right uk-margin-remove-top uk-margin-remove-bottom">
+                    <label>
+                        ${province.Name}
+                    </label>
+                    <label >
+                        ${city.Name}   
+                    </label>
+                </div>
 
                 <p>
                     ${model.Description}
@@ -49,13 +60,15 @@ function generateBlock(divId, model) {
         `)
 }
 
-$('.model').click(function () {
-    //var x1 = $(this).children("data").val();
-    localStorage.setItem("property", $(this).children("data").text());
+function modelClick(model) {
 
-    openInNewTab("Property.html");
-    //console.log(x1);
-})
+    const data = JSON.parse(model.childNodes[1].innerHTML);
+
+    localStorage.setItem("property", JSON.stringify(data));
+
+    window.location = "Property.html";
+    //openInNewTab("DbPropertyEditor.html");
+}
 
 function Fetch(keyword) {
 
@@ -84,17 +97,48 @@ function Fetch(keyword) {
 }
 
 function SearchClick() {
-    debugger;
 
     const min = document.getElementById("priceMin").value;
     const max = document.getElementById("priceMax").value;
 
+    const prov = document.getElementById("Province").value;
+    const city = document.getElementById("slcity").value;
+    const name = document.getElementById("searchbox").value;
+
+    const searchProvince = (prov == 0) ? false : true;
+    const searchCity = (city == 0) ? false : true;
+    const searchName = (name == "") ? false : true;
+
+    //user chosen ids
+    let provinceId = prov;
+    let cityId = SelectCityByName(city).id;
+
     let props = [];
 
+    document.getElementById("browse").innerHTML = "";
     if (min != "" && max != "") {
         props = SelectPropertiesByPriceBetween(min, max);
         if (props == null || props == false) {
             return;
+        }
+
+        for (let prop of props) {
+            if (searchName) {
+                if (!prop.Title.includes(name)) continue;
+            }
+
+            if (searchProvince) {
+                const propCity = SelectCityById(prop.CityId);
+                const propProvince = SelectProvinceById(propCity.ProvinceId);
+
+                if (propProvince.id != provinceId) continue;
+
+                if (searchCity) {
+                    if (propCity.id != cityId) continue;
+                }
+            }
+
+            generateBlock("browse", prop);
         }
     }
 

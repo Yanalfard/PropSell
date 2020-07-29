@@ -172,7 +172,6 @@ function remove(Tel) {
         }
     }
 
-    debugger;
     const currentUser = JSON.parse(localStorage.getItem("user"));
     const ans = SelectFriendsByFriendIdAndMeId(user.id, currentUser.id);
     const delans = DeleteFriends(ans[0].id);

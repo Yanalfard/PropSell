@@ -28,11 +28,11 @@ function RetrieveData() {
     document.getElementById("lblPrice").textContent = Property.Price;
 
     const city = SelectCityById(Property.CityId);
-    const province = SelectProvinceById(city.ProvinceId); 
+    const province = SelectProvinceById(city.ProvinceId);
 
-    if (province == false) {
-        location.reload();
-    }
+    //if (province == false) {
+    //    location.reload();
+    //}
 
     document.getElementById("Province").value = province.id;
 
@@ -52,52 +52,71 @@ function AcceptEddition() {
     const currentUser = JSON.parse(localStorage.getItem("user"));
     const currentProperty = JSON.parse(localStorage.getItem("property"));
 
+    const cit = document.getElementById("slcity").value;
+    const prov = document.getElementById("Province").value;
+
+    const city = SelectCityByName(cit);
+
+
     const property = {
+        //id: currentProperty.id,
         Title: document.getElementById("lblName").innerText,
         Description: document.getElementById("txtText").innerText,
         Valid: true,
         ShowToFriends: (document.getElementById("chShowToFriends").value == "on") ? true : false,
         UserId: currentUser.id,
-        CityId: 16,
-        NeighborHood: "Here",
+        CityId: city.id,
+        NeighborHood: document.getElementById("Neighborhood").innerText,
         Price: document.getElementById("lblPrice").innerText
     }
 
-    //const ans = UpdateProperty(property);
+    const ans = UpdateProperty(property, currentProperty.id);
 
-    //if (ans == false || ans.StatusEffect != 200) {
-    //    UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
-    //    return;
-    //}
+    if (ans == false) {
+        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+        return;
+    }
 
-    //if (ans.id == -1) {
-    //    UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
-    //    return;
-    //}
+    if (ans.id == -1) {
+        UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+        return;
+    }
 
-    const imges = SelectImageByPropertyId(currentProperty.id);
+    localStorage.setItem("property", JSON.stringify(property));
 
-    for (let img of imges) {
-        const t = DeleteImage(img.id);
+    if (ImageList.length != 0) {
+        //-user has uploaded images
+
+        const imges = SelectImageByPropertyId(currentProperty.id);
+
+        if (imges != false) {
+            for (let img of imges) {
+                const t = DeleteImage(img.id);
+            }
+        }
+        //-there used to be no images
+
+
+        //---> int id
+        //---> int PropertyId
+        //---> int ImageId
+        for (let img of ImageList) {
+            const rel = {
+                PropertyId: currentProperty.id,
+                ImageId: img.id
+            }
+
+            const imageAns = AddPropertyImageRel(rel);
+            if (imageAns == false || imageAns.StatusEffect != 200) {
+                UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
+                return;
+            }
+        }
+
     }
 
 
-    //---> int id
-    //---> int PropertyId
-    //---> int ImageId
-    for (let img of ImageList) {
-        const rel = {
-            PropertyId: currentProperty.id,
-            ImageId: img.id
-        }
-
-        const imageAns = AddPropertyImageRel(rel);
-        if (imageAns == false || imageAns.StatusEffect != 200) {
-            UIkit.notification("مشکلی پیش آمده لطفا بعدا امتحان کنید");
-            return;
-        }
-    }
-
+    window.location = "DbMain.html";
 }
 
 

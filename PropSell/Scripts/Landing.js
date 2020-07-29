@@ -54,6 +54,8 @@ function generateBlock(divId, model) {
 
     //console.log("RAW:" + JSON.stringify(model));
 
+    const city = SelectCityById(model.CityId);
+    const province = SelectProvinceById(city.ProvinceId);
 
     div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
@@ -66,6 +68,15 @@ function generateBlock(divId, model) {
                 <header>
                     ${model.Title}
                 </header>
+
+                <div class="uk-padding-remove right uk-margin-remove-top uk-margin-remove-bottom">
+                    <label>
+                        ${province.Name}
+                    </label>
+                    <label >
+                        ${city.Name}   
+                    </label>
+                </div>
 
                 <p>
                     ${model.Description}

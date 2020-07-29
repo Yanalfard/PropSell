@@ -43,7 +43,8 @@ function modelClick(model) {
 
     localStorage.setItem("property", JSON.stringify(data));
 
-    openInNewTab("../Property.html");
+    window.location = "DbPropertyCreator.html";
+    //openInNewTab("../Property.html");
 }
 
 function openInNewTab(url) {
@@ -52,7 +53,6 @@ function openInNewTab(url) {
 }
 
 function InitializeDashboardBlocks() {
-    debugger;
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
 

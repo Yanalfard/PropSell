@@ -65,7 +65,7 @@ p {
   color: rgba(95, 95, 95, 0.85); }
 
 body {
-  background: #FAFAFA; }
+  background: #fff; }
 
 .center {
   text-align: center;
@@ -362,6 +362,18 @@ nav {
       nav section.row a {
         padding: .8vw 2vw;
         font-size: 4vw; } }
+
+footer {
+  padding: 0;
+  background: #3C3C3C; }
+  footer iframe {
+    height: 16vw;
+    width: 30vw;
+    float: right; }
+  footer .row {
+    float: left; }
+    footer .row label {
+      margin: 12px !important; }
 
 .search {
   display: flex;
