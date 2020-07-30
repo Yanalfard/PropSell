@@ -32,4 +32,7 @@
 {
     return Bjax('/api/ClientCore/SelectClientByIdentification?identification=', identification, 'SP');
 }
-
+function SelectClientByTellNoLike(tellNo)
+{
+    return Bjax('/api/ClientCore/SelectClientByTellNoLike?tellNo=', tellNo, 'SP');
+}

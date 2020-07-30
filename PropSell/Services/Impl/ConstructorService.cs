@@ -39,5 +39,9 @@ namespace PropSell.Services.Impl
             return new ConstructorRepo().SelectConstructorByIdentification(identification);
         }
 
+        public List<TblConstructor> SelectConstructorByTellNoLike(string tellNo)
+        {
+            return new ConstructorRepo().SelectConstructorByTellNoLike(tellNo);
+        }
     }
 }

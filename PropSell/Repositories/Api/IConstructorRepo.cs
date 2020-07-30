@@ -12,6 +12,7 @@ namespace PropSell.Repositories.Api
         TblConstructor SelectConstructorById(int id);
         TblConstructor SelectConstructorByTellNo(string tellNo);
         List<TblConstructor> SelectConstructorByIdentification(int identification);
+        List<TblConstructor> SelectConstructorByTellNoLike(string tellNo);
 
     }
 }

@@ -43,5 +43,9 @@ namespace PropSell.Services.Impl
             return new DealerRepo().SelectDealerByName(name);
         }
 
+        public List<TblDealer> SelectDealerByTellNoLike(string tellNo)
+        {
+            return new DealerRepo().SelectDealerByTellNoLike(tellNo);
+        }
     }
 }
