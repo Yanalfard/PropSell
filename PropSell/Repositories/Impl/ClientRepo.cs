@@ -37,5 +37,9 @@ namespace PropSell.Repositories.Impl
             return new MainProvider().SelectClientByIdentification(identification);
         }
 
+        public List<TblClient> SelectClientByTellNoLike(string tellNo)
+        {
+            return new MainProvider().SelectClientByTellNoLike(tellNo);
+        }
     }
 }

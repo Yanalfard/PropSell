@@ -38,4 +38,8 @@
 {
     return Bjax('/api/DealerCore/SelectDealerByName?name=', name, 'SP');
 }
+function SelectDealerByTellNoLike(tellNo)
+{
+    return Bjax('/api/DealerCore/SelectDealerByTellNoLike?tellNo=', tellNo, 'SP');
+}
 

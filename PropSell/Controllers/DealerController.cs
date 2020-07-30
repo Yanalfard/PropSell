@@ -122,6 +122,24 @@ namespace PropSell.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-
+
+
+        [Route("SelectDealerByTellNoLike")]
+        [HttpPost]
+        public IHttpActionResult SelectDealerByTellNoLike(string tellNo)
+        {
+            var task = Task.Run(() => new DealerService().SelectDealerByTellNoLike(tellNo));
+            if (task.Wait(TimeSpan.FromSeconds(10)))
+                if (task.Result.Count != 0)
+                {
+                    List<DtoTblDealer> dto = new List<DtoTblDealer>();
+                    foreach (TblDealer obj in task.Result)
+                        dto.Add(new DtoTblDealer(obj, HttpStatusCode.OK));
+                    return Ok(dto);
+                }
+                else
+                    return Conflict();
+            return StatusCode(HttpStatusCode.RequestTimeout);
+        }
     }
 }

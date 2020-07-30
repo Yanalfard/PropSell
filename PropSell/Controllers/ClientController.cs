@@ -109,6 +109,22 @@ namespace PropSell.Controllers
                 else
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
+        }        [Route("SelectClientByTellNoLike")]
+        [HttpPost]
+        public IHttpActionResult SelectClientByTellNoLike(string tellNo)
+        {
+            var task = Task.Run(() => new ClientService().SelectClientByTellNoLike(tellNo));
+            if (task.Wait(TimeSpan.FromSeconds(10)))
+                if (task.Result.Count != 0)
+                {
+                    List<DtoTblClient> dto = new List<DtoTblClient>();
+                    foreach (TblClient obj in task.Result)
+                        dto.Add(new DtoTblClient(obj, HttpStatusCode.OK));
+                    return Ok(dto);
+                }
+                else
+                    return Conflict();
+            return StatusCode(HttpStatusCode.RequestTimeout);
         }
 
     }

@@ -33,4 +33,8 @@
 {
     return Bjax('/api/ConstructorCore/SelectConstructorByIdentification?identification=', identification, 'SP');
 }
+function SelectConstructorByTellNoLike(tellNo)
+{
+    return Bjax('/api/ConstructorCore/SelectConstructorByTellNoLike?tellNo=', tellNo, 'SP');
+}
 

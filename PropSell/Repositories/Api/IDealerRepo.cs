@@ -13,6 +13,7 @@ namespace PropSell.Repositories.Api
         TblDealer SelectDealerByTellNo(string tellNo);
         List<TblDealer> SelectDealerByIdentification(int identification);
         TblDealer SelectDealerByName(string name);
+        List<TblDealer> SelectDealerByTellNoLike(string tellNo);
 
     }
 }

@@ -12,6 +12,6 @@ namespace PropSell.Repositories.Api
         TblClient SelectClientById(int id);
         TblClient SelectClientByTellNo(string tellNo);
         List<TblClient> SelectClientByIdentification(int identification);
-
+        List<TblClient> SelectClientByTellNoLike(string tellNo);
     }
 }

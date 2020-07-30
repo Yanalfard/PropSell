@@ -110,6 +110,23 @@ namespace PropSell.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-
+        
+        [Route("SelectConstructorByTellNoLike")]
+        [HttpPost]
+        public IHttpActionResult SelectConstructorByTellNoLike(string tellNo)
+        {
+            var task = Task.Run(() => new ConstructorService().SelectConstructorByTellNoLike(tellNo));
+            if (task.Wait(TimeSpan.FromSeconds(10)))
+                if (task.Result.Count != 0)
+                {
+                    List<DtoTblConstructor> dto = new List<DtoTblConstructor>();
+                    foreach (TblConstructor obj in task.Result)
+                        dto.Add(new DtoTblConstructor(obj, HttpStatusCode.OK));
+                    return Ok(dto);
+                }
+                else
+                    return Conflict();
+            return StatusCode(HttpStatusCode.RequestTimeout);
+        }
     }
 }
