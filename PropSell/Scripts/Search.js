@@ -26,7 +26,7 @@ function generateBlock(divId, model) {
     div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
 
-        <a class="model row center" onclick="modelClick(this)">
+        <div class="model row center" onclick="modelClick(this)">
             <data class="collapsed">
                 ${JSON.stringify(model)}
             </data>
@@ -54,7 +54,7 @@ function generateBlock(divId, model) {
             </div>
 
             <img src="${images[0].Name}" alt="" />
-        </a>
+        </div>
 
         <!-- #endregion -->
         `)

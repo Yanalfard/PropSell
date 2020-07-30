@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>املاک مشترک</title>
+    <link rel="icon" href="/Resources/Vector/TabLogo.svg">
+
+
+    <link href="../../Styles/Dashboard.css" rel="stylesheet" />
+
+    <script src="../../JsDecoders/BjaxLib.js"></script>
+    <script src="../../Scripts/Jquery/jquery-3.5.1.js"></script>
+
+    <link href="../../Styles/UIKit/uikit.min.css" rel="stylesheet" />
+    <script src="../../Scripts/UIKit/uikit.min.js"></script>
+    <script src="../../Scripts/UIKit/uikit-icons.js"></script>
+
+    <script src="../../JsDecoders/FriendsJore.js"></script>
+    <script src="../../JsDecoders/ClientJore.js"></script>
+    <script src="../../JsDecoders/ConstructorJore.js"></script>
+    <script src="../../JsDecoders/DealerJore.js"></script>
+    <script src="../../JsDecoders/PropertyJore.js"></script>
+
+</head>
+<body onload="LoadFriendProperties()">
+
+    <!-- #region Nav -->
+    <nav class="row">
+        <a href="../Landing.html" class="logo">
+            <img class="fillwidth center" src="/Resources/Vector/Logo.svg" />
+        </a>
+        <!-- search -->
+        <div class="search row">
+            <input id="txtSearch" type="text" placeholder=" جستجو" />
+            <button onclick="search('txtSearch','../Search.html'); ">
+                <img class="icon " src="/Resources/Vector/Icons/Search.svg" />
+            </button>
+        </div>
+        <section class="row">
+            <button class="exit" onclick="LogOut()">خروج</button>
+            <a href="DbMain.html">داشبورد</a>
+            <a href="DbCollabers.html">همکاران</a>
+            <a href="DbShared.html">مشارکتی</a>
+        </section>
+    </nav>
+    <div class="space-nav"></div>
+
+    <!-- #endregion -->
+
+    <content id="blocks" class="browse center">
+
+    </content>
+
+    <script src="../../Scripts/Shared.js"></script>
+    <script src="/Scripts/general.js"></script>
+</body>
+</html>

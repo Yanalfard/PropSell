@@ -40,7 +40,11 @@ function LoadPremiumBlocks() {
 }
 
 function LoadTop9() {
-    for (const model of SelectLatestProperties(9)) {
+    const latest = SelectLatestProperties(9);
+
+    if (latest == false) return;
+
+    for (const model of latest) {
         generateBlock("recent", model);
     }
 }
@@ -54,6 +58,7 @@ function LoadTop9() {
 //---> int CityId
 //---> string Neighborhood
 //---> long Price
+
 function generateBlock(divId, model) {
 
     let div = document.getElementById(divId);
@@ -79,6 +84,7 @@ function generateBlock(divId, model) {
                     ${model.Title}
                 </header>
 
+
                 <div class="uk-padding-remove right uk-margin-remove-top uk-margin-remove-bottom">
                     <label>
                         ${province.Name}
@@ -87,6 +93,8 @@ function generateBlock(divId, model) {
                         ${city.Name}   
                     </label>
                 </div>
+
+                <span class="uk-label uk-margin-auto-left">${model.Neighborhood}</span>
 
                 <p>
                     ${model.Description}

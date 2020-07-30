@@ -363,6 +363,12 @@ nav {
         padding: .8vw 2vw;
         font-size: 4vw; } }
 
+.browse {
+  padding: 2.5vw;
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
 footer {
   padding: 0;
   background: #3C3C3C; }
@@ -634,12 +640,12 @@ select {
     border: none; }
 
 .pilldel {
-  margin: auto auto auto 12px;
+  margin: 12px !important;
   outline: none;
   border: none;
   width: 42px;
   height: 42px;
-  background: #EE395B;
+  background: #61ed57;
   overflow-y: hidden;
   -moz-border-radius: 21px 21px 21px 21px;
   -webkit-border-radius: 21px 21px 21px 21px;
@@ -648,7 +654,8 @@ select {
   -moz-transition: all ease 0.6s;
   -o-transition: all ease 0.6s;
   -webkit-transition: all ease 0.6s;
-  transition: all ease 0.6s; }
+  transition: all ease 0.6s;
+  z-index: 100; }
 
 .pilldel:hover {
   background: #f3718a;
@@ -658,6 +665,7 @@ select {
   transition: all ease 0.3s; }
 
 .model {
+  cursor: pointer;
   width: 400px;
   height: 260px;
   margin: 1vh auto;
@@ -757,10 +765,21 @@ select {
         -webkit-transition: all ease 0.2s;
         transition: all ease 0.2s; }
       .layout .collabers li label {
+        cursor: pointer;
         margin: auto;
         flex: 5;
         padding: 0.5vw 1vw 0.5vw 0.5vw;
-        font-size: 1.4vw; }
+        font-size: 1.4vw;
+        -moz-transition: all ease 0.45s;
+        -o-transition: all ease 0.45s;
+        -webkit-transition: all ease 0.45s;
+        transition: all ease 0.45s; }
+      .layout .collabers li label:hover {
+        background: #e1e1e1;
+        -moz-transition: all ease 0.2s;
+        -o-transition: all ease 0.2s;
+        -webkit-transition: all ease 0.2s;
+        transition: all ease 0.2s; }
   .layout .controlPanel {
     width: 32vw;
     margin-bottom: auto; }

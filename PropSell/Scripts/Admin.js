@@ -13,6 +13,19 @@ function RemoveProperty(id) {
 
 function RemoveClient(id) {
 
+    const properties = SelectPropertyByUserId(id);
+
+    for (let property of properties) {
+        property.Valid = false;
+        const delans = UpdateProperty(property, property.id);
+    }
+
+    const friends = SelectFriendsByMeId(id);
+
+    for (let friend of friends) {
+        const delans = DeleteFriends(friend.id);
+    }
+
     const ans = DeleteClient(id);
     if (ans == false) return;
 
@@ -20,6 +33,19 @@ function RemoveClient(id) {
 }
 
 function RemoveConstructor(id) {
+    const properties = SelectPropertyByUserId(id);
+
+    for (let property of properties) {
+        property.Valid = false;
+        const delans = UpdateProperty(property, property.id);
+    }
+
+    const friends = SelectFriendsByMeId(id);
+
+    for (let friend of friends) {
+        const delans = DeleteFriends(friend.id);
+    }
+
     const ans = DeleteConstructor(id);
     if (ans == false) return;
 
@@ -27,6 +53,19 @@ function RemoveConstructor(id) {
 }
 
 function RemoveDealer() {
+    const properties = SelectPropertyByUserId(id);
+
+    for (let property of properties) {
+        property.Valid = false;
+        const delans = UpdateProperty(property, property.id);
+    }
+
+    const friends = SelectFriendsByMeId(id);
+
+    for (let friend of friends) {
+        const delans = DeleteFriends(friend.id);
+    }
+
     const ans = DeleteDealer(id);
     if (ans == false) return;
 
@@ -38,33 +77,34 @@ function LoadProperties() {
     let properties = SelectAllPropertys();
     properties = SelectAllPropertys();
 
-
-
     if (properties == false || properties == undefined) return;
 
     const tbody = document.getElementById("tbody");
 
-    
+
 
     for (let prop of properties) {
-        let isChecked = (prop.valid) ? 'checked' : '';
+        let isChecked = (prop.Valid) ? 'checked' : '';
         let isVisible = (prop.ShowToFriends) ? 'checked' : '';
-        let isOnFirstPage = (prop.isOnFirstPage) ? 'checked' : '';
+        let isOnFirstPage = (prop.IsOnFirstPage) ? 'checked' : '';
+
+        let city = SelectCityById(prop.CityId).Name;
+        if (city == false || city == undefined) city = prop.CityId;
 
         tbody.innerHTML +=
             `
             <tr id="record${prop.id}">
                 <td class="uk-margin-auto-left">${prop.id}</td>
-                <td>${prop.Titel}</td>
+                <td>${prop.Title}</td>
                 <td>${prop.Description}</td>
-                <td><input class="uk-checkbox" type="checkbox" ${isChecked} /></td>
-                <td><input class="uk-checkbox" type="checkbox" ${isVisible} /></td>
+                <td><input class="uk-checkbox " disabled type="checkbox" ${isChecked} /></td>
+                <td><input class="uk-checkbox " disabled type="checkbox" ${isVisible} /></td>
                 <td>${prop.UserId}</td>
-                <td>${prop.CityId}</td>
+                <td>${city}</td>
                 <td>${prop.Neighborhood}</td>
                 <td>${prop.Price}</td>
-                <td><input class="uk-checkbox" type="checkbox" ${isOnFirstPage} /></td>
-                <td><button class="uk-button uk-button-danger" onclick="RemoveProperty(${prop.id})">حذف</button></td>
+                <td><input class="uk-checkbox " disabled type="checkbox" ${isOnFirstPage} /></td>
+                <td><button class="uk-button    uk-button-danger" onclick="RemoveProperty(${prop.id})">حذف</button></td>
             </tr>  
             `;
     }
@@ -117,7 +157,6 @@ function LoadDealers() {
                 <td>${dealer.TellNo}</td>
                 <td>${dealer.Identification}</td>
                 <td>${dealer.Address}</td>
-                <td>${dealer.Name}</td>
                 <td><button class="uk-button uk-button-danger" onclick="RemoveDealer(${dealer.id})">حذف</button></td>
             </tr>  
             `;

@@ -12,7 +12,7 @@
     div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
 
-        <a class="model row center" onclick="modelClick(this)">
+        <div class="model row center" onclick="modelClick(this)">
             <data class="collapsed">
                 ${JSON.stringify(model)}
             </data>
@@ -31,7 +31,7 @@
             </div>
 
             <img src="${images[0].Name}" alt="" />
-        </a>
+        </div>
 
         <!-- #endregion -->
         `)
@@ -43,7 +43,7 @@ function modelClick(model) {
 
     localStorage.setItem("property", JSON.stringify(data));
 
-    window.location = "DbPropertyCreator.html";
+    window.location = "../Property.html";
     //openInNewTab("../Property.html");
 }
 
@@ -54,9 +54,12 @@ function openInNewTab(url) {
 
 function InitializeDashboardBlocks() {
 
-    debugger;
-
     const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (currentUser == null || currentUser == undefined) {
+        window.location = "../Login.html";
+        return;
+    }
 
     const Properties = SelectFriendsProperties(currentUser.id);
 
@@ -67,9 +70,26 @@ function InitializeDashboardBlocks() {
     }
 }
 
-InitializeDashboardBlocks()
-
 function PropertyDesigner() {
 
     openInNewTab("DbPropertyCreator.html");
+}
+
+function LoadFriendProperties() {
+    debugger;
+
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (currentUser == null || currentUser == undefined) {
+        window.location = "../Login.html";
+        return;
+    }
+
+    const Properties = JSON.parse(localStorage.getItem("friendProperties"));
+
+    if (Properties == false || Properties == undefined || Properties.length == 0) return;
+
+    for (let prop of Properties) {
+        generateBlock("blocks", prop);
+    }
 }

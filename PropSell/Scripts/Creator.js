@@ -17,6 +17,15 @@
 
 function AcceptCreation() {
 
+    debugger;
+
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (currentUser == null || currentUser == undefined) {
+        window.location = "../Login.html";
+        return;
+    }
+
     if (document.getElementById("lblName").innerText == "") {
         UIkit.notification("لطفا یک تیتر برای ملک خود انتخاب کنید");
         return;
@@ -60,17 +69,15 @@ function AcceptCreation() {
 
     const city = SelectCityByName(cit);
 
-    const currentUser = JSON.parse(localStorage.getItem("user"));
-
     const property = {
-        Title:          document.getElementById("lblName").innerText,
-        Description:    document.getElementById("txtText").innerText,
+        Title: document.getElementById("lblName").innerText,
+        Description: document.getElementById("txtText").innerText,
         Valid: true,
         ShowToFriends: (document.getElementById("chShowToFriends").value == "on") ? true : false,
         UserId: currentUser.id,
         CityId: city.id,
         NeighborHood: document.getElementById("Neighborhood").innerText,
-        Price:          document.getElementById("lblPrice").innerText
+        Price: document.getElementById("lblPrice").innerText
     }
 
     const ans = AddProperty(property);
@@ -162,7 +169,7 @@ function UploadImages(element) {
 
     for (let file of element.files) {
         // allowed types
-        var mime_types = ['image/jpeg', 'image/png'];
+        var mime_types = ['image/jpg', 'image/png'];
 
         // validate MIME type
         if (mime_types.indexOf(file.type) == -1) {
@@ -225,6 +232,8 @@ function HidePreloader() {
 ///Image Objects
 let ImageList = [];
 
+let imageCount = 0;
+
 function SendImagesToTheDatabase(imageName) {
     document.getElementById("imgspinner").classList.remove("collapsed");
 
@@ -250,4 +259,24 @@ function SendImagesToTheDatabase(imageName) {
 
     document.getElementById("imgspinner").classList.add("collapsed");
 
+    debugger;
+
+    const slideshow = document.getElementById("slideshow");
+    const slideNav = document.getElementById("sliderNav");
+
+    imageName = `/Resources/Imges/${imageName}`;
+
+    imageCount += 1;
+
+    slideshow.innerHTML = slideshow.innerHTML +
+        `
+                <li>
+
+                   <img src="${imageName}" uk-cover>
+                </li>
+            `;
+    sliderNav.innerHTML = sliderNav.innerHTML +
+        `
+                <li uk-slideshow-item="${imageCount}"><a href="#"><img src="${imageName}"></a></li>
+            `;
 }

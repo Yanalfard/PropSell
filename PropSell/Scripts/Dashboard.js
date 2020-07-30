@@ -17,8 +17,14 @@ function generateBlock(divId, model) {
     if (images == undefined || images == false) images = [{ Name: "" }]
     //console.log("RAW:" + JSON.stringify(model));
 
+    //---> int id
+    //---> string Date
+    //---> int PropertyId
+    let clickCount = SelectClickByPropertyId(model.id).length;
 
-    div.innerHTML = div.innerHTML.concat(`
+    if (clickCount == undefined || clickCount == false) clickCount = 0;
+
+        div.innerHTML = div.innerHTML.concat(`
         <!-- #region Model -->
 
                 <div class="model row center" onclick="modelClick(this)">
@@ -27,6 +33,7 @@ function generateBlock(divId, model) {
                     </data>
                     <div class="column">
                        
+                             <span class="uk-badge uk-position-absolute">${clickCount}</span>
 
                         <header>
                             ${model.Title}
@@ -64,6 +71,13 @@ function openInNewTab(url) {
 
 function InitializeDashboardBlocks() {
 
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (currentUser == null || currentUser == undefined) {
+        window.location = "../Login.html";
+        return;
+    }
+
     //switch (localStorage.getItem("userType")) {
     //    case "Client":
     //        SelectPropertyByUserId
@@ -77,8 +91,8 @@ function InitializeDashboardBlocks() {
     //    default:
     //}
 
-    const currentUser = JSON.parse(localStorage.getItem("user"));
 
+ 
 
     const Properties = SelectPropertyByUserId(currentUser.id);
 

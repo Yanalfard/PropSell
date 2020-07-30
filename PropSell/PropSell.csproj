@@ -176,6 +176,7 @@
     <Content Include="Resources\Vector\Logo.svg" />
     <Content Include="Resources\Vector\real.svg" />
     <Content Include="Resources\Vector\SCroll.svg" />
+    <Content Include="Resources\Vector\TabLogo.svg" />
     <Content Include="Scripts\Admin.js" />
     <Content Include="Scripts\Collabers.js" />
     <Content Include="Scripts\Creator.js" />
@@ -256,6 +257,7 @@
     <Content Include="Views\Admin\AdDealer.html" />
     <Content Include="Views\Admin\AdProperty.html" />
     <Content Include="Views\Dashboard\DbCollabers.html" />
+    <Content Include="Views\Dashboard\DbFriendProperties.html" />
     <Content Include="Views\Dashboard\DbMain.html" />
     <Content Include="Views\Dashboard\DbPropertyCreator.html" />
     <Content Include="Views\Dashboard\DbPropertyEditor.html" />

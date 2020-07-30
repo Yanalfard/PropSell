@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>ملک</title>
+    <link rel="icon" href="/Resources/Vector/TabLogo.svg">
+
     <link href="/Styles/Property.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="../Styles/UIKit/uikit.min.css" />
@@ -19,6 +21,8 @@
     <script src="../JsDecoders/ClientJore.js"></script>
     <script src="../JsDecoders/ConstructorJore.js"></script>
     <script src="../JsDecoders/DealerJore.js"></script>
+    <script src="../JsDecoders/ProvinceJore.js"></script>
+    <script src="../JsDecoders/CityJore.js"></script>
     <script src="../Scripts/general.js"></script>
 
 </head>
@@ -48,7 +52,7 @@
 
     <aside class="call row">
         <label id="callNumber" class="call-number collapsed">
-            
+
         </label>
         <button class="call-button" onclick="Click()">
             <img class="center" src="/Resources/Vector/Icons/call.svg" alt="" />
@@ -60,8 +64,8 @@
 
     <aside class="uploader">
         <content class="slide-show uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
-                <ul id="slideshow" class="uk-slideshow-items"></ul>
-                <ul id="sliderNav" class="row uk-thumbnav "></ul>
+            <ul id="slideshow" class="uk-slideshow-items"></ul>
+            <ul id="sliderNav" class="row uk-thumbnav "></ul>
         </content>
     </aside>
 
@@ -74,8 +78,19 @@
             <hr />
         </header>
 
+        <div class="row uk-margin-auto-left">
+            <p id="Province" class="uk-margin-small-right">
+            </p>
+            <p id="City">
+            </p>
+        </div>
+        <p id="NeighborHood" class="uk-margin-auto-left uk-label">
+        </p>
+
         <p id="Description">
         </p>
+
+
 
         <content>
 

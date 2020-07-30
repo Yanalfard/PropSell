@@ -7,7 +7,7 @@
 //---> int CityId
 //---> string Neighborhood
 //---> long Price
-//---> bool isOnFirstPage
+//---> bool IsOnFirstPage
 
 
 function AddProperty(property)

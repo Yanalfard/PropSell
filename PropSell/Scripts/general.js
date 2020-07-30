@@ -1,5 +1,12 @@
 ﻿function search(input, link) {
+    debugger;
     const keyword = document.getElementById(input).value;
+
+    if (keyword == "Admin") {
+        window.location.href = "Admin/AdClient.html";
+        return;
+    }
+
     localStorage.setItem("keyword", keyword);
     window.location.href = link;
 }

@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>ویرایش ملک</title>
+    <link rel="icon" href="/Resources/Vector/TabLogo.svg">
+
 
     <link href="/Styles/Property.min.css" rel="stylesheet" />
 
@@ -63,12 +65,27 @@
             <label class="right">انتخاب دسته جدید از عکس ها</label>
         </div>
 
-            <label class="uk-alert-warning uk-padding-small uk-padding-remove-bottom uk-padding-remove-top">با انتخاب عکس جدید، عکس های قبلی از میان می روند</label>
+        <label class="uk-alert-warning uk-padding-small uk-padding-remove-bottom uk-padding-remove-top">با انتخاب عکس جدید، عکس های قبلی از میان می روند</label>
         <div class="row">
             <input id="file-input1" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
-            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input1'))">آپلود</button>
+            <button class="uk-button uk-button-primary" onclick="UploadClick(); UploadImages(document.getElementById('file-input1'))">آپلود</button>
         </div>
+
         <div class="row">
+            <progress id="imageProgress" class="uk-progress uk-margin-remove" value="0" max="100"></progress>
+        </div>
+
+        <!-- #region ImageSlider -->
+
+        <div class="row">
+            <content class="slide-show uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+                <ul id="slideshow" class="uk-slideshow-items"></ul>
+                <ul id="sliderNav" class="row uk-thumbnav "></ul>
+            </content>
+        </div>
+
+        <!-- #endregion -->
+        <!--<div class="row">
             <input id="file-input2" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
             <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input2'))">آپلود</button>
         </div>
@@ -87,11 +104,9 @@
         <div class="row">
             <input id="file-input6" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
             <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input6'))">آپلود</button>
-        </div>
+        </div>-->
 
-        <div class="row">
-            <progress id="imageProgress" class="uk-progress" value="0" max="100"></progress>
-        </div>
+
 
     </div>
 

@@ -1,5 +1,8 @@
-﻿
-let Property = "";
+﻿let Property = "";
+
+let imageCountr = 0;
+
+let hasChangedImages = false;
 
 function ChangeProvinceSelection() {
     const value = document.getElementById("Province").value;
@@ -17,7 +20,7 @@ function ChangeProvinceSelection() {
             `
     }
 }
-
+ 
 function RetrieveData() {
 
     const object = localStorage.getItem("property");
@@ -45,6 +48,33 @@ function RetrieveData() {
 
     //document.getElementById("chShowToFriends").value = Property.ShowToFriends ? "on" : "off";
     document.getElementById("chShowToFriends").checked = Property.ShowToFriends;
+    //-
+    const images = SelectImageByPropertyId(Property.id);
+    const slideshow = document.getElementById("slideshow");
+    const sliderNav = document.getElementById("sliderNav");
+
+    if (images == false) {
+        document.querySelector(".slide-show").classList.add('collapsed');
+        return;
+    }
+
+    for (const img of images) {
+        imageCountr = imageCountr + 1;
+        console.log(imageCountr);
+
+        slideshow.innerHTML = slideshow.innerHTML +
+            `
+                <li>
+                   <img src="${img.Name}" uk-cover>
+                </li>
+            `;
+        sliderNav.innerHTML = sliderNav.innerHTML +
+            `
+                <li uk-slideshow-item="${imageCountr}"><a href="#"><img src="${img.Name}"></a></li>
+            `;
+
+    }
+
 }
 
 function InvalidateProperty() {
@@ -61,6 +91,12 @@ function InvalidateProperty() {
 function AcceptEddition() {
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (currentUser == null || currentUser == undefined) {
+        window.location = "../Login.html";
+        return;
+    }
+
     const currentProperty = JSON.parse(localStorage.getItem("property"));
 
     const cit = document.getElementById("slcity").value;
@@ -130,6 +166,15 @@ function AcceptEddition() {
     window.location = "DbMain.html";
 }
 
+function UploadClick() {
+    if (hasChangedImages) return;
+    hasChangedImages = true;
+    const slideshow = document.getElementById("slideshow");
+    const slideNav = document.getElementById("sliderNav");
+
+    slideshow.innerHTML = "";
+    sliderNav.innerHTML = "";
+}
 
 //-
 RetrieveData();

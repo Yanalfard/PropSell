@@ -182,6 +182,13 @@ nav {
     }
 }
 
+.browse {
+    padding: 2.5vw;
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
+}
+
 footer {
     padding: 0;
     background: $FooterBackround;
@@ -440,16 +447,17 @@ select {
 }
 
 .pilldel {
-    margin: auto auto auto 12px;
+    margin: 12px!important;
     outline: none;
     border: none;
     width: 42px;
     height: 42px;
-    background: #EE395B;
+    background: #61ed57;
     overflow-y: hidden;
     @include border-radius(21px,21px,21px,21px);
     padding: 8px;
     @include trans(0.6s);
+    z-index: 100;
 }
 
 .pilldel:hover {
@@ -458,6 +466,7 @@ select {
 }
 
 .model {
+    cursor: pointer;
     width: 400px;
     height: 260px;
     margin: 1vh auto;
@@ -475,7 +484,7 @@ select {
         padding: 12px;
 
 
-       
+
 
         header {
             font-weight: bold;

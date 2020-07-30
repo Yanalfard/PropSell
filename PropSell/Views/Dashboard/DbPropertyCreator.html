@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>ملک جدید</title>
+    <link rel="icon" href="/Resources/Vector/TabLogo.svg">
 
     <link href="../../Styles/Property.css" rel="stylesheet" />
 
@@ -54,8 +55,9 @@
 
     <!-- #endregion -->
 
-    <!-- #region ImageSlider -->
+    <!-- #region ImageUploader -->
     <div class="uploader column">
+
         <div class="row ">
             <div id="imgspinner" class="uk-spinner uk-margin-auto collapsed" uk-spinner></div>
             <label class="right">تعدادی عکس انتخاب کنید</label>
@@ -65,30 +67,44 @@
             <input id="file-input1" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
             <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input1'))">آپلود</button>
         </div>
-        <div class="row">
-            <input id="file-input2" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
-            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input2'))">آپلود</button>
-        </div>
-        <div class="row">
-            <input id="file-input3" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
-            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input3'))">آپلود</button>
-        </div>
-        <div class="row">
-            <input id="file-input4" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
-            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input4'))">آپلود</button>
-        </div>
-        <div class="row">
-            <input id="file-input5" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
-            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input5'))">آپلود</button>
-        </div>
-        <div class="row">
-            <input id="file-input6" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
-            <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input6'))">آپلود</button>
-        </div>
+
+        <!-- #region name -->
+        <!--<div class="row">
+        <input id="file-input2" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+        <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input2'))">آپلود</button>
+    </div>
+    <div class="row">
+        <input id="file-input3" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+        <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input3'))">آپلود</button>
+    </div>
+    <div class="row">
+        <input id="file-input4" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+        <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input4'))">آپلود</button>
+    </div>
+    <div class="row">
+        <input id="file-input5" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+        <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input5'))">آپلود</button>
+    </div>
+    <div class="row">
+        <input id="file-input6" class=" uk-margin-small-left" type="file" accept="image/jpeg, image/png" />
+        <button class="uk-button uk-button-primary" onclick="UploadImages(document.getElementById('file-input6'))">آپلود</button>
+    </div>-->
+        <!-- #endregion -->
 
         <div class="row">
             <progress id="imageProgress" class="uk-progress" value="0" max="100"></progress>
         </div>
+
+        <!--SlideShow-->
+        <!--SlideShow-->
+        <!--SlideShow-->
+        <div class="row">
+            <content class="slide-show uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+                <ul id="slideshow" class="uk-slideshow-items"></ul>
+                <ul id="sliderNav" class="row uk-thumbnav "></ul>
+            </content>
+        </div>
+
     </div>
 
     <!-- #endregion -->

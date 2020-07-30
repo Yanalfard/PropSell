@@ -3,53 +3,62 @@ let FriendNums = [];
 
 function InitializeFriends() {
 
-
     const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (currentUser == null || currentUser == undefined) {
+        window.location = "../Login.html";
+        return;
+    }
+
     Friends = SelectFriendsByMeId(currentUser.id);
 
     if (Friends == false) return;
     if (Friends.length == null) return;
 
+
     for (let friend of Friends) {
         let user = "";
+        console.log(friend);
 
         const Client = SelectClientById(friend.FriendId);
-        if (Client == undefined) return;
+        if (Client == undefined) continue;
 
         if (Client != false) {
             user = Client;
         }
         else {
             const Dealer = SelectDealerById(friend.FriendId);
-            if (Dealer == undefined) return;
+            if (Dealer == undefined) continue;
             if (Dealer != false) {
                 user = Dealer;
             }
             else {
                 const Constructor = SelectConstructorById(friend.FriendId);
-                if (Constructor == undefined) return;
+                if (Constructor == undefined) continue;
                 if (Constructor != false) {
                     user = Constructor;
                 }
                 else {
-                    UIkit.notification("این شماره در سیستم ثبت نشده است");
-                    return;
+                    continue;
                 }
             }
         }
-        console.log(user);
 
         GenerateFriend(user);
         FriendNums.push(user.TellNo);
     }
-
-    
-
 }
 
 InitializeFriends();
 
 function LookForUser() {
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (currentUser == null || currentUser == undefined) {
+        window.location = "../Login.html";
+        return;
+    }
+
     const Tel = document.getElementById("txtTel").value;
 
     if (Tel == "") {
@@ -67,7 +76,7 @@ function LookForUser() {
         return;
     }
 
-    const currentUser = JSON.parse(localStorage.getItem("user"));
+    
 
     if (currentUser.TellNo == Tel) {
         UIkit.notification("شما نمی توانید خودتان را به عنوان دوست اضافه کنید");
@@ -80,24 +89,28 @@ function LookForUser() {
     }
 
     let user = ""
+    let userstate = -1;
 
     const Client = SelectClientByTellNo(Tel);
     if (Client == undefined) return;
 
     if (Client.id != -1) {
         user = Client;
+        userstate = 0;
     }
     else {
         const Dealer = SelectDealerByTellNo(Tel);
         if (Dealer == undefined) return;
         if (Dealer.id != -1) {
             user = Dealer;
+            userstate = 1;
         }
         else {
             const Constructor = SelectConstructorByTellNo(Tel);
             if (Constructor == undefined) return;
             if (Constructor.id != -1) {
                 user = Constructor;
+                userstate = 2;
             }
             else {
                 UIkit.notification("این شماره در سیستم ثبت نشده است");
@@ -111,7 +124,8 @@ function LookForUser() {
     //---> int FriendId
     const object = {
         MeId: currentUser.id,
-        FriendId : user.id
+        FriendId: user.id,
+        Status: userstate
     }
 
     try {
@@ -133,8 +147,8 @@ function GenerateFriend(user) {
     list.innerHTML = list.innerHTML +
         `
             <!-- #region model -->
-            <li id="${user.TellNo}" class="row">
-                <label>
+            <li id="${user.TellNo}" class="row" >
+                <label onclick="FriendClick('${user.id}')">
                     ${user.TellNo}
                 </label>
                 <button onclick="remove('${user.TellNo}')">
@@ -145,7 +159,23 @@ function GenerateFriend(user) {
         `
 }
 
+function FriendClick(id) {
+    const properties = SelectPropertyByUserId(id);
+
+    localStorage.setItem("friendProperties", JSON.stringify(properties));
+
+    window.location = "DbFriendProperties.html";
+}
+
 function remove(Tel) {
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (currentUser == null || currentUser == undefined) {
+        window.location = "../Login.html";
+        return;
+    }
+
+
     let user = ""
     const Client = SelectClientByTellNo(Tel);
     if (Client == undefined) return;
@@ -172,7 +202,6 @@ function remove(Tel) {
         }
     }
 
-    const currentUser = JSON.parse(localStorage.getItem("user"));
     const ans = SelectFriendsByFriendIdAndMeId(user.id, currentUser.id);
     const delans = DeleteFriends(ans[0].id);
 

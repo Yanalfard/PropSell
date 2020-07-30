@@ -122,6 +122,8 @@ function SignUp() {
 }
 
 function ClientSignUp() {
+    debugger;
+
     const Tel = document.getElementById('Tel').value;
     const Identification = document.getElementById('Identification').value;
 
@@ -172,6 +174,8 @@ function ClientSignUp() {
 }
 
 function ConstructorSignUp() {
+    debugger;
+
     const Tel = document.getElementById('Tel').value;
     const Identification = document.getElementById('Identification').value;
     const Address = document.getElementById('Address').value;
@@ -209,6 +213,7 @@ function ConstructorSignUp() {
 
     //#region ()
 
+
     const Constructor = {
         Tell: Tel,
         Identification: Identification,
@@ -228,6 +233,9 @@ function ConstructorSignUp() {
 }
 
 function DealerSignUp() {
+    debugger;
+
+
     const Name = document.getElementById('Name').value;
     const Tel = document.getElementById('Tel').value;
     const Identification = document.getElementById('Identification').value;
@@ -272,7 +280,7 @@ function DealerSignUp() {
 
     const Dealer = {
         Name: Name,
-        Tell: Tel,
+        TellNo: Tel,
         Identification: Identification,
         Address: Address
     }

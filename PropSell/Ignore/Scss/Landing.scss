@@ -12,9 +12,9 @@
         padding: 3vw;
         margin-left: auto;
 
-        h1 {
+        .hero-header {
             padding: 2px;
-            margin: 16px 0 16px auto !important;
+            margin: 16px 0 16px auto ;
             overflow-y: hidden;
             font-size: 2.4vw;
         }
@@ -22,7 +22,7 @@
         p {
             margin: 0;
             color: #fff;
-            font-size:1.2vw;
+            font-size: 1.2vw;
         }
     }
 }
@@ -45,20 +45,12 @@
 }
 
 
-.browse {
-    padding: 2.5vw;
-    display: grid;
-    grid-gap: 2em;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
-}
-
-
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .hero {
 
-        h1 {
-            margin: 16px auto !important;
-            font-size: 2.6em;
+        .hero-header {
+            margin:24px auto!important;
+            font-size: 2.6em!important;
         }
 
         .column {
@@ -67,7 +59,7 @@
         }
 
         p {
-            font-size: 1.5em;
+            font-size: 1.55em!important;
             text-align: center;
         }
     }

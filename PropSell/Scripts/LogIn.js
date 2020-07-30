@@ -51,7 +51,7 @@ function login() {
     }
 
     if (user.Identification !== Identification) {
-        UIkit.notification("کد ملی درست وارد نشده است");
+        UIkit.notification("  کد ملی و یا شماره تلفن درست وارد نشده است");
         return;
     }
     //retrieve with 

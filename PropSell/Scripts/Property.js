@@ -8,6 +8,14 @@ function RetrieveData() {
     document.getElementById("Title").textContent = Property.Title;
     document.getElementById("Description").textContent = Property.Description;
     document.getElementById("Price").textContent = Property.Price;
+    document.getElementById("NeighborHood").textContent = Property.Neighborhood;
+
+    const city = SelectCityById(Property.CityId);
+    const province = SelectProvinceById(city.ProvinceId)
+
+    document.getElementById("Province").textContent = province.Name;
+    document.getElementById("City").textContent = city.Name;
+
 
     const images = SelectImageByPropertyId(Property.id);
     const slideshow = document.getElementById("slideshow");
@@ -21,7 +29,7 @@ function RetrieveData() {
     for (const img of images) {
         slideshow.innerHTML = slideshow.innerHTML +
             `
-                <li>
+                <li id=${img.Name}>
                    <img src="${img.Name}" uk-cover>
                 </li>
             `;
@@ -39,6 +47,8 @@ let hasClicked = false;
 
 function Click() {
     if (hasClicked) return;
+
+    debugger;
 
     var today = new Date();
     const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}-${today.getHours()}:${today.getMinutes()}`;
