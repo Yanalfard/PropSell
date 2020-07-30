@@ -54,6 +54,7 @@ namespace PropSell.Services.Impl
 
         public List<TblProperty> SelectLatestProperties(int count)
         {
+            List<TblProperty> l = new PropertyRepo().SelectLatestProperties(count);
             return new PropertyRepo().SelectLatestProperties(count).Where(i => i.Valid).ToList();
         }
 
