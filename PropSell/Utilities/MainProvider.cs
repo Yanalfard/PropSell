@@ -891,8 +891,10 @@ namespace PropSell.Utilities
                 List<TblProperty> res = new List<TblProperty>();
                 _command = new SqlCommand($"select* from TblProperty where Title like N'%{title}%'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
-                reader.Read();
-                res.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                while (reader.Read())
+                {
+                    res.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                }
                 return res;
             }
             catch
@@ -1057,7 +1059,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select * from TblAdmin where Username = N'{username}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 reader.Read();
-                return new TblAdmin(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Username"].ToString(),reader["Password"].ToString());
+                return new TblAdmin(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Username"].ToString(), reader["Password"].ToString());
             }
             catch
             {
