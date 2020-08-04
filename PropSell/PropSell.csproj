@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Index.html" />
     <Content Include="JsDecoders\AdminJore.js" />
     <Content Include="JsDecoders\BjaxLib.js" />
     <Content Include="JsDecoders\CityJore.js" />
@@ -250,7 +251,6 @@
     <Content Include="Styles\UIKit\uikit-rtl.min.css" />
     <Content Include="Styles\UIKit\uikit.css" />
     <Content Include="Styles\UIKit\uikit.min.css" />
-    <Content Include="Test.html" />
     <Content Include="Utilities\Cities.js" />
     <Content Include="Views\About.html" />
     <Content Include="Views\Admin\AdClient.html" />
