@@ -1,5 +1,5 @@
 ﻿function search(input, link) {
-    debugger;
+    
     const keyword = document.getElementById(input).value;
 
     if (keyword == "Admin") {

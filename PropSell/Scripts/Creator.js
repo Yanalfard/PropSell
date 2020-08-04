@@ -17,7 +17,7 @@
 
 function AcceptCreation() {
 
-    debugger;
+    
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
 
@@ -153,7 +153,7 @@ function AcceptCreation() {
 
 function UploadImages(element) {
 
-    debugger;
+    
 
     // user has not chosen any file
     if (element.files.length == 0) {
@@ -259,7 +259,7 @@ function SendImagesToTheDatabase(imageName) {
 
     document.getElementById("imgspinner").classList.add("collapsed");
 
-    debugger;
+    
 
     const slideshow = document.getElementById("slideshow");
     const slideNav = document.getElementById("sliderNav");

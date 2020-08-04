@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="JsDecoders\AdminJore.js" />
     <Content Include="JsDecoders\BjaxLib.js" />
     <Content Include="JsDecoders\CityJore.js" />
     <Content Include="JsDecoders\ClickJore.js" />
@@ -271,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\ClickController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -286,6 +288,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dto\DtoTblAdmin.cs" />
     <Compile Include="Models\Dto\DtoTblCity.cs" />
     <Compile Include="Models\Dto\DtoTblClick.cs" />
     <Compile Include="Models\Dto\DtoTblClient.cs" />
@@ -297,6 +300,7 @@
     <Compile Include="Models\Dto\DtoTblPropertyClientRel.cs" />
     <Compile Include="Models\Dto\DtoTblPropertyImageRel.cs" />
     <Compile Include="Models\Dto\DtoTblProvince.cs" />
+    <Compile Include="Models\Regular\TblAdmin.cs" />
     <Compile Include="Models\Regular\TblCity.cs" />
     <Compile Include="Models\Regular\TblClick.cs" />
     <Compile Include="Models\Regular\TblClient.cs" />

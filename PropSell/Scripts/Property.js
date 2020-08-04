@@ -48,7 +48,7 @@ let hasClicked = false;
 function Click() {
     if (hasClicked) return;
 
-    debugger;
+    
 
     var today = new Date();
     const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}-${today.getHours()}:${today.getMinutes()}`;
