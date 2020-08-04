@@ -1047,5 +1047,28 @@ namespace PropSell.Utilities
         }
         #endregion
 
+        #region TblAdmin
+
+        public TblAdmin SelectAdminByUsername(string username)
+        {
+            try
+            {
+                List<TblProperty> res = new List<TblProperty>();
+                _command = new SqlCommand($"select * from TblAdmin where Username = N'{username}'", _connection);
+                SqlDataReader reader = _command.ExecuteReader();
+                reader.Read();
+                return new TblAdmin(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Username"].ToString(),reader["Password"].ToString());
+            }
+            catch
+            {
+                return new TblAdmin();
+            }
+            finally
+            {
+                _disconnect();
+            }
+        }
+
+        #endregion
     }
 }

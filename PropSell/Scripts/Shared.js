@@ -76,7 +76,7 @@ function PropertyDesigner() {
 }
 
 function LoadFriendProperties() {
-    debugger;
+    
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
 

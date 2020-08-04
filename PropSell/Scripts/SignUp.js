@@ -122,7 +122,7 @@ function SignUp() {
 }
 
 function ClientSignUp() {
-    debugger;
+    
 
     const Tel = document.getElementById('Tel').value;
     const Identification = document.getElementById('Identification').value;
@@ -174,7 +174,7 @@ function ClientSignUp() {
 }
 
 function ConstructorSignUp() {
-    debugger;
+    
 
     const Tel = document.getElementById('Tel').value;
     const Identification = document.getElementById('Identification').value;
@@ -233,7 +233,7 @@ function ConstructorSignUp() {
 }
 
 function DealerSignUp() {
-    debugger;
+    
 
 
     const Name = document.getElementById('Name').value;
