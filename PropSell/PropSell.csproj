@@ -155,6 +155,11 @@
     <Content Include="JsDecoders\PropertyJore.js" />
     <Content Include="JsDecoders\ProvinceJore.js" />
     <Content Include="JsDecoders\UploadJore.js" />
+    <Content Include="pwabuilder-sw-register.js" />
+    <Content Include="pwabuilder-sw.js" />
+    <EmbeddedResource Include="Resources\Raster\Logo.png" />
+    <Content Include="Views\pwabuilder-sw-register.js" />
+    <Content Include="Views\pwabuilder-sw.js" />
     <Content Include="Resources\Raster\BrickTexture.jpeg" />
     <Content Include="Resources\Raster\HardVertical.jpeg" />
     <Content Include="Resources\Raster\Hero.jpeg" />
@@ -206,6 +211,8 @@
     <Content Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults" />
     <Content Include="Ignore\Scss\Admin.scss" />
+    <Content Include="Views\manifest.json" />
+    <Content Include="manifest.json" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.js" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.min.js" />
