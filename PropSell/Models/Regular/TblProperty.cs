@@ -12,13 +12,14 @@ namespace PropSell.Models.Regular
         public string Neighborhood { get; set; }
         public long Price { get; set; }
         public bool IsOnFirstPage { get; set; }
+        public int Catagory { get; set; }
 
         public TblProperty(int id)
         {
             this.id = id;
         }
 
-        public TblProperty(int id, string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood, long price, bool isOnFirstPage)
+        public TblProperty(int id, string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood, long price, bool isOnFirstPage, int catagory)
         {
             this.id = id;
             Title = title;
@@ -30,8 +31,9 @@ namespace PropSell.Models.Regular
             Neighborhood = neighborhood;
             Price = price;
             IsOnFirstPage = isOnFirstPage;
+            Catagory = catagory;
         }
-        public TblProperty(string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood, long price, bool isOnFirstPage)
+        public TblProperty(string title, string description, bool valid, bool showToFriends, int userId, int cityId, string neighborhood, long price, bool isOnFirstPage, int catagory)
         {
             Title = title;
             Description = description;
@@ -42,6 +44,7 @@ namespace PropSell.Models.Regular
             Neighborhood = neighborhood;
             Price = price;
             IsOnFirstPage = isOnFirstPage;
+            Catagory = catagory;
         }
 
         public TblProperty()

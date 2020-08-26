@@ -203,13 +203,13 @@ namespace PropSell.Utilities
                 TblProperty property = (TblProperty)tableObj;
                 if (!MethodRepo.ExistInDb("TblProperty", "Title", property.Title))
                 {
-                    _commandText = $"insert into TblProperty (Title , Description , Valid , ShowToFriends , UserId , CityId , Neighborhood , Price , IsOnFirstPage) values (N'{property.Title}' , N'{property.Description}' , N'{property.Valid}' , N'{property.ShowToFriends}' , N'{property.UserId}' , N'{property.CityId}' , N'{property.Neighborhood}' , N'{property.Price}' , N'{property.IsOnFirstPage}')";
+                    _commandText = $"insert into TblProperty (Title , Description , Valid , ShowToFriends , UserId , CityId , Neighborhood , Price , IsOnFirstPage , Catagory) values (N'{property.Title}' , N'{property.Description}' , N'{property.Valid}' , N'{property.ShowToFriends}' , N'{property.UserId}' , N'{property.CityId}' , N'{property.Neighborhood}' , N'{property.Price}' , N'{property.IsOnFirstPage}' , N'{property}')";
                     command = new SqlCommand($"select TOP (1) * from TblProperty where Title = N'{property.Title}' ORDER BY id DESC", _connection);
                     _command = new SqlCommand(_commandText, _connection);
                     _command.ExecuteNonQuery();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
-                    return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false);
+                    return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0);
                 }
                 else return new TblProperty(-1);
             }
@@ -286,7 +286,7 @@ namespace PropSell.Utilities
                 else if (table.GetType() == typeof(TblProperty))
                 {
                     TblProperty property = (TblProperty)tableObj;
-                    _commandText = $"update TblProperty set Title = N'{property.Title}' , Description = N'{property.Description}' , Valid = N'{property.Valid}' , ShowToFriends = N'{property.ShowToFriends}' , UserId = N'{property.UserId}' , CityId = N'{property.CityId}' , Neighborhood = N'{property.Neighborhood}' , Price = N'{property.Price}' , IsOnFirstPage = N'{property.IsOnFirstPage}' where id = N'{logId}'";
+                    _commandText = $"update TblProperty set Title = N'{property.Title}' , Description = N'{property.Description}' , Valid = N'{property.Valid}' , ShowToFriends = N'{property.ShowToFriends}' , UserId = N'{property.UserId}' , CityId = N'{property.CityId}' , Neighborhood = N'{property.Neighborhood}' , Price = N'{property.Price}' , IsOnFirstPage = N'{property.IsOnFirstPage}' , Catagory = N'{property.Catagory}' where id = N'{logId}'";
                 }
                 _command = new SqlCommand(_commandText, _connection);
                 _command.ExecuteNonQuery();
@@ -384,7 +384,7 @@ namespace PropSell.Utilities
                     case Tables.TblProperty:
                         List<TblProperty> properties = new List<TblProperty>();
                         while (reader.Read())
-                            properties.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                            properties.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                         return properties;
                     default:
                         return new List<bool>();
@@ -428,7 +428,7 @@ namespace PropSell.Utilities
                 else if (table == Tables.TblCity)
                     return new TblCity(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Name"].ToString(), reader["ProvinceId"].ToString() != "" ? Convert.ToInt32(reader["ProvinceId"]) : 0);
                 else if (table == Tables.TblProperty)
-                    return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false);
+                    return new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0);
                 return null;
             }
             catch
@@ -893,7 +893,7 @@ namespace PropSell.Utilities
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
                 {
-                    res.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                    res.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                 }
                 return res;
             }
@@ -914,7 +914,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select* from TblProperty where Valid = N'id'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                 return ret;
             }
             catch
@@ -934,7 +934,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select* from TblProperty where ShowToFriends = N'{showToFriends}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                 return ret;
             }
             catch
@@ -953,7 +953,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select top (12) * from TblProperty where IsOnFirstPage = N'{isOnFirstPage}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                 return ret;
             }
             catch
@@ -973,7 +973,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select* from TblProperty where UserId = N'{userId}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                 return ret;
             }
             catch
@@ -993,7 +993,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"select* from TblProperty where CityId = N'{cityId}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                 return ret;
             }
             catch
@@ -1014,7 +1014,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"SELECT TOP({count}) * FROM dbo.TblProperty ORDER BY id DESC", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                 return ret;
             }
             catch
@@ -1035,7 +1035,7 @@ namespace PropSell.Utilities
                 _command = new SqlCommand($"SELECT * FROM dbo.TblProperty WHERE Price >= N'{min}' AND Price <= N'{max}'", _connection);
                 SqlDataReader reader = _command.ExecuteReader();
                 while (reader.Read())
-                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false));
+                    ret.Add(new TblProperty(reader["id"].ToString() != "" ? Convert.ToInt32(reader["id"]) : 0, reader["Title"].ToString(), reader["Description"].ToString(), reader["Valid"].ToString() != "" ? Convert.ToBoolean(reader["Valid"]) : false, reader["ShowToFriends"].ToString() != "" ? Convert.ToBoolean(reader["ShowToFriends"]) : false, reader["UserId"].ToString() != "" ? Convert.ToInt32(reader["UserId"]) : 0, reader["CityId"].ToString() != "" ? Convert.ToInt32(reader["CityId"]) : 0, reader["Neighborhood"].ToString(), reader["Price"].ToString() != "" ? long.Parse(reader["Price"].ToString()) : 0, reader["IsOnFirstPage"].ToString() != "" ? Convert.ToBoolean(reader["IsOnFirstPage"]) : false, reader["Catagory"].ToString() != "" ? Convert.ToInt32(reader["Catagory"]) : 0));
                 return ret;
             }
             catch
