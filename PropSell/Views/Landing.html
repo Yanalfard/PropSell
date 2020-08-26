@@ -6,9 +6,29 @@
     <link rel="icon" href="/Resources/Vector/TabLogo.svg">
 
 
+    <!-- #region PWA -->
+    <link rel='manifest' href="../manifest.json">
+
+
+
+    <script type="module">
+
+        import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+        const el = document.createElement('pwa-update');
+        document.body.appendChild(el);
+
+    </script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall@latest/dist/pwa-install.min.js"></script>
+
+    <!-- #endregion -->
 
     <script src="../Scripts/Jquery/jquery-3.5.1.js"></script>
     <script src="../JsDecoders/BjaxLib.js"></script>
+
+    <!-- #region Uncomment After -->
+
     <script src="../JsDecoders/PropertyJore.js"></script>
     <script src="../JsDecoders/AdminJore.js"></script>
 
@@ -17,11 +37,14 @@
     <script src="../Scripts/UIKit/uikit.js"></script>
     <link href="../Styles/UIKit/uikit.css" rel="stylesheet" />
     <link href="/Styles/Landing.css" rel="stylesheet" />
-    <script src="../Scripts/general.js"></script>
     <script src="../Utilities/Cities.js"></script>
 
     <script src="../JsDecoders/ProvinceJore.js"></script>
     <script src="../JsDecoders/CityJore.js"></script>
+
+    <script src="../Scripts/general.js"></script>
+
+    <!-- #endregion -->
 </head>
 <body>
 
@@ -120,7 +143,7 @@
         <div class="row">
             <label class="uk-label">09355932930</label>
             <label class="uk-label">www.yoursite.com</label>
-            <label class="uk-label">your address</label>    
+            <label class="uk-label">your address</label>
         </div>
     </footer>
 

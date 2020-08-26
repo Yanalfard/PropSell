@@ -1,4 +1,5 @@
-﻿function generateBlocks(count, id) {
+﻿
+function generateBlocks(count, id) {
 
     let div = document.getElementById(id);
     console.log(div);
